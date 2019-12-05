@@ -397,6 +397,7 @@ T\kern-.1667em\lower.5ex\hbox{E}\kern-.125emX\spacefactor1000}
   breaklinks={true},
   raiselinks={true},
   pageanchor={true},
+  pdfborder = {0 0 0}
 }}
 \newcommand\makecatalog{%
   \vspace*{\fill}

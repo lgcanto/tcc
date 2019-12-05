@@ -43,9 +43,9 @@
   \author{Lucas}{Gama Canto}
   \advisor{Prof.}{Heraldo Luís}{Silveira de Almeida}{D.Sc.}
 
-  \examiner{Prof.}{Nome do Primeiro Examinador Sobrenome}{D.Sc.}
-  \examiner{Prof.}{Nome do Segundo Examinador Sobrenome}{Ph.D.}
-  \examiner{Prof.}{Nome do Terceiro Examinador Sobrenome}{D.Sc.}
+  \examiner{Prof.}{[TODO]Nome do Primeiro Examinador Sobrenome}{D.Sc.}
+  \examiner{Prof.}{[TODO]Nome do Segundo Examinador Sobrenome}{Ph.D.}
+  \examiner{Prof.}{[TODO]Nome do Terceiro Examinador Sobrenome}{D.Sc.}
   
   \department{ECA}% Confira a tabela a seguir para saber como preencher o comando \department de acordo com seu curso (Graduação - Poli) ou programa (Pós-Graduação - COPPE).
   
@@ -90,9 +90,9 @@
   
   \date{03}{2020}
 
-  \keyword{Primeira palavra-chave}
-  \keyword{Segunda palavra-chave}
-  \keyword{Terceira palavra-chave}
+  \keyword{Aprendizado de Máquina}
+  \keyword{Processamento de Linguagem Natural}
+  \keyword{Mercado Financeiro}
 
   \maketitle
 
@@ -104,19 +104,19 @@
 
   \chapter*{Agradecimentos}
 
-  \paragraph{}Gostaria de agradecer a todas as pessoas e situações que tornaram este momento possível. Em especial, meus pais Benedita e Manoel, pelo suporte e esforço incondicional em apoiar minha decisão de vir estudar engenharia no Rio de Janeiro, aos professores da graduação, que me fizeram evoluir no âmbito acadêmico, profissional e pessoal e aos amigos que me apoiaram e participaram do meu processo de graduação.
+	  \paragraph{}Gostaria de agradecer a todas as pessoas e situações que tornaram este momento possível. Em especial, meus pais Benedita e Manoel, pelo suporte e esforço incondicional em apoiar minha decisão de vir estudar engenharia no Rio de Janeiro, aos professores da graduação, que me fizeram evoluir no âmbito acadêmico, profissional e pessoal, em especial ao meu orientador e professor Heraldo, que não mediu esforços para me ajudar neste trabalho, e aos amigos que me apoiaram e participaram de meu processo de graduação.
 
   \begin{abstract}
 
-  \paragraph{}Com o objetivo de automatizar análises fundamentalistas de mercado, o uso de tecnologia para processamento de texto vem sendo utilizado constantemente no meio acadêmico e profissional. De forma a contribuir para este campo em crescimento, este trabalho discorre um estudo acerca da criação de modelos preditivos sobre a valorização ou desvalorização de ações na bolsa de valores do Brasil (B3, antiga Bovespa) a partir de notícias sobre o mercado financeiro brasileiro de forma a auxiliar decisões de Swing Trade, ou seja, compra e venda de ações dentro de uma janela de tempo maior que um dia.
-  \paragraph{}Para isto, o presente projeto utiliza o framework PyText, que se baseia em conceitos de Aprendizado de Máquina, Redes Neurais e Processamento de Linguagem Natural de forma a desenvolver modelos preditivos com a tarefa de classificação textual.
+	  \paragraph{}Com o objetivo de automatizar análises fundamentalistas de mercado, o uso de tecnologia para processamento de texto vem sendo utilizado constantemente no meio acadêmico\cite{nlp-academics} e profissional\cite{nlp-industry}. De forma a contribuir para este campo em crescimento, este trabalho discorre um estudo acerca da criação de modelos preditivos sobre a valorização ou desvalorização de ações na bolsa de valores do Brasil (B3, antiga Bovespa) a partir de notícias sobre o mercado financeiro brasileiro de forma a auxiliar decisões de Swing Trade, ou seja, compra e venda de ações dentro de uma janela de tempo maior que um dia.
+	  \paragraph{}Para isto, o presente projeto utiliza o framework PyText, que se baseia em conceitos de Aprendizado de Máquina, Redes Neurais e Processamento de Linguagem Natural de forma a desenvolver modelos preditivos com a tarefa de classificação textual.
 
   \end{abstract}
 
   \begin{foreignabstract}
 
-  \paragraph{}In order to automate fundamental market analysis, the use of text processing technology has been constantly used in academic and professional means. To contribute to this growing field, this paper discusses a study about the creation of predictive models regarding the valuation or devaluation of shares on the Brazilian stock exchange (B3, former Bovespa) based on news about the Brazilian financial market in order to assist Swing Trade decisions, that is, buying and selling stocks within a time window longer than one day.
-  \paragraph{}To this end, the present project uses the PyText framework, which is based on Machine Learning, Neural Networks and Natural Language Processing concepts in order to develop predictive models with the task of textual classification.
+	  \paragraph{}In order to automate fundamental market analysis, the use of text processing technology has been constantly used in academic\cite{nlp-academics} and professional\cite{nlp-industry} means. To contribute to this growing field, this paper discusses a study about the creation of predictive models regarding the valuation or devaluation of shares on the Brazilian stock exchange (B3, former Bovespa) based on news about the Brazilian financial market in order to assist Swing Trade decisions, that is, buying and selling stocks within a time window longer than one day.
+	  \paragraph{}To this end, the present project uses the PyText framework, which is based on Machine Learning, Neural Networks and Natural Language Processing concepts in order to develop predictive models with the task of textual classification.
 
   \end{foreignabstract}
 
@@ -128,7 +128,20 @@
 
   \mainmatter
 %  \doublespacing
-  \chapter{Introdução}
+	\chapter{Introdução}
+		
+		\section{Tema}
+			\paragraph{}O tema deste trabalho se resume no estudo da criação de modelos preditivos de modo que estes possam prever a valorização ou desvalorização de ações da bolsa de valores por meio do processamento de notícias do mercado brasileiro.
+			\paragraph{}Deste modo, o problema a ser abordado é a identificação de quando uma notícia pode impactar positivamente ou negativamente a variação de preço de ações de forma automatizada.
+			
+		\section{Delimitação}
+			\paragraph{}Este trabalho se restringe ao processamento de texto em português brasileiro, tendo como foco a predição da variação de preço das ações que fazem parte da bolsa de valores do Brasil, a B3. Pela indisponibilidade de dados sobre notícias brasileiras contendo a informação do horário de lançamento da notícia, o projeto mira em predições dentro de uma janela de tempo maior que um dia, de forma a auxiliar decisões de Swing Trade, isto é, operações de compra e venda de ações numa janela de tempo maior que um dia.
+			\paragraph{}Além disso, o estudo se baseia na ferramenta PyText, um framework recentemente desenvolvido pelo Facebook que providencia modelos de processamento de linguagem natural de última geração através de uma interface simples e extensível\cite{pytext-paper}.
+		
+		\section{Justificativa}
+		\section{Objetivos}
+		\section{Metodologia}
+		\section{Descrição}
 
   Segundo a norma de formatação de teses e dissertações do
   Instituto Alberto Luiz Coimbra de Pós-graduação e Pesquisa de
@@ -211,14 +224,7 @@
        \caption{Logotipo da COPPE.}
        \label{fig:coppe}
      \end{figure}
-
-  \section{Tema}
-  \section{Delimitação}
-  \section{Justificativa}
-  \section{Objetivos}
-  \section{Metodologia}
-  \section{Descrição}
-
+   
   \chapter{Fundamentação Teórica}
   
   \section{Economia Financeira}
@@ -275,7 +281,7 @@
 
   \backmatter
   \bibliographystyle{coppe-unsrt}
-  \bibliography{example}
+  \bibliography{bibliography}
 
   \appendix
   \chapter{Algumas Demonstrações}
