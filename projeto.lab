@@ -1,8 +1,10 @@
 
 \begin{theglossary}
   \makeatletter
-  \item [iBovespa] Índice Bovespa, p. 
-  	\hyperpage{2}
+  \item [iBovespa] Índice Bovespa, p.\hyperpage{2}
+ 	\item [HME] Hipótese do Mercado Eficiente, p.\hyperpage{4}; p.\hyperpage{5}
+  \item [AT] Análise Técnica, p.\hyperpage{4}; p.\hyperpage{5}
+  \item [AF] Análise Fundamentalista, p.\hyperpage{4}; p.\hyperpage{5}
   \item [COPPE] EXEMPLO-Instituto Alberto Luiz Coimbra de P\IeC {\'o}s-gradua\IeC {\c c}\IeC {\~a}o e Pesquisa de Engenharia, p. 
 		\hyperpage{1}
   \item [POLI-UFRJ] Escola Polit\IeC {\'e}cnica da Universidade Federal do Rio de Janeiro, p. 

@@ -85,7 +85,7 @@
 			\paragraph{}Por fim, os testes finais de cada modelo gerado foi detalhado e analisado para permitir uma conclusão e avaliação do processo como um todo.
 
 		\section{Descrição}
-			\paragraph{}O capítulo 2 apresenta toda a fundamentação teórica utilizada como base para o projeto a partir de uma breve descrição de como a bolsa de valores funciona e como pode-se obter lucro a partir da mesma, seguida de explicações sobre Aprendizado de Máquina, Processamento de Linguagem Natural, Redes Neurais e o framework Pytext.
+			\paragraph{}O capítulo 2 apresenta toda a fundamentação teórica utilizada como base para o projeto a partir de uma breve descrição de como a bolsa de valores funciona seguida de explicações sobre Aprendizado de Máquina, Processamento de Linguagem Natural, Redes Neurais e o framework Pytext.
 			\paragraph{}No capítulo 3 é detalhado todo o processo executado para obtenção do conjunto de notícias e do histórico da B3, seguido do pré-processamento realizado nestes dois conjuntos e a criação dos conjuntos de dados finais utilizados para o treino, cada um associado a um ativo e uma janela de tempo específica.
 			\paragraph{}Os detalhes das configurações utilizadas no PyText e o treinamento em si é especificado no capítulo 4, onde há uma discussão acerca dos parâmetros encontrados para a geração de modelos mais performáticos, além das métricas finais encontradas para cada modelo gerado.
 			\paragraph{}Por fim, o capítulo 5 apresenta uma conclusão acerca dos modelos encontrados seguido por sugestões que futuramente podem ser aplicadas para a evolução do tema e uma possível melhora de desempenho dos modelos preditivos.
@@ -97,10 +97,61 @@
   	\paragraph{}A Bolsa de Valores é um lugar centralizado onde, além de abranger outros tipos de investimento, se negociam ações (também chamados de ativos ou papéis), isto é, parcelas do capital social de empresas de capital aberto. Atualmente a B3 (Brasil, Bolsa, Balcão) é a Bolsa de Valores oficial do Brasil que em 2017 atingiu a 5ª posição das maiores bolsas de mercados de capitais do mundo em valor de mercado, com um patrimônio de US\$ 13 bilhões\cite{b3-patrimonio}.
   	\paragraph{}As ações são negociadas diariamente a partir das ordens de compra e venda emitidas pelas corretoras durante o pregão eletrônico, que na B3, funciona em dias úteis das 10:00 às 17:00.
   	\subsection{Preços de Ações}
-  		\paragraph{}O preço de um ativo na Bolsa de Valores pode ser determinado por diversas razões que podem se relacionar entre si, entre essas, pode-se destacar a lei da oferta e demanda, perspectivas de crescimento da empresa associada ao papel e especulação. A previsibilidade acerca de movimentações no mercado de ações normalmente pode ser baseada em Análise Técnica (estudo dos movimentos do mercado baseado em métricas como preço, volume e taxa de juros\cite{analise-tecnica}), Análise Fundamentalista (estudo feito a partir de resultados financeiros e operacionais, indicando a saúde da empresa\cite{analise-fundamentalista})
-  
+  		\paragraph{}O preço de um ativo na Bolsa de Valores pode ser determinado por diversas razões que podem se relacionar entre si, entre essas, pode-se destacar a lei da oferta e demanda, perspectivas de crescimento da empresa associada ao papel e especulação. A previsibilidade acerca de movimentações no mercado de ações normalmente pode ser baseada em Análise Técnica (AT - estudo dos movimentos do mercado baseado em métricas como preço, volume e taxa de juros\cite{analise-tecnica}), Análise Fundamentalista (AF - estudo feito a partir de resultados financeiros e operacionais, indicando a saúde da empresa\cite{analise-fundamentalista}) ou numa junção destes dois conceitos.
+  		\paragraph{}A validade da previsibilidade destas movimentações são questionadas por críticas com base na Hipótese do Mercado Eficiente (HME) e seus três níveis definidos em \cite{emh}:
+			\begin{itemize}
+				\item HME fraca: Afirma que os preços refletem totalmente a informação contida na sequência histórica dos preços. Ou seja, a AT não consegue prever os movimentos futuros pois os preços passadas só podem descrever o presente.
+				\item HME semi-forte: Afirma que os preços presentes não só refletem toda a sequência histórica de preços mas também toda informação pública sobre as organizações associadas ao ativo em questão. Neste nível de eficiência, a AF também não seria capaz de prever movimentos futuros, pois toda informação como demonstrativos de resultados ou análises orçamentárias refletiria apenas o preço presente.
+				\item HME forte: Neste nível, é afirmado que \textit{toda} informação conhecida sobre as organizações é totalmente refletida pelo preço presente, logo, nem mesmo aqueles com informações privilegiadas podem utilizar isto como ferramenta para prever preços futuros.
+			\end{itemize}
+ 			\begin{figure}[h]
+ 				\includegraphics[width=13cm]{emh.jpg}
+ 				\caption{Os três níveis da HME, cada nível adiciona um tipo de informação cujo com o qual não seria possível prever um movimento de preço no mercado\cite{emh-article}.}
+ 				\label{fig:emh}
+ 			\end{figure}
+ 			\paragraph{}Não há uma reposta correta perante a validade da HME. Porém, muitos acadêmicos acreditam, pelo menos, na HME fraca\cite{emh-br}, fazendo com que, em algumas ocasiões, seja preferível a utilização da AF, ou seja, a análise de resultados financeiros, relatórios anuais e notícias divulgadas acerca do mercado financeiro.
+ 			
+		\subsection{Índice de Bolsa de Valores}
+			\paragraph{}Com objetivo de parametrizar algumas informações intrínsecas às bolsas, estas disponibilizam diversos índices. O principal índice da B3 é o Ibovespa, que é formado pelos ativos com maior volume negociado na bolsa nos últimos meses e indica, de forma resumida, o desempenho das ações negociadas na B3. Por ser um indicador principal, muitos fundos de investimento baseados no mercado de ações estão atrelados ao Ibovespa, contribuindo para a atratividade destes ativos de maneira geral.
+			\begin{table}[h]
+				\caption{Os 5 ativos com o maior volume e participação na B3, associados ao Ibovespa\cite{carteira-bovespa}.}
+				\label{tab:courses}
+				\centering
+				{\footnotesize
+					\begin{tabular}{|c|c|c|c|}
+						\hline
+						Código & Ação & Qtde. Teórica & Part.(\%)\\
+						\hline
+						ITUB4 &  Itaú Unibanco & 4.738.562.684 & 9,095 \\
+						PETR4 &  Petrobras & 4.520.185.835 & 7,038 \\
+						BBDC4 &  Bradesco & 3.873.597.664 & 7,028 \\
+						VALE3 &  Vale S.A. & 3.147.743.563 & 8,414 \\
+						ABEV3 &  AMBEV & 4.344.066.764 & 4,173 \\
+						\hline
+				\end{tabular}}
+			\end{table}
+			 
   \section{Aprendizado de Máquina}
+  	\paragraph{}Pode-se definir Aprendizado de Máquina como o campo de estudo de algoritmos com o objetivo de fazer com que computadores possam agir sem serem explicitamente programados para fazer determinada tarefa. São algoritmos que analisam dados e aprendem com eles, para que assim possam fornecer uma predição de algo on mundo.
+  	\paragraph{}Outra definição dada por Tom M. Mitchell\cite{ml-mitchell} fala que o campo de Aprendizado de Máquina busca responder a pergunta: "Como podemos construir sistemas de computadores que possam automaticamente melhorar através de experiência e quais são as leis fundamentais que governam todo este processo de aprendizado?". Outra definição do mesmo autor\cite{ml-mitchell-book} diz que "Um programa de computador é dito aprender com a experiência E em respeito a uma tarefa T e medida pelo desempenho P se o seu desempenho em T, medido por P, melhora com a experiência E". Neste conceito, se fosse desejado um programa de computador que aprendesse a classificar e-mails como spam ou não, por exemplo, poderíamos fazer a seguinte associação:
+  	\begin{itemize}
+  		\item E = A experiência de ver o usuário classificar emails como spam ou não.
+			\item T = A tarefa de classificar os emails.
+			\item P = O número ou fração de emails corretamente classificados como spam/não spam
+  	\end{itemize}
+  	\paragraph{}Geralmente, os algoritmos de Aprendizado de Máquina podem ser divididos em dois tipos: Aprendizado Supervisionado e Aprendizado Não Supervisionado.
+  	\subsection{Aprendizado Supervisionado}
+  		\paragraph{}Neste tipo, o algoritmo é inicialmente servido por uma série de dados rotulados cujo resultado já é conhecido. A ideia e que o algoritmo aprenda a criar uma estratégia para chegar ao resultado baseando-se nesses dados de modelo inicial. O aprendizado supervisionado pode ser dividido em problemas de regressão ou classificação.
+  		\subsubsection{Problema de Regressão}
+	  		\paragraph{}Neste tipo de problema, os dados de entrada (parâmetros) são mapeados em uma função contínua. Por exemplo, um algoritmo cujo objetivo fosse prever o preço dos imóveis na cidade do Rio de Janeiro baseando-se em dados como área útil, bairro, número de vagas na garagem, etc é considerado como um problema de regressão, pois o resultado final será um número contínuo, neste caso, o preço dos imóveis.
+  		\subsubsection{Problema de Classificação}
+  			\paragraph{}Neste caso, os parâmetros são mapeados de forma a classificar os dados em categorias distintas. Por exemplo, um algoritmo utilizado para prever se um tumor é benigno ou maligno a partir de dados como o tamanho, rugosidade do tumor e idade do paciente é considerado um problema de classificação, pois o resultado final será a categoria na qual o tumor pertence.
+		\subsection{Aprendizado Não Supervisionado}
+			\paragraph{}Neste tipo de aprendizado, não existe um conjunto inicial de dados e resultados, ou seja, nos permite abordar problemas onde temos pouca ou nenhuma ideia do que nossos resultados devem aparentar. Um exemplo, seria um algoritmo onde, utilizando uma coleção de 1000 artigos publicados por uma universidade, fizesse um agrupamento desses artigos, baseando-se em diferente variáveis como frequência de palavras semelhantes, número de paginas, etc.
+  
   \section{Processamento de Linguagem Natural}
+  	\paragraph{}
+  
   \section{Redes Neurais}
   \section{PyText}
   
