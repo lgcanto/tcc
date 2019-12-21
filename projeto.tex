@@ -163,7 +163,7 @@
 			\paragraph{}Não existe um modo ideal de dividir o conjunto de dados, o tamanho do conjunto de treino normalmente é maior que o de teste, de modo que este consiga abranger mais generalizações acerca dos parâmetros do modelo. Assim, algumas proporções são mais comumente usadas, como 60/40, 75/25 e 80/20, proporção baseada no Principio de Pareto que afirma que, 80\% das saídas/consequências vem de 20\% das entradas/causas\cite{pareto_principle}. Levando em consideração o escopo de Aprendizado de Máquina, podemos dizer que 20\% pode mapear 80\% do conjunto de dados.
 			\paragraph{}Além disso, em modelos mais simples, também existe a possibilidade de utilizar a Validação Cruzada, uma técnica que separa o conjunto de dados em subconjuntos exclusivos e diferentes e alguns destes subconjuntos são utilizados para treino e outros para teste, de forma iterativa. Um dos métodos de validação cruzada mais famosos é o \textit{k-fold}, onde o conjunto de dados é separado em $k$ subconjuntos e o treino é realizado $k$ vezes, cada vez utilizando um subconjunto diferente para teste e o resto para treino\cite{k-fold}. No final, as métricas de avaliação são definidas como a média diante dos $k$ subconjuntos.
 			\subsubsection{Métricas}
-				\paragraph{}As métricas utilizadas para avaliação dependem do tipo de problema. Por exemplo, em problemas de regressão é comum utilizar o erro quadrático médio\cite{regression-loss}. Nos problemas de classificação, é comum utilizar as seguintes medidas: Acurácia, Precisão, Cobertura e medida F1:
+				\paragraph{}As métricas utilizadas para avaliação dependem do tipo de problema. Por exemplo, em problemas de regressão é comum utilizar o erro quadrático médio\cite{regression-loss}. Nos problemas de classificação, é comum utilizar as seguintes medidas: Acurácia, Precisão, Cobertura e a Medida F1:
 				\begin{itemize}
 					\item Acurácia: É a medida que define a assertividade do modelo em geral, se resume na porcentagem de acertos dentre todas as previsões feitas no conjunto de teste.
 					\begin{equation*}
@@ -297,8 +297,8 @@
  						Código & ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
  						\hline
  						1 & 38,55 & 38,59 & 38,63 & 41,07 & 38,43 \\
- 						2 & 40,28 & 38,64 & 58,39 & 42,73 & 40,62 \\
- 						3 & 41,39 & 38,13 & 58,47 & 38,94 & 38,64 \\
+ 						2 & 40,28 & 38,64 & X     & 42,73 & 40,62 \\
+ 						3 & 41,39 & 38,13 & X     & 38,94 & 38,64 \\
  						4 & 42,58 & 39,67 & 38,61 & 42,18 & 39,74 \\
  						5 & 42,71 & 39,53 & 38,97 & 39,63 & 39,50 \\
  						\hline
