@@ -132,7 +132,7 @@
 			\end{table}
 			 
   \section{Aprendizado de Máquina}
-  	\paragraph{}Pode-se definir Aprendizado de Máquina como o campo de estudo de algoritmos com o objetivo de fazer com que computadores possam agir sem serem explicitamente programados para fazer determinada tarefa. São algoritmos que analisam dados e aprendem com eles, para que assim possam fornecer uma predição de algo on mundo.
+  	\paragraph{}Pode-se definir Aprendizado de Máquina como o campo de estudo de algoritmos com o objetivo de fazer com que computadores possam agir sem serem explicitamente programados para fazer determinada tarefa. São algoritmos que analisam dados e aprendem com eles, gerando um modelo preditivo que pode fornecer uma predição de algo on mundo.
   	\paragraph{}Outra definição dada por Tom M. Mitchell\cite{ml-mitchell} fala que o campo de Aprendizado de Máquina busca responder a pergunta: ``Como podemos construir sistemas de computadores que possam automaticamente melhorar através de experiência e quais são as leis fundamentais que governam todo este processo de aprendizado?''. Outra definição do mesmo autor\cite{ml-mitchell-book} diz que ``Um programa de computador é dito aprender com a experiência E em respeito a uma tarefa T e medida pelo desempenho P se o seu desempenho em T, medido por P, melhora com a experiência E''. Neste conceito, se fosse desejado um programa de computador que aprendesse a classificar e-mails como spam ou não, por exemplo, poderíamos fazer a seguinte associação:
   	\begin{itemize}
   		\item E = A experiência de ver o usuário classificar emails como spam ou não.
@@ -146,11 +146,42 @@
 	  		\paragraph{}Neste tipo de problema, os dados de entrada (parâmetros) são mapeados em uma função contínua. Por exemplo, um algoritmo cujo objetivo fosse prever o preço dos imóveis na cidade do Rio de Janeiro baseando-se em dados como área útil, bairro, número de vagas na garagem, etc é considerado como um problema de regressão, pois o resultado final será um número contínuo, neste caso, o preço dos imóveis.
   		\subsubsection{Problema de Classificação}
   			\paragraph{}Neste caso, os parâmetros são mapeados de forma a classificar os dados em categorias distintas. Por exemplo, um algoritmo utilizado para prever se um tumor é benigno ou maligno a partir de dados como o tamanho, rugosidade do tumor e idade do paciente é considerado um problema de classificação, pois o resultado final será a categoria na qual o tumor pertence.
-  			\paragraph{}TODO: falar sobre balanceamento
+  			\paragraph{}Os problemas de classificação muitas vezes apresentam desbalanceamento de classes no conjunto de dados utilizado para o treinamento do modelo, ou seja, o conjunto de dados pode apresentar poucas amostras de uma determinada classe em relação às outras envolvidas, o que pode ocasionar falhas na predição da classe minoritária.
+  			\paragraph{}De forma a corrigir tal problema, existem algumas técnicas que podem ser baseadas em dois conceitos: \textit{Undersampling} e \textit{Oversampling}. A primeira se resume na remoção de amostras das classes majoritárias, e a segunda, no acréscimo de amostras da classe minoritária a partir das amostras já existentes no conjunto, de forma a se obter um conjunto de dados balanceados.
+  			\newpage
+  			\begin{figure}[h]
+  				\centering
+  				\includegraphics[width=13cm]{os_and_us.jpg}
+  				\caption{Exemplos das estratégias de \textit{Undersampling} e \textit{Oversampling} em um problema de classificação de 2 classes desbalanceadas\cite{os_and_us}.}
+  				\label{fig:os_and_us}
+  			\end{figure}
+  			\paragraph{}Entretanto, estas técnicas podem gerar alguns efeitos negativos, como por exemplo, a demasiada diminuição do conjunto de dados como um todo no \textit{Undersampling}, o que prejudica o aprendizado. No caso do \textit{Oversampling}, pode-se gerar um maior efeito de sobre-ajuste no modelo preditivo, isto é, pela falta de generalização, o modelo consegue prever muito bem amostras do conjunto de dados de treino, mas se mostra ineficaz ao prever dados de teste.
 		\subsection{Aprendizado Não Supervisionado}
 			\paragraph{}Neste tipo de aprendizado, não existe um conjunto inicial de dados e resultados, ou seja, nos permite abordar problemas onde temos pouca ou nenhuma ideia do que nossos resultados devem aparentar. Um exemplo, seria um algoritmo onde, utilizando uma coleção de 1000 artigos publicados por uma universidade, fizesse um agrupamento desses artigos, baseando-se em diferente variáveis como frequência de palavras semelhantes, número de paginas, etc.
 		\subsection{Avaliação de Desempenho}
-			\paragraph{}TODO: falar sobre as métricas utilizadas no pytext
+			\paragraph{}A avaliação de desempenho de um modelo preditivo pode ser realizada através de diversas métricas que são medidas diante de uma previsão do modelo sobre um conjunto de dados de teste, logo, existe uma necessidade em dividir o conjunto de dados inicial em dados de treino e dados de teste.
+			\paragraph{}Não existe um modo ideal de dividir o conjunto de dados, o tamanho do conjunto de treino normalmente é maior que o de teste, de modo que este consiga abranger mais generalizações acerca dos parâmetros do modelo. Assim, algumas proporções são mais comumente usadas, como 60/40, 75/25 e 80/20, proporção baseada no Principio de Pareto que afirma que, 80\% das saídas/consequências vem de 20\% das entradas/causas\cite{pareto_principle}. Levando em consideração o escopo de Aprendizado de Máquina, podemos dizer que 20\% pode mapear 80\% do conjunto de dados.
+			\paragraph{}Além disso, em modelos mais simples, também existe a possibilidade de utilizar a Validação Cruzada, uma técnica que separa o conjunto de dados em subconjuntos exclusivos e diferentes e alguns destes subconjuntos são utilizados para treino e outros para teste, de forma iterativa. Um dos métodos de validação cruzada mais famosos é o \textit{k-fold}, onde o conjunto de dados é separado em $k$ subconjuntos e o treino é realizado $k$ vezes, cada vez utilizando um subconjunto diferente para teste e o resto para treino\cite{k-fold}. No final, as métricas de avaliação são definidas como a média diante dos $k$ subconjuntos.
+			\subsubsection{Métricas}
+				\paragraph{}As métricas utilizadas para avaliação dependem do tipo de problema. Por exemplo, em problemas de regressão é comum utilizar o erro quadrático médio\cite{regression-loss}. Nos problemas de classificação, é comum utilizar as seguintes medidas: Acurácia, Precisão, Cobertura e medida F1:
+				\begin{itemize}
+					\item Acurácia: É a medida que define a assertividade do modelo em geral, se resume na porcentagem de acertos dentre todas as previsões feitas no conjunto de teste.
+					\begin{equation*}
+						A = \frac{\text{Número total de acertos}}{\text{Número total de palpites}}
+					\end{equation*}
+					\item Precisão: Medida de assertividade referente a uma classe específica. É a porcentagem de acertos dentre todos os palpites de uma classe.
+					\begin{equation*}
+						P_X = \frac{\text{Número total de acertos da classe X }}{\text{Número total de palpites da classe X}}
+					\end{equation*}
+					\item Cobertura: Porcentagem de palpites certos dentro do número de amostras de uma classe específica.
+					\begin{equation*}
+						C_X = \frac{\text{Número total de acertos da classe X }}{\text{Número total de amostras da classe X}}
+					\end{equation*}
+					\item  Medida F1: Média harmônica entre Precisão e Cobertura.
+						\begin{equation*}
+						F1_X = 2\frac{P_X C_X}{P_X + C_X}
+						\end{equation*}
+				\end{itemize}
   
   \section{Processamento de Linguagem Natural}
   	\paragraph{}Processamento de Linguagem Natural (PNL) se resume ao campo de estudo das tecnologias utilizadas para ajudar computadores a entenderem a linguagem natural dos humanos, é também considerado uma subárea da Inteligência Artificial. Pode ser usado em diversas aplicações\cite{simple-nlp}, como por exemplo:
