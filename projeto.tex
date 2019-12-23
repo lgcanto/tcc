@@ -193,7 +193,7 @@
   		\item Assistentes pessoais, como OK Google, Siri, Cortana e Alexa
   	\end{itemize}
 	  \paragraph{}Geralmente, o PNL abrange um pré-processamento de texto antes deste ser transformado em uma forma inteligível por computadores, de forma a remover ruídos ou facilitar o processamento, e isto pode ocorrer de diversas formas.
-	  \subsection{Sintaxe}
+	  \subsection{Pré-processamento de Sintaxe}
 	  	\paragraph{}A sintaxe se refere à forma de como as palavras se organizam em uma sentença para que se obtenha sentido gramatical. Estas são algumas técnicas de sintaxe que podem ser utilizadas no pré-processamento de texto:
 	  	\begin{itemize}
 	  		\item Stemização: É a transformação de palavras flexionadas para sua forma radical. Por exemplo, as palavras ``estudos'', ``estudar'' e ``estudando'' se transformariam apenas em ``estud'', mas a palavra ``tiver" se transformaria em ``tiv'' e ``tenho" se transformaria em ``tenh''.
@@ -202,10 +202,14 @@
 	  	\end{itemize}
   	\paragraph{}Além destas, outra técnicas mais simples são utilizadas, como a transformação de caracteres maiúsculos para minúsculos.
   	\subsection{Representação Vetorial}
-  		\paragraph{}Após o pré-processamento, diversas técnicas podem ser utilizadas para a transformação do texto em números.. TODO
-  		\subsubsection{\textit{Bag of Words}}
-	  		\paragraph{}TODO
-  		\subsubsection{Vetores Baseados em Redes Neurais}
+  		\paragraph{}Após o pré-processamento textual, diversas técnicas podem ser utilizadas para a transformação do texto em números. Uma das formas mais simples de se fazer isso é o \textit{Bag-of-Words} (BOW), que consiste em simbolizar textos de um conjunto de dados através de uma matriz na qual cada coluna é associada a uma palavra existente no conjunto de dados. Cada linha da matriz representa um texto e as variáveis indicam o número de ocorrências de uma palavra específica.
+  		\begin{figure}[h]
+  			\includegraphics[width=15cm]{bow-example.jpg}
+  			\caption{Exemplo de aplicação do \textit{Bag-of-Words}\cite{bow-example}.}
+  			\label{fig:bow-example-fig}
+  		\end{figure}
+  		\paragraph{}Apesar da praticidade e simplicidade, o BOW apresenta alguns problemas, entre eles, a perda da informação de ordem das palavras e a alta dimensão da representação vetorial, fazendo com que muitos busquem outra alternativa.
+  		\subsubsection{Word2Vec}
   			\paragraph{}TODO
 	  	
   \section{Redes Neurais}
