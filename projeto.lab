@@ -2,9 +2,12 @@
 \begin{theglossary}
   \makeatletter
   \item [iBovespa] Índice Bovespa, p.\hyperpage{2}
- 	\item [HME] Hipótese do Mercado Eficiente, p.\hyperpage{4}; p.\hyperpage{5}
-  \item [AT] Análise Técnica, p.\hyperpage{4}; p.\hyperpage{5}
-  \item [AF] Análise Fundamentalista, p.\hyperpage{4}; p.\hyperpage{5}
-  \item [PNL] Processamento de Linguagem Natural, p.\hyperpage{7}
-  \item [BOW] \textit{Bag-of-Words}, p.\hyperpage{11}
+ 	\item [HME] Hipótese do Mercado Eficiente, p.\hyperpage{4}
+  \item [AT] Análise Técnica, p.\hyperpage{4}
+  \item [AF] Análise Fundamentalista, p.\hyperpage{4}
+  \item [MLP] \textit{Multilayer Perceptron}, p.\hyperpage{11}
+  \item [CNN] \textit{Convolutional Neural Network}, p.\hyperpage{11}
+  \item [ReLU] \textit{Rectified Linear Unit}, p.\hyperpage{12}
+  \item [PNL] Processamento de Linguagem Natural, p.\hyperpage{TODO}
+  \item [BOW] \textit{Bag-of-Words}, p.\hyperpage{TODO}
   \end{theglossary}

@@ -184,6 +184,50 @@
 						\end{equation*}
 				\end{itemize}
   
+  \section{Redes Neurais}
+	  \paragraph{}Redes neurais são estruturas matemáticas baseadas no funcionamento do cérebro humano. O campo que estuda a aplicação de redes neurais com várias camadas de processamento em métodos de Aprendizado de Máquina é chamado de Aprendizagem Profunda (do inglês, \textit{Deep Learning}). Em sua forma mais simples, uma rede neural contém três camadas: entrada (\textit{input layer}), camada oculta (\textit{hidden layer}) e saída (\textit{output layer}), onde a camada oculta pode ser única ou múltipla. Cada camada é composta por neurônios, também chamados de nós.
+	  \begin{figure}[h]
+	  	\centering
+	  	\includegraphics[width=10cm]{nn1.jpg}
+	  	\caption{Exemplo de rede neural com duas camadas ocultas\cite{nn1-example}.}
+	  	\label{fig:nn1-fig}
+	  \end{figure}
+  	\paragraph{}Cada nó de uma rede neural representa uma abstração matemática, esta é definida pela função de ativação (\textit{Activation Function}) que recebe o somatório das entradas (\textit{Inputs}) multiplicadas por seus respectivos pesos e mais um viés (\textit{Bias}).
+  	\begin{figure}[h]
+  		\centering
+  		\includegraphics[width=11cm]{nn2.jpg}
+  		\caption{Neurônio de uma rede neural\cite{nn2-example}.}
+  		\label{fig:nn2-fig}
+  	\end{figure}
+  	\paragraph{}Durante a etapa de treinamento, estes pesos são ajustados de forma que se obtenha saídas iguais ou suficientemente próximas às saídas do conjunto de dados utilizado para treino, isso pode acontecer através de diversas técnicas, sendo a \textit{backpropagation} umas das mais conhecidas, que utiliza descida de gradiente\cite{nn-raul-rojas} para minimizar a função custo determinada pelas entradas, viés, função de ativação e saída dos neurônios.
+  	\paragraph{}Este modelo simples de rede neural com apenas uma camada oculta se chama \textit{Perceptron} e os modelos com múltiplas camadas são chamados de \textit{Multilayer Perceptron} (MLP). Apesar de terem significante poder preditivo, estas redes podem apresentar falhas, principalmente quando o número de camadas ocultas alcança um valor muito grande ou quando os dados de entrada apresentam uma alta dimensão. Mesmo após algumas tentativas de solucionar estas falhas das redes MLP, outras arquiteturas de redes neurais foram propostas.
+	  \subsection{Redes Neurais Convolucionais}
+		  \paragraph{}As Redes Neurais Convolucionais (\textit{Convolutional Neural Network - CNN}) foram desenvolvidas com o intuito de facilitar a classificação de dados de alta dimensão, como imagens e textos. Em um problema de classificação de imagem com uma rede MLP, cada pixel está diretamente ligado a uma entrada, ocasionando um vetor de entrada de alta dimensão. Em uma rede CNN, normalmente, este vetor de entrada sofre diversas reduções de dimensionabilidade dentro de três camadas: camada de convolução, camada de função de ativação e camada de \textit{pooling}.
+		  \paragraph{}Na primeira camada, ocorre a convolução do dado de entrada com um filtro (\textit{kernel}), que também é treinado ao longo do treinamento de toda a rede.
+		  \begin{figure}[h]
+		  	\centering
+		  	\includegraphics[width=10cm]{kernel.jpg}
+		  	\caption{Exemplo de um dado de entrada e um \textit{kernel}\cite{kernel-example}.}
+		  	\label{fig:kernel-fig}
+		  \end{figure}
+		  \newpage
+	  	\begin{figure}[h]
+	  		\centering
+	  		\includegraphics[width=10cm]{kernel2.jpg}
+	  		\caption{Exemplo de convolução da imagem anterior\cite{kernel-example}.}
+	  		\label{fig:kernel2-fig}
+	  	\end{figure}
+  		\paragraph{}Após esta etapa, o resultado da camada convolução passa por funções de ativação. Nestas, normalmente são atribuídas funções ReLU (\textit{Rectified Linear Unit}), análoga à função rampa, ou seja, valores menores que zero são zerados. Por final, o resultado da camada de função de ativação passa pelo \textit{pooling} onde a redução de dimensibilidade pode ser feita através de diversas técnicas, sendo a \textit{max-pooling} a mais utilizada. Esta consiste em selecionar os maiores valores dentro de submatrizes de tamanho e espaçamento (passos) específicos, como indicado na figura abaixo.
+  		\begin{figure}[h]
+  			\centering
+  			\includegraphics[width=11cm]{pooling.jpg}
+  			\caption{Exemplo de \textit{max-pooling} utilizando uma submatriz de tamanho 2x2 e passo 2\cite{kernel-example}.}
+  			\label{fig:pooling-fig}
+  		\end{figure}
+  		\paragraph{}Após estas camadas, o resultado pode ser utilizado na camada de entrada de uma rede comum, normalmente, uma rede MLP.
+	  \subsection{Redes Neurais Recorrentes}
+	  	\paragraph{}TODO
+	  	
   \section{Processamento de Linguagem Natural}
   	\paragraph{}Processamento de Linguagem Natural (PNL) se resume ao campo de estudo das tecnologias utilizadas para ajudar computadores a entenderem a linguagem natural dos humanos, é também considerado uma subárea da Inteligência Artificial. Pode ser usado em diversas aplicações\cite{simple-nlp}, como por exemplo:
   	\begin{itemize}
@@ -212,12 +256,7 @@
   		\subsubsection{Word2Vec}
   			\paragraph{}TODO
 	  	
-  \section{Redes Neurais}
-  	\paragraph{}TODO
-  	\subsection{Rede BilSTM Com Atenção}
-	  	\paragraph{}TODO
-  	\subsection{Rede CNN}
-  		\paragraph{}TODO
+  
   
   \section{PyText}
   	\paragraph{}TODO
