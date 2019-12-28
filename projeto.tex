@@ -271,7 +271,7 @@
   	\paragraph{}Baseando-se na HME fraca e acreditando na possibilidade de realizar a análise fundamental de notícias sobre o mercado de forma autônoma, foi decidido o estudo acerca da criação de modelos preditivos de modo a prever a valorização, desvalorização ou preservação do preço de ativos da B3. Para isso, seria necessário a aquisição de um conjunto de dados de notícias e variações de preço de ativos grande o suficiente que relacionasse as datas/horários das notícias com as datas/horários das variações. Como um conjunto de dados que relacionasse diretamente notícias e variações de ativos não foi encontrado, ficou claro que seria necessário o cruzamento de dados a partir de dois conjuntos de dados diferentes.
   	\section{Conjunto de Dados de Notícias}
 	  	\paragraph{}Inicialmente, foi preferido a escolha de realizar análises de forma a auxiliar decisões de \textit{Day Trade}, isto é, compra e venda de ações no mesmo dia, o que tornaria a informação de horário imprescindível. Isto logo se tornou inviável devido a falta de conjuntos de dados de notícias em português brasileiro com a informação de horário. Dentre os encontrados, todos continham apenas a data de lançamento da notícia.
-	  	\paragraph{}Conjuntos de notícias em outros idiomas com a informação de horário foram encontrados, mas não foram utilizados devido ao foco do projeto que buscava analisar notícias do mercado brasileiro para auxiliar operações na B3. Também foram avaliadas as possibilidades de construir um \textit{Web Crawler} para obter notícias de sites como Folha de S. Paulo\cite{folha} ou InfoMoney\cite{infomoney} ou mesmo utilizar a API do Twitter\cite{twitter-api} para obter \textit{tweets} de contas associadas a veículos de notícias. A primeira possibilidade se mostrou complexa e demorada para o prazo estipulado para o projeto e a segunda foi impedida pelos limites que a versão gratuita da API propõe sobre os usuários. Sendo assim, foi decidido que a análise seria feita de forma a auxiliar decisões de \textit{Swing Trade}.
+	  	\paragraph{}Conjuntos de notícias em outros idiomas com a informação de horário foram encontrados, mas não foram utilizados devido ao foco do projeto que buscava analisar notícias do mercado brasileiro para auxiliar operações na B3. Também foram avaliadas as possibilidades de construir um \textit{web crawler} para obter notícias de sites como Folha de S. Paulo\cite{folha} ou InfoMoney\cite{infomoney} ou mesmo utilizar a API do Twitter\cite{twitter-api} para obter \textit{tweets} de contas associadas a veículos de notícias. A primeira possibilidade se mostrou complexa e demorada para o prazo estipulado para o projeto e a segunda foi impedida pelos limites que a versão gratuita da API propõe sobre os usuários. Sendo assim, foi decidido que a análise seria feita de forma a auxiliar decisões de \textit{Swing Trade}.
 	  	\paragraph{}Dentre os conjuntos encontrados, foi escolhido o \textit{News of the brazilian newspaper}\cite{folha-news-dataset}, disponibilizado por um usuário do Kaggle, uma comunidade on-line de cientistas de dados. O conjunto contém 167,053 notícias categorizadas da página do jornal Folha no período entre janeiro de 2015 e setembro de 2017. O conjunto oferece as informações de, título, corpo, data, categoria, subcategoria e link da notícia.
 	  	\paragraph{}É importante notar que, além de notícias, o conjunto de dados também continha artigos escritos por colunistas do jornal.
 	  	\begin{figure}[h]
@@ -298,7 +298,20 @@
   			\end{figure}
   			
   	\section{Conjunto de Dados da B3}
-  		\paragraph{}Os dados das séries históricas dos ativos pertencentes à B3 pode ser obtido no próprio site da bolsa\cite{b3-serie-historica}. Por conveniência, novamente foi decidido usar um conjunto de dados do Kaggle\cite{b3-dataset}, pois este já agrega os dados de variações de ativos entre janeiro de 2000 e maio de 2018, no formato CSV.
+  		\paragraph{}Os dados das séries históricas dos ativos pertencentes à B3 pode ser obtido no próprio site da bolsa\cite{b3-serie-historica}. Por conveniência, novamente foi decidido usar um conjunto de dados do Kaggle\cite{b3-dataset}, pois este já agrega os dados oriundos de \cite{b3-serie-historica} entre janeiro de 2000 e maio de 2018, no formato CSV.
+			\begin{figure}[h]
+				\centering
+				{\includegraphics[width=13cm]{b3-dataset}
+					\caption{Conjunto de dados da B3 antes do tratamento.}
+					\label{fig:b3-dataset-fig}}
+			\end{figure}
+  		\paragraph{}O primeiro passo dado para tratar os dados foi a remoção de registros que estão fora da mesma janela de tempo que o conjunto de dados das notícias, seguido da seleção dos 5 maiores ativos presentes no iBovespa, como informado na tabela \ref{tab:ibovespa-5bigger}. Além disso, os nomes das colunas foram normalizadas para letras minúsculas e foram preservadas apenas as colunas de código do ativo (\textit{codneg}), preço de fechamento (\textit{close}) e data (\textit{date}).
+  		\begin{figure}[h]
+  			\centering
+  			{\includegraphics[width=8.5cm]{b3-pp-dataset}
+  				\caption{Conjunto de dados da B3 após tratamento.}
+  				\label{fig:b3-pp-dataset-fig}}
+  		\end{figure}
   	\section{Cruzamento e Conjuntos Finais}
   		\paragraph{}TODO
   
