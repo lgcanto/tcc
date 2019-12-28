@@ -217,7 +217,7 @@
 	  		\caption{Exemplo de convolução da imagem anterior\cite{kernel-example}.}
 	  		\label{fig:kernel2-fig}
 	  	\end{figure}
-  		\paragraph{}Após esta etapa, o resultado da camada convolução passa por funções de ativação. Nestas, normalmente são atribuídas funções ReLU (\textit{Rectified Linear Unit}), análoga à função rampa, ou seja, valores menores que zero são zerados. Por final, o resultado da camada de função de ativação passa pelo \textit{pooling} onde a redução de dimensibilidade pode ser feita através de diversas técnicas, sendo a \textit{max-pooling} a mais utilizada. Esta consiste em selecionar os maiores valores dentro de submatrizes de tamanho e espaçamento (passos) específicos, como indicado na figura abaixo.
+  		\paragraph{}Após esta etapa, o resultado da camada convolução passa por funções de ativação. Nestas, normalmente são atribuídas funções ReLU (\textit{Rectified Linear Unit}), análoga à função rampa, ou seja, valores menores que zero são zerados e o resto [e mantido. Por final, o resultado da camada de função de ativação passa pelo \textit{pooling} onde a redução de dimensibilidade pode ser feita através de diversas técnicas, sendo a \textit{max-pooling} a mais utilizada. Esta consiste em selecionar os maiores valores dentro de submatrizes de tamanho e espaçamento (passos) específicos, como indicado na figura abaixo.
   		\begin{figure}[h]
   			\centering
   			\includegraphics[width=11cm]{pooling.jpg}
@@ -254,7 +254,7 @@
   			\caption{Exemplo de aplicação do \textit{Bag-of-Words}\cite{bow-example}.}
   			\label{fig:bow-example-fig}
   		\end{figure}
-  		\paragraph{}Apesar da praticidade e simplicidade, o BOW apresenta alguns problemas, entre eles, a perda da informação de ordem das palavras e a alta dimensão da representação vetorial, fazendo com que muitos busquem outra alternativa.
+  		\paragraph{}Apesar da praticidade e simplicidade, o BOW apresenta alguns problemas, entre eles, a perda da informação de ordem das palavras e a alta dimensão da representação vetorial, fazendo com que muitos busquem outra alternativa... TODO
   		\subsubsection{Word2Vec}
   			\paragraph{}TODO
 	  	
@@ -267,14 +267,42 @@
   	\subsection{Uso}
   		\paragraph{}TODO
   
-  \chapter{Obtenção e Pré-processamento de Dados}
-  	\paragraph{}TODO
-  	\section{Estratégia}
-  		\paragraph{}TODO
-  	\section{Pré-processamento}
+  \chapter{Obtenção e Tratamento de Dados}
+  	\paragraph{}Baseando-se na HME fraca e acreditando na possibilidade de realizar a análise fundamental de notícias sobre o mercado de forma autônoma, foi decidido o estudo acerca da criação de modelos preditivos de modo a prever a valorização, desvalorização ou preservação do preço de ativos da B3. Para isso, seria necessário a aquisição de um conjunto de dados de notícias e variações de preço de ativos grande o suficiente que relacionasse as datas/horários das notícias com as datas/horários das variações. Como um conjunto de dados que relacionasse diretamente notícias e variações de ativos não foi encontrado, ficou claro que seria necessário o cruzamento de dados a partir de dois conjuntos de dados diferentes.
+  	\section{Conjunto de Dados de Notícias}
+	  	\paragraph{}Inicialmente, foi preferido a escolha de realizar análises de forma a auxiliar decisões de \textit{Day Trade}, isto é, compra e venda de ações no mesmo dia, o que tornaria a informação de horário imprescindível. Isto logo se tornou inviável devido a falta de conjuntos de dados de notícias em português brasileiro com a informação de horário. Dentre os encontrados, todos continham apenas a data de lançamento da notícia.
+	  	\paragraph{}Conjuntos de notícias em outros idiomas com a informação de horário foram encontrados, mas não foram utilizados devido ao foco do projeto que buscava analisar notícias do mercado brasileiro para auxiliar operações na B3. Também foram avaliadas as possibilidades de construir um \textit{Web Crawler} para obter notícias de sites como Folha de S. Paulo\cite{folha} ou InfoMoney\cite{infomoney} ou mesmo utilizar a API do Twitter\cite{twitter-api} para obter \textit{tweets} de contas associadas a veículos de notícias. A primeira possibilidade se mostrou complexa e demorada para o prazo estipulado para o projeto e a segunda foi impedida pelos limites que a versão gratuita da API propõe sobre os usuários. Sendo assim, foi decidido que a análise seria feita de forma a auxiliar decisões de \textit{Swing Trade}.
+	  	\paragraph{}Dentre os conjuntos encontrados, foi escolhido o \textit{News of the brazilian newspaper}\cite{folha-news-dataset}, disponibilizado por um usuário do Kaggle, uma comunidade on-line de cientistas de dados. O conjunto contém 167,053 notícias categorizadas da página do jornal Folha no período entre janeiro de 2015 e setembro de 2017. O conjunto oferece as informações de, título, corpo, data, categoria, subcategoria e link da notícia.
+	  	\paragraph{}É importante notar que, além de notícias, o conjunto de dados também continha artigos escritos por colunistas do jornal.
+	  	\begin{figure}[h]
+	  		\includegraphics[width=15cm]{folha-dataset}
+	  		\caption{Alguns exemplos de notícias encontrados no conjunto de dados do jornal Folha de S. Paulo. A figura mostra todas as colunas disponíveis no conjunto: ``\textit{title}'', ``\textit{text}'', ``\textit{date}'', ``\textit{category}'' e ``\textit{subcategory}''.}
+	  		\label{fig:folha-dataset-fig}
+	  	\end{figure}
+  		\subsection{Pré-processamento de Texto}
+  			\paragraph{}Como o conjunto de dados oferecia a informação de categoria da notícia, estes foram filtrados de forma a adquirir apenas as notícias associadas ao mercado, ou seja, onde os valores da coluna ``\textit{category}'' fossem iguais a ``mercado'', o que diminuiu o número total de notícias para 20.970. A coluna ``\textit{subcategory}'' estava vazia em quase todos os registros, tendo apenas o nome do colunista na maioria dos casos diferentes deste. Os artigos não foram removidos, sendo considerados como notícias no conjunto de dados de forma a contribuir para o volume total.
+  			\paragraph{}Alguns testes de treino envolvendo apenas o título da notícia foram feitos, estes demonstraram uma baixa taxa de aprendizagem, fazendo com que se preferisse utilizar o processamento do corpo das notícias.
+  			\paragraph{}O Núcleo Interinstitucional de Linguística Computacional (NILC) da USP oferece um repositório\cite{nilc-repo} contendo uma série de \textit{embeddings} pré-treinados em português brasileiro. Infelizmente, o repositório encontrava-se em manutenção devido a problemas no servido, o que levou a optar pelo treinamento de \textit{embeddings} nativo do PyText a partir dos dados de treino. Para facilitar e agilizar o treinamentos do \textit{embedding} o corpo das notícias foi pré-processado pelas seguintes etapas:
+  			\begin{itemize}
+  				\item Normalização para letras minúsculas, para evitar redundâncias.
+  				\item Remoção de \textit{stopwords}, palavras como ``a'', ``o'', ``que'' e ``de''.
+  				\item \textit{Stemming}, transformação de palavras flexionadas para sua forma radical.
+  				\item Remoção e substituição de caracteres especiais.
+  			\end{itemize}
+  			\paragraph{}Além disso, o formato da coluna de data foi alterada para que esta tivesse a mesma forma da informação de data no conjunto de dados da B3. Por final, as colunas ``\textit{title}'', ``\textit{category}'' e ``\textit{subcategory}'' foram removidas do conjunto.
+	  		\begin{figure}[h]
+	  			\centering
+					{\includegraphics[width=13cm]{folha-pp-dataset}
+  				\caption{Exemplos de notícias no conjunto de dados após o pré-processamento.}
+  				\label{fig:folha-pp-dataset-fig}}
+  			\end{figure}
+  			
+  	\section{Conjunto de Dados da B3}
+  		\paragraph{}Os dados das séries históricas dos ativos pertencentes à B3 pode ser obtido no próprio site da bolsa\cite{b3-serie-historica}. Por conveniência, novamente foi decidido usar um conjunto de dados do Kaggle\cite{b3-dataset}, pois este já agrega os dados de variações de ativos entre janeiro de 2000 e maio de 2018, no formato CSV.
+  	\section{Cruzamento e Conjuntos Finais}
   		\paragraph{}TODO
   
-  \chapter{Treinamento}
+  \chapter{Treinamento e Teste}
 	  \paragraph{}TODO
 	  \section{Configuração}
 		  \paragraph{}TODO
@@ -662,6 +690,18 @@ for index, row in df_companies.iterrows():
   "export_caffe2_path": "caffe2_exports/XXXXX_Yc_Zd.caffe2.predictor"
 }
 			\end{minted}
+		\section{Arquivo com Lista de Ativos a Serem Processados}
+					\begin{minted}[frame=leftline,
+					linenos=true,
+					fontsize=\small,
+					breaklines]{text}
+code,names
+ABEV3,AMBEV
+BBDC4,BRADESCO
+ITUB4,ITAU
+PETR4,PETROBRAS
+VALE3,Vale
+					\end{minted}
 
 \end{document}
 %% 
