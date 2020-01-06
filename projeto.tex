@@ -313,12 +313,19 @@
   				\label{fig:b3-pp-dataset-fig}}
   		\end{figure}
   	\section{Cruzamento e Conjuntos Finais}
-  		\paragraph{}Os conjuntos de dados da B3 e de notícias foram unidos... TODO
+  		\paragraph{}Os conjuntos de dados foram cruzados de forma a obter um conjunto de dados específico para cada combinação de ativo/período de dias. Foi considerado janela de tempo mínima de 1 dia e uma máxima de 5 dias, logo, teríamos $5\times5=25$ conjuntos de dados finais (quantidade de ativos $\times$ número de períodos diferentes).
+  		\paragraph{}Sendo assim, um conjunto de dados final relacionaria uma notícia à uma classe que indicaria a valorização de um determinado ativo em uma janela de tempo específica. A classificação foi definida da seguinte forma:
+  			\begin{itemize}
+  			\item ``1'': Ocorreu valorização, preço de fechamento futuro é maior que o preço de fechamento passado.
+	 			\item ``0'': O valor se manteve, preço de fechamento futuro é igual ao preço de fechamento passado.
+	 			\item ``-1'': Ocorreu desvalorização, preço de fechamento futuro é menor que o preço de fechamento passado.
+  		\end{itemize}
+  		\paragraph{}O preço de fechamento passado foi definido como o preço de fechamento do ativo no dia útil anterior ao dia do lançamento da notícia, ao passo que o preço de fechamento futuro foi definido como o preço de fechamento do ativo $X$ dias úteis depois do lançamento da notícia, sendo $X$ um número real de 1 a 5.
   		\begin{figure}[h]
   			\centering
   			{\includegraphics[width=16cm]{calendar-example.pdf}
-  				\caption{Conjunto de dados da B3 após tratamento.}
-  				\label{fig:calendar-example-fig}}
+	 				\caption{Esquema de comparação entre preços de fechamentos para a definição da classe de valorização para os intervalos de $1d$(um dia), $2d$(dois dias), $3d$(três dias), $4d$(quatro dias) e $5d$(cinco dias).}
+	 				\label{fig:calendar-example-fig}}
   		\end{figure}
   
   \chapter{Treinamento e Teste}
