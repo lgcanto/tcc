@@ -315,19 +315,66 @@
   	\section{Cruzamento e Conjuntos Finais}
   		\paragraph{}Os conjuntos de dados foram cruzados de forma a obter um conjunto de dados específico para cada combinação de ativo/período de dias. Foi considerado janela de tempo mínima de 1 dia e uma máxima de 5 dias, logo, teríamos $5\times5=25$ conjuntos de dados finais (quantidade de ativos $\times$ número de períodos diferentes).
   		\paragraph{}Sendo assim, um conjunto de dados final relacionaria uma notícia à uma classe que indicaria a valorização de um determinado ativo em uma janela de tempo específica. A classificação foi definida da seguinte forma:
-  			\begin{itemize}
+ 			\begin{itemize}
   			\item ``1'': Ocorreu valorização, preço de fechamento futuro é maior que o preço de fechamento passado.
 	 			\item ``0'': O valor se manteve, preço de fechamento futuro é igual ao preço de fechamento passado.
 	 			\item ``-1'': Ocorreu desvalorização, preço de fechamento futuro é menor que o preço de fechamento passado.
   		\end{itemize}
-  		\paragraph{}O preço de fechamento passado foi definido como o preço de fechamento do ativo no dia útil anterior ao dia do lançamento da notícia, ao passo que o preço de fechamento futuro foi definido como o preço de fechamento do ativo $X$ dias úteis depois do lançamento da notícia, sendo $X$ um número real de 1 a 5.
+  		\paragraph{}O preço de fechamento passado foi definido como o preço de fechamento do ativo no dia útil anterior ao dia do lançamento da notícia, ao passo que o preço de fechamento futuro foi definido como o preço de fechamento do ativo $X$ dias úteis depois do lançamento da notícia, sendo $X$ um número inteiro de 1 a 5.
   		\begin{figure}[h]
   			\centering
   			{\includegraphics[width=16cm]{calendar-example.pdf}
-	 				\caption{Esquema de comparação entre preços de fechamentos para a definição da classe de valorização para os intervalos de $1d$(um dia), $2d$(dois dias), $3d$(três dias), $4d$(quatro dias) e $5d$(cinco dias).}
+	 				\caption{Esquema de comparação entre preços de fechamento para a definição da classe de valorização para os intervalos de $1d$(um dia), $2d$(dois dias), $3d$(três dias), $4d$(quatro dias) e $5d$(cinco dias).}
 	 				\label{fig:calendar-example-fig}}
   		\end{figure}
-  
+  		\begin{figure}[h]
+  			\centering
+  			{\includegraphics[width=14cm]{abev3_dataset_example}
+  				\caption{Exemplo do conjunto de dados criado para o ativo ABEV3 em uma janela de tempo de 1 dia no formato TSV.}
+  				\label{fig:abev3_dataset_example-fig}}
+  		\end{figure}
+  		\paragraph{}Após a criação dos conjuntos de dados para cada dupla de ativo/período, o balanceamento entre classes foi analisado.
+  		\begin{table}[h]
+  			\caption{Quantidade de registros de cada classe para as combinações de ativo/período.}
+  			\label{tab:table-class-balancing}
+  			\centering
+  			{\footnotesize
+  				\begin{tabular}{|c|c|c|c|}
+  					\hline
+						Conjunto & Classe 1 & Classe 0 & Classe -1 \\
+						\hline
+						ABEV3/1d & 10912 & 355 & 9679 \\
+						ABEV3/2d & 10955 & 235 & 9756 \\
+						ABEV3/3d & 10920 & 99 & 9927 \\
+						ABEV3/4d & 11081 & 160 & 9705 \\
+						ABEV3/5d & 11298 & 343 & 9305 \\
+						BBDC4/1d & 10579 & 79 & 10288 \\
+						BBDC4/2d & 10282 & 89 & 10575 \\
+						BBDC4/3d & 10605 & 24 & 10317 \\
+						BBDC4/4d & 11098 & 47 & 9801 \\
+						BBDC4/5d & 10954 & 139 & 9853 \\
+						ITUB4/1d & 10555 & 49 & 10342 \\
+						ITUB4/2d & 10253 & 0 & 10693 \\
+						ITUB4/3d & 10474 & 0 & 10472 \\
+						ITUB4/4d & 10712 & 54 & 10180 \\
+						ITUB4/5d & 10656 & 58 & 10232 \\
+						PETR4/1d & 10170 & 222 & 10554 \\
+						PETR4/2d & 10581 & 110 & 10255 \\
+						PETR4/3d & 10660 & 144 & 10142 \\
+						PETR4/4d & 11036 & 89 & 9821 \\
+						PETR4/5d & 10910 & 22 & 10014 \\
+						VALE3/1d & 10041 & 66 & 10839 \\
+						VALE3/2d & 10233 & 81 & 10632 \\
+						VALE3/3d & 10473 & 63 & 10410 \\
+						VALE3/4d & 10339 & 43 & 10564 \\
+						VALE3/5d & 10788 & 111 & 10047 \\
+  					\hline
+  			\end{tabular}}
+  		\end{table}
+  		\paragraph{}Como pode ser visto na tabela \ref{tab:table-class-balancing}, os registros da classe 1 e da classe -1 se mostram razoavelmente balanceados, porém, os registros da classe 0 se encontram em mínima quantidade em comparação com as outras duas classes, sendo até inexistente nas combinações ITUB4/2d e ITUB4/3d. Isto pode indicar a alta volatilidade do mercado de ações e a pequena possibilidade do preço de um ativo se manter o mesmo com o passar dos dias.
+  		\paragraph{}A possibilidade de utilizar técnicas de \textit{Undersampling} foi descartada devida a mínima quantidade de registros da classe 0. Ao excluir registros da classe 1 e -1, os conjuntos de dados perderiam uma grande parte de informação, o que tornaria a tarefa de classificação textual inviável.
+  		\paragraph{}Testes envolvendo \textit{Oversampling} foram feitos, mas os modelos encontrados demonstraram um desempenho pior do que testes feitos sem técnicas de balanceamento. Isto pode ter acontecido pelo fato de que, com o \textit{Oversampling}, a informação de que a classe 0 tem uma menor possibilidade de aparecer nos dados é perdida.
+  		
   \chapter{Treinamento e Teste}
 	  \paragraph{}TODO
 	  \section{Configuração}
