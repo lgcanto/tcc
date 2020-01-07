@@ -373,7 +373,9 @@
   		\end{table}
   		\paragraph{}Como pode ser visto na tabela \ref{tab:table-class-balancing}, os registros da classe 1 e da classe -1 se mostram razoavelmente balanceados, porém, os registros da classe 0 se encontram em mínima quantidade em comparação com as outras duas classes, sendo até inexistente nas combinações ITUB4/2d e ITUB4/3d. Isto pode indicar a alta volatilidade do mercado de ações e a pequena possibilidade do preço de um ativo se manter o mesmo com o passar dos dias.
   		\paragraph{}A possibilidade de utilizar técnicas de \textit{Undersampling} foi descartada devida a mínima quantidade de registros da classe 0. Ao excluir registros da classe 1 e -1, os conjuntos de dados perderiam uma grande parte de informação, o que tornaria a tarefa de classificação textual inviável.
-  		\paragraph{}Testes envolvendo \textit{Oversampling} foram feitos, mas os modelos encontrados demonstraram um desempenho pior do que testes feitos sem técnicas de balanceamento. Isto pode ter acontecido pelo fato de que, com o \textit{Oversampling}, a informação de que a classe 0 tem uma menor possibilidade de aparecer nos dados é perdida.
+  		\paragraph{}Testes envolvendo \textit{Oversampling} foram feitos, mas os modelos encontrados demonstraram um desempenho pior do que testes feitos sem técnicas de balanceamento. Isto pode ter acontecido pelo fato de que, com o \textit{Oversampling}, a informação de que a classe 0 tem uma menor possibilidade de aparecer nos dados é perdida. Sendo assim, de forma a avaliar o impacto que a classe 0 pode apresentar sobre o treinamento, os conjuntos de dados foram duplicados e os registros da classe 0 foram removidos das cópias. Assim como os conjuntos originais de 3 classes, os conjuntos de 2 classes também foram treinados e analisados.
+  		\paragraph{}Seguindo o princípio de Pareto, todos os conjuntos foram divididos em subconjuntos de treino (80\%) e teste (20\%). Esta proporção foi aplicada separadamente sobre os registros de cada classe para evitar um balanceamento diferente do conjunto de dados original nos subconjuntos de treino e teste.
+  		\paragraph{}A rotina de manipulação, pré-processamento e criação dos conjuntos de dados está descrita no apêndice \ref{sec:rotina-de-pre-processamento-e-criacao-de-conjuntos-de-dados}. Foi feita utilizando a linguagem Python com o suporte de bibliotecas como pandas, numpy, csv, nltk e re.
   		
   \chapter{Treinamento e Teste}
 	  \paragraph{}TODO
@@ -543,7 +545,7 @@
   \appendix	
 
 	\chapter{Rotinas e Arquivos de Configuração}
-		\section{Rotina de Pré-processamento e Criação de Conjuntos de Dados}
+		\section{Rotina de Pré-processamento e Criação de Conjuntos de Dados}\label{sec:rotina-de-pre-processamento-e-criacao-de-conjuntos-de-dados}
 			\begin{minted}[frame=leftline,
 			linenos=true,
 			fontsize=\small,
