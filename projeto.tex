@@ -382,11 +382,26 @@
 	  \section{Configuração}
 		  \paragraph{}Pela falta do arquivo de \textit{embeddings} pré-treinados e pelas quantias de \textit{epochs} utilizadas, cada treinamento de um conjunto de dados durava uma considerável quantia de tempo (entre 20 e 30 minutos), o que tornou a exploração de todos os parâmetros do PyText muito custosa. No entanto, foi possível realizar testes antes de definir uma configuração mais performática através da escolha do número de \textit{epochs}, tipo de rede neural utilizada e \textit{dropout}.
 		  \subsection{Número de \textit{Epochs}}
-		  	\paragraph{}TODO
+		  	\paragraph{}O número de \textit{epochs} inicialmente decidido foi de 20, porém, testes mostraram que o modelo apresenta um alto aumento no valor de perda a partir da 12ª \textit{epoch}. Tornando razoável a decisão de usar 10 \textit{epochs}, como o padrão definido pelo PyText.
+		  	\paragraph{}Além disso, é notável a perda de acurácia obtida sobre o conjunto de teste após a 10ª \textit{epoch}, provavelmente devido ao sobreajuste em relação ao conjunto de teste com o avanço das \textit{epochs}.
+		  	\begin{figure}[H]
+		  		\centering
+		  		{\includegraphics[width=14cm]{loss_graph}
+		  			\caption{Gráfico de \textit{loss} gerado pelo TensorBoard, indicando o aumento  da perda a partir da 10ª \textit{epoch}.}
+		  			\label{fig:loss_graph-fig}}
+		  	\end{figure}
+%			 	\begin{figure}[H]
+%			 		\centering
+%			 		{\includegraphics[width=14cm]{accurancy-graph}
+%			 			\caption{Gráfico de \textit{accurancy} gerado pelo TensorBoard, indicando a perda de acurácia a partir da 10ª \textit{epoch}.}
+%			 			\label{fig:accurancy-graph-fig}}
+%			 	\end{figure}
+		  	\paragraph{}Em alguns poucos casos, pode-se verificar um aumento de acurácia após a 10ª \text{epoch}. Logo, foi decidido um meio-termo entre a decisão inicial e o recomendado pelo PyText, optando assim por 20 \textit{epochs}.
 		  \subsection{Tipo de Rede}
-			  \paragraph{}TODO
+			  \paragraph{}Testes foram feitos com os dois tipos de redes neurais oferecidas pelo PyText para classificação de texto e mesmo com algumas alterações, a rede CNN obteve melhor performance em comparação a rede BiLSTM, tanto em acurácia quanto tempo de processamento.
+			  \paragraph{}Sendo assim, preferiu-se utilizar a rede CNN, o padrão utilizado pelo PyText.
 		  \subsection{\textit{Dropout}}
-			  \paragraph{}TODO
+			  \paragraph{}Alguns valores de \textit{dropout} foram testados entre 0,2 e 0,8, mas este não demonstraram tanta diferença de performance entre si, tendo um pouco mais de vantagem utilizando 0,6, o padrão utilizado pelo PyText.
  		\section{Análise}
  			\paragraph{}TODO
  			\begin{table}[h]
