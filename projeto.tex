@@ -373,16 +373,20 @@
   		\end{table}
   		\paragraph{}Como pode ser visto na tabela \ref{tab:table-class-balancing}, os registros da classe 1 e da classe -1 se mostram razoavelmente balanceados, porém, os registros da classe 0 se encontram em mínima quantidade em comparação com as outras duas classes, sendo até inexistente nas combinações ITUB4/2d e ITUB4/3d. Isto pode indicar a alta volatilidade do mercado de ações e a pequena possibilidade do preço de um ativo se manter o mesmo com o passar dos dias.
   		\paragraph{}A possibilidade de utilizar técnicas de \textit{Undersampling} foi descartada devida a mínima quantidade de registros da classe 0. Ao excluir registros da classe 1 e -1, os conjuntos de dados perderiam uma grande parte de informação, o que tornaria a tarefa de classificação textual inviável.
-  		\paragraph{}Testes envolvendo \textit{Oversampling} foram feitos, mas os modelos encontrados demonstraram um desempenho pior do que testes feitos sem técnicas de balanceamento. Isto pode ter acontecido pelo fato de que, com o \textit{Oversampling}, a informação de que a classe 0 tem uma menor possibilidade de aparecer nos dados é perdida. Sendo assim, de forma a avaliar o impacto que a classe 0 pode apresentar sobre o treinamento, os conjuntos de dados foram duplicados e os registros da classe 0 foram removidos das cópias. Assim como os conjuntos originais de 3 classes, os conjuntos de 2 classes também foram treinados e analisados.
+  		\paragraph{}Testes envolvendo \textit{Oversampling} foram feitos, mas os modelos encontrados demonstraram um desempenho pior do que testes feitos sem técnicas de balanceamento. Isto pode ter acontecido pelo fato de que, com o \textit{Oversampling}, a informação de que a classe 0 tem uma menor possibilidade de aparecer nos dados é perdida. Sendo assim, de forma a avaliar o impacto que a classe 0 pode apresentar sobre o treinamento, os conjuntos de dados foram duplicados e os registros da classe 0 foram removidos das cópias. Assim como os conjuntos originais de 3 classes, os conjuntos de 2 classes também foram treinados e analisados. Com isso, o número final de conjunto de dados foi de $25\times2=50$.
   		\paragraph{}Seguindo o princípio de Pareto, todos os conjuntos foram divididos em subconjuntos de treino (80\%) e teste (20\%). Esta proporção foi aplicada separadamente sobre os registros de cada classe para evitar um balanceamento diferente do conjunto de dados original nos subconjuntos de treino e teste.
   		\paragraph{}A rotina de manipulação, pré-processamento e criação dos conjuntos de dados está descrita no apêndice \ref{sec:rotina-de-pre-processamento-e-criacao-de-conjuntos-de-dados}. Foi feita utilizando a linguagem Python com o suporte de bibliotecas como pandas, numpy, csv, nltk e re.
   		
   \chapter{Treinamento e Teste}
-	  \paragraph{}Os treinamentos dos conjuntos de dados foram realizados utilizando duas arquiteturas de redes presentes no PyText: BiLSTM e CNN...
+	  \paragraph{}Como já dito anteriormente, o treinamento e a geração dos modelos preditivos foram feitos utilizando o framework PyText. Para isso, seria necessário escrever e executar 50 arquivos de configuração. Para evitar este esforço, uma rotina em Python foi desenvolvida para a criação dos arquivos de configuração e da execução destes pelo PyText para todos os conjuntos de dados. A rotina pode ser vista no apêndice \ref{sec:rotina-de-criacao-de-arquivos-de-configuracao-e-execucao-de-treinamentos}.
 	  \section{Configuração}
-		  \paragraph{}TODO
-  	\section{Rotina de Treinamento}
-  		\paragraph{}TODO
+		  \paragraph{}Pela falta do arquivo de \textit{embeddings} pré-treinados e pelas quantias de \textit{epochs} utilizadas, cada treinamento de um conjunto de dados durava uma considerável quantia de tempo (entre 20 e 30 minutos), o que tornou a exploração de todos os parâmetros do PyText muito custosa. No entanto, foi possível realizar testes antes de definir uma configuração mais performática através da escolha do número de \textit{epochs}, tipo de rede neural utilizada e \textit{dropout}.
+		  \subsection{Número de \textit{Epochs}}
+		  	\paragraph{}TODO
+		  \subsection{Tipo de Rede}
+			  \paragraph{}TODO
+		  \subsection{\textit{Dropout}}
+			  \paragraph{}TODO
  		\section{Análise}
  			\paragraph{}TODO
  			\begin{table}[h]
@@ -684,7 +688,7 @@ for index, row in df_companies.iterrows():
         exportToTSV(df_company_train, row['code'] + '_3c_' + str(interval) + 'd_train.tsv')
         exportToTSV(df_company_test, row['code'] + '_3c_' + str(interval) + 'd_test.tsv')
 			\end{minted}
-		\section{Rotina de Criação de Arquivos de Configuração e Execução de Treinamentos}
+		\section{Rotina de Criação de Arquivos de Configuração e Execução de Treinamentos}\label{sec:rotina-de-criacao-de-arquivos-de-configuracao-e-execucao-de-treinamentos}
 			\begin{minted}[frame=leftline,
 			linenos=true,
 			fontsize=\small,
