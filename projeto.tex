@@ -149,7 +149,7 @@
   			\paragraph{}Neste caso, os parâmetros são mapeados de forma a classificar os dados em categorias distintas. Por exemplo, um algoritmo utilizado para prever se um tumor é benigno ou maligno a partir de dados como o tamanho, rugosidade do tumor e idade do paciente é considerado um problema de classificação, pois o resultado final será a categoria na qual o tumor pertence.
   			\paragraph{}Os problemas de classificação muitas vezes apresentam desbalanceamento de classes no conjunto de dados utilizado para o treinamento do modelo, ou seja, o conjunto de dados pode apresentar poucas amostras de uma determinada classe em relação às outras envolvidas, o que pode ocasionar falhas na predição da classe minoritária.
   			\paragraph{}De forma a corrigir tal problema, existem algumas técnicas que podem ser baseadas em dois conceitos: \textit{Undersampling} e \textit{Oversampling}. A primeira se resume na remoção de amostras das classes majoritárias, e a segunda, no acréscimo de amostras da classe minoritária a partir das amostras já existentes no conjunto, de forma a se obter um conjunto de dados balanceados.
-  			\newpage
+				\newpage
   			\begin{figure}[h]
   				\centering
   				\includegraphics[width=13cm]{os_and_us.jpg}
@@ -210,14 +210,14 @@
 		  	\caption{Exemplo de um dado de entrada e um \textit{kernel}\cite{kernel-example}.}
 		  	\label{fig:kernel-fig}
 		  \end{figure}
-		  \newpage
+			\newpage
 	  	\begin{figure}[h]
 	  		\centering
 	  		\includegraphics[width=10cm]{kernel2.jpg}
 	  		\caption{Exemplo de convolução da imagem anterior\cite{kernel-example}.}
 	  		\label{fig:kernel2-fig}
 	  	\end{figure}
-  		\paragraph{}Após esta etapa, o resultado da camada convolução passa por funções de ativação. Nestas, normalmente são atribuídas funções ReLU (\textit{Rectified Linear Unit}), análoga à função rampa, ou seja, valores menores que zero são zerados e o resto [e mantido. Por final, o resultado da camada de função de ativação passa pelo \textit{pooling} onde a redução de dimensibilidade pode ser feita através de diversas técnicas, sendo a \textit{max-pooling} a mais utilizada. Esta consiste em selecionar os maiores valores dentro de submatrizes de tamanho e espaçamento (passos) específicos, como indicado na figura abaixo.
+  		\paragraph{}Após esta etapa, o resultado da camada convolução passa por funções de ativação. Nestas, normalmente são atribuídas funções ReLU (\textit{Rectified Linear Unit}), análoga à função rampa, ou seja, valores menores que zero são zerados e o resto [e mantido. Por final, o resultado da camada de função de ativação passa pelo \textit{pooling} onde a redução de dimensibilidade pode ser feita através de diversas técnicas, sendo a \textit{max-pooling} a mais utilizada. Esta consiste em selecionar os maiores valores dentro de submatrizes de tamanho e espaçamento (passos) específicos, como indicado na figura \ref{fig:pooling-fig}.
   		\begin{figure}[h]
   			\centering
   			\includegraphics[width=11cm]{pooling.jpg}
@@ -257,9 +257,7 @@
   		\paragraph{}Apesar da praticidade e simplicidade, o BOW apresenta alguns problemas, entre eles, a perda da informação de ordem das palavras e a alta dimensão da representação vetorial, fazendo com que muitos busquem outra alternativa... TODO
   		\subsubsection{Word2Vec}
   			\paragraph{}TODO
-	  	
-  
-  
+	
   \section{PyText}
   	\paragraph{}TODO
   	\subsection{Configuração}
@@ -312,7 +310,7 @@
   				\caption{Conjunto de dados da B3 após tratamento.}
   				\label{fig:b3-pp-dataset-fig}}
   		\end{figure}
-  	\section{Cruzamento e Conjuntos Finais}
+  	\section{Cruzamento e Conjuntos Finais}\label{sec:cruzamento-e-conjuntos-finais}
   		\paragraph{}Os conjuntos de dados foram cruzados de forma a obter um conjunto de dados específico para cada combinação de ativo/período de dias. Foi considerado janela de tempo mínima de 1 dia e uma máxima de 5 dias, logo, teríamos $5\times5=25$ conjuntos de dados finais (quantidade de ativos $\times$ número de períodos diferentes).
   		\paragraph{}Sendo assim, um conjunto de dados final relacionaria uma notícia à uma classe que indicaria a valorização de um determinado ativo em uma janela de tempo específica. A classificação foi definida da seguinte forma:
  			\begin{itemize}
@@ -373,39 +371,45 @@
   		\end{table}
   		\paragraph{}Como pode ser visto na tabela \ref{tab:table-class-balancing}, os registros da classe 1 e da classe -1 se mostram razoavelmente balanceados, porém, os registros da classe 0 se encontram em mínima quantidade em comparação com as outras duas classes, sendo até inexistente nas combinações ITUB4/2d e ITUB4/3d. Isto pode indicar a alta volatilidade do mercado de ações e a pequena possibilidade do preço de um ativo se manter o mesmo com o passar dos dias.
   		\paragraph{}A possibilidade de utilizar técnicas de \textit{Undersampling} foi descartada devida a mínima quantidade de registros da classe 0. Ao excluir registros da classe 1 e -1, os conjuntos de dados perderiam uma grande parte de informação, o que tornaria a tarefa de classificação textual inviável.
-  		\paragraph{}Testes envolvendo \textit{Oversampling} foram feitos, mas os modelos encontrados demonstraram um desempenho pior do que testes feitos sem técnicas de balanceamento. Isto pode ter acontecido pelo fato de que, com o \textit{Oversampling}, a informação de que a classe 0 tem uma menor possibilidade de aparecer nos dados é perdida. Sendo assim, de forma a avaliar o impacto que a classe 0 pode apresentar sobre o treinamento, os conjuntos de dados foram duplicados e os registros da classe 0 foram removidos das cópias. Assim como os conjuntos originais de 3 classes, os conjuntos de 2 classes também foram treinados e analisados. Com isso, o número final de conjunto de dados foi de $25\times2=50$.
+  		\paragraph{}Testes envolvendo \textit{Oversampling} foram feitos, mas os modelos encontrados demonstraram um desempenho pior do que testes feitos sem técnicas de balanceamento. Isto pode ter acontecido pelo fato de que, com o \textit{Oversampling}, a informação de que a classe 0 tem uma menor possibilidade de aparecer nos dados é perdida. Sendo assim, de forma a avaliar o impacto que a classe 0 pode apresentar sobre o treinamento, os conjuntos de dados foram duplicados e os registros da classe 0 foram removidos das cópias. Assim como os conjuntos originais de 3 classes, os conjuntos de 2 classes também foram treinados e analisados. Com isso, o número final esperado de conjunto de dados foi de $25\times2=50$, porém, como as combinações ITUB4/2d e ITUB4/3d não apresentaram a classe neutra, este número caiu para 48.
   		\paragraph{}Seguindo o princípio de Pareto, todos os conjuntos foram divididos em subconjuntos de treino (80\%) e teste (20\%). Esta proporção foi aplicada separadamente sobre os registros de cada classe para evitar um balanceamento diferente do conjunto de dados original nos subconjuntos de treino e teste.
   		\paragraph{}A rotina de manipulação, pré-processamento e criação dos conjuntos de dados está descrita no apêndice \ref{sec:rotina-de-pre-processamento-e-criacao-de-conjuntos-de-dados}. Foi feita utilizando a linguagem Python com o suporte de bibliotecas como pandas, numpy, csv, nltk e re.
   		
   \chapter{Treinamento e Teste}
 	  \paragraph{}Como já dito anteriormente, o treinamento e a geração dos modelos preditivos foram feitos utilizando o framework PyText. Para isso, seria necessário escrever e executar 50 arquivos de configuração. Para evitar este esforço, uma rotina em Python foi desenvolvida para a criação dos arquivos de configuração e da execução destes pelo PyText para todos os conjuntos de dados. A rotina pode ser vista no apêndice \ref{sec:rotina-de-criacao-de-arquivos-de-configuracao-e-execucao-de-treinamentos}.
 	  \section{Configuração}
-		  \paragraph{}Pela falta do arquivo de \textit{embeddings} pré-treinados e pelas quantias de \textit{epochs} utilizadas, cada treinamento de um conjunto de dados durava uma considerável quantia de tempo (entre 20 e 30 minutos), o que tornou a exploração de todos os parâmetros do PyText muito custosa. No entanto, foi possível realizar testes antes de definir uma configuração mais performática através da escolha do número de \textit{epochs}, tipo de rede neural utilizada e \textit{dropout}.
+		  \paragraph{}Pela falta do arquivo de \textit{embeddings} pré-treinados, pela indisponibilidade de CUDA na máquina utilizada e pela quantia de \textit{epochs} empregada, cada treinamento de um conjunto de dados durava uma considerável quantia de tempo (entre 20 e 30 minutos, para uma rede CNN, e mais de 4 horas para uma rede BiLSTM), o que tornou a exploração de todos os parâmetros do PyText muito custosa. No entanto, foi possível realizar testes antes de definir uma configuração mais performática através da escolha do número de \textit{epochs}, tipo de rede neural utilizada e \textit{dropout}.
 		  \subsection{Número de \textit{Epochs}}
 		  	\paragraph{}O número de \textit{epochs} inicialmente decidido foi de 20, porém, testes mostraram que o modelo apresenta um alto aumento no valor de perda a partir da 12ª \textit{epoch}. Tornando razoável a decisão de usar 10 \textit{epochs}, como o padrão definido pelo PyText.
-		  	\paragraph{}Além disso, é notável a perda de acurácia obtida sobre o conjunto de teste após a 10ª \textit{epoch}, provavelmente devido ao sobreajuste em relação ao conjunto de teste com o avanço das \textit{epochs}.
+		  	\paragraph{}Além disso, é notável a permanência da acurácia ou mesmo uma leve perda da mesma sobre o conjunto de teste a partir da 11ª \textit{epoch}, possivelmente por conta do crescente sobreajuste sobre o conjunto de treino com o avanço das \textit{epochs}.
 		  	\begin{figure}[H]
 		  		\centering
-		  		{\includegraphics[width=14cm]{loss_graph}
-		  			\caption{Gráfico de \textit{loss} gerado pelo TensorBoard, indicando o aumento  da perda a partir da 10ª \textit{epoch} nos treinamentos feitos para os conjuntos de três classes.}
+		  		{\includegraphics[width=13.5cm]{loss_graph}
+		  			\caption{Gráfico de \textit{loss} gerado pelo TensorBoard, indicando o aumento do custo a partir da 10ª \textit{epoch} nos treinamentos feitos para os conjuntos de três classes.}
 		  			\label{fig:loss_graph-fig}}
 		  	\end{figure}
-%			 	\begin{figure}[H]
-%			 		\centering
-%			 		{\includegraphics[width=14cm]{accurancy-graph}
-%			 			\caption{Gráfico de \textit{accurancy} gerado pelo TensorBoard, indicando a perda de acurácia a partir da 10ª \textit{epoch}.}
-%			 			\label{fig:accurancy-graph-fig}}
-%			 	\end{figure}
-		  	\paragraph{}Em alguns poucos casos, pode-se verificar um aumento de acurácia após a 10ª \text{epoch}. Logo, foi decidido um meio-termo entre a decisão inicial e o recomendado pelo PyText, optando assim por 20 \textit{epochs}.
+			 	\begin{figure}[H]
+			 		\centering
+			 		{\includegraphics[width=13.5cm]{20e-graph}
+			 			\caption{Gráfico de \textit{accuracy} gerado pelo TensorBoard, indicando a acurácia em 20 \textit{epochs} sobre os conjuntos dos ativos ABEV3.}
+			 			\label{fig:20e-graph-fig}}
+			 	\end{figure}
+		  	\paragraph{}Em alguns poucos casos, pode-se verificar um aumento de acurácia após a 10ª \text{epoch}. Logo, foi decidido um meio-termo entre a decisão inicial e o recomendado pelo PyText, optando assim por 15 \textit{epochs}.
 		  \subsection{Tipo de Rede}
-			  \paragraph{}Testes foram feitos com os dois tipos de redes neurais oferecidas pelo PyText para classificação de texto e mesmo com algumas alterações, a rede CNN obteve melhor performance em comparação a rede BiLSTM, tanto em acurácia quanto tempo de processamento.
-			  \paragraph{}TODO: imagem comparativa
+			  \paragraph{}Testes foram feitos com os dois tipos de redes neurais oferecidas pelo PyText para classificação de texto e mesmo com algumas alterações, a rede CNN obteve melhor performance em comparação a rede BiLSTM, tanto em acurácia quanto em tempo de processamento.
+				\begin{figure}[H]
+					\centering
+					{\includegraphics[width=13.5cm]{nn-type-graph}
+						\caption{Gráfico de \textit{accuracy} gerado pelo TensorBoard, indicando a acurácia sobre o conjunto de teste ao longo das \textit{epochs}. Pode-se perceber que a rede CNN (curva azul) alcança um resultado melhor que rede BiLSTM (curva laranja) logo a partir da 4ª \textit{epoch}. Teste realizado no conjunto ABEV3/1d.}
+						\label{fig:nn-type-graph-fig}}
+				\end{figure}
 			  \paragraph{}Sendo assim, preferiu-se utilizar a rede CNN, o padrão utilizado pelo PyText.
 		  \subsection{\textit{Dropout}}
-			  \paragraph{}Alguns valores de \textit{dropout} foram testados entre $0,2$ e $0,8$, mas este não demonstraram tanta diferença de performance entre si, tendo um pouco mais de vantagem utilizando $0,6$, o padrão utilizado pelo PyText.
- 		\section{Análise}
+			  \paragraph{}Foram testados os valores de \textit{dropout} de $0,2$, $0,4$ e $0,6$, mas estes não demonstraram tanta diferença de performance entre si, tendo um pouco mais de vantagem em relação a acurácia utilizando $0,6$, o padrão utilizado pelo PyText.
+			  \paragraph{}TODO: imagem comparativa
+ 		\section{Métricas e Análise}
  			\paragraph{}Tendo as definições de configuração do PyText prontas no modelo de arquivo de configuração (apêndice \ref{sec:modelo-de-arquivo-de-configuracao}), restou executar a rotina para a execução dos testes. Com isto, pode-se obter todas as métricas mencionadas em \ref{sec:metricas} e os arquivos exportados caffe2 de cada modelo preditivo.
- 			\paragraph{}Como foram utilizados 5 ativos, 5 períodos de tempo e duas variações (uma abrangendo duas classes e outra três classes) foi possível obter ao final 50 modelos preditivos.
+ 			\paragraph{}Como mostrado na seção \ref{sec:cruzamento-e-conjuntos-finais}, os 48 conjuntos de dados foram treinados, resultando em modelos preditivos nesta mesma quantia. As métricas a seguir, associadas a estes modelos, está expressa em porcentagem (\%).
  			\subsection{Caso de 3 classes}
 	 			\begin{itemize}
 	 				\item Maior acurácia: $60,21$ (BBDC4/4d)
@@ -542,7 +546,7 @@
 			\subsection{Caso de 2 classes}
 				\begin{itemize}
 	 				\item Maior acurácia: $60,52$ (BBDC4/5d)
-	 				\item Menor acurácia: $57,07$ (VALE3/3d)
+	 				\item Menor acurácia: $56,12$ (PETR4/1d)
 	 				\item Média de acurácia para ABEV3: $58,21$
 	 				\item Média de acurácia para BBDC4: $58,48$
 	 				\item Média de acurácia para ITUB4: $58,70$
@@ -575,7 +579,7 @@
 	 			\end{table}
 				\begin{itemize}
 	 				\item Maior precisão média: $60,62$ (BBDC4/5d)
-	 				\item Menor precisão média: $57,08$ (VALE3/3d)
+	 				\item Menor precisão média: $56,10$ (PETR4/1d)
 	 				\item Média de precisão média para ABEV3: $58,13$
 	 				\item Média de precisão média para BBDC4: $58,49$
 	 				\item Média de precisão média para ITUB4: $58,78$
@@ -608,7 +612,7 @@
 	 			\end{table}
 				\begin{itemize}
 	 				\item Maior cobertura média: $60,64$ (BBDC4/5d)
-	 				\item Menor cobertura média: $57,07$ (VALE3/3d)
+	 				\item Menor cobertura média: $55,99$ (PETR4/1d)
 	 				\item Média de cobertura média para ABEV3: $58,04$
 	 				\item Média de cobertura média para BBDC4: $58,71$
 	 				\item Média de cobertura média para ITUB4: $58,62$
@@ -640,19 +644,19 @@
 		 				\end{tabular}}
 		 			\end{table}
 					\begin{itemize}
-						\item Maior medida F1: $0$ (BBDC4/4d)
-						\item Menor medida F1: $0$ (BBDC4/4d)
-						\item Média de medida F1 para ABEV3: $0$
-						\item Média de medida F1 para BBDC4: $0$
-						\item Média de medida F1 para ITUB4: $0$
-						\item Média de medida F1 para PETR4: $0$
-						\item Média de medida F1 para VALE3: $0$
-						\item Média de medida F1 para 1 dia: $0$
-						\item Média de medida F1 para 2 dias: $0$
-						\item Média de medida F1 para 3 dias: $0$
-						\item Média de medida F1 para 4 dias: $0$
-						\item Média de medida F1 para 5 dias: $0$
-						\item Média de medida F1 geral: $0$
+						\item Maior medida F1: $60,52$ (BBDC4/5d)
+						\item Menor medida F1: $55,84$ (PETR4/1d)
+						\item Média de medida F1 para ABEV3: $57,92$
+						\item Média de medida F1 para BBDC4: $58,34$
+						\item Média de medida F1 para ITUB4: $58,49$
+						\item Média de medida F1 para PETR4: $57,49$
+						\item Média de medida F1 para VALE3: $57,68$
+						\item Média de medida F1 para 1 dia: $57,07$
+						\item Média de medida F1 para 2 dias: $57,15$
+						\item Média de medida F1 para 3 dias: $58,13$
+						\item Média de medida F1 para 4 dias: $58,25$
+						\item Média de medida F1 para 5 dias: $59,32$
+						\item Média de medida F1 geral: $57,98$
 					\end{itemize}
 		 			\begin{table}[h]
 		 				\caption{Medida F1 média para o caso de 2 classes.}
