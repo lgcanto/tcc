@@ -70,7 +70,7 @@
 			
 		\section{Delimitação}
 			\paragraph{}Este trabalho se restringe ao processamento de texto em português brasileiro, tendo como foco a predição da variação de preço das ações que fazem parte da bolsa de valores do Brasil, a B3. Pela indisponibilidade de dados sobre notícias brasileiras contendo a informação do horário de lançamento da notícia, o projeto mira em predições dentro de uma janela de tempo maior que um dia, de forma a auxiliar decisões de Swing Trade, isto é, operações de compra e venda de ações numa janela de tempo maior que um dia.
-			\paragraph{}Além disso, o estudo se baseia na ferramenta PyText, um framework recentemente desenvolvido pelo Facebook que providencia modelos de processamento de linguagem natural de última geração através de uma interface simples e extensível\cite{pytext-paper}.
+			\paragraph{}Além disso, o estudo se baseia na ferramenta PyText, um framework recentemente desenvolvido pelo Facebook que providencia modelos de processamento de linguagem natural de última geração através de uma interface simples e extensível\cite{pytext-paper}. O uso da ferramenta foi motivado principalmente pelo trabalho feito por ALVES, V. A. em \cite{vinicius-pytext}, onde o PyText é utilizado numa tarefa de classificação de texto para detectar o gênero de letras musicais em português brasileiro.
 		
 		\section{Justificativa}
 			\paragraph{}Diante do crescente número de investidores na bolsa de valores no Brasil, nota-se uma maior preocupação da população brasileira acerca da busca por independência financeira e fontes alternativas de renda com o intuito de contribuir à economia familiar, previdência, ou mesmo utilizar este método como fonte principal de renda\cite{bovespa-investors-growth}.
@@ -375,7 +375,7 @@
   		\paragraph{}Seguindo o princípio de Pareto, todos os conjuntos foram divididos em subconjuntos de treino (80\%) e teste (20\%). Esta proporção foi aplicada separadamente sobre os registros de cada classe para evitar um balanceamento diferente do conjunto de dados original nos subconjuntos de treino e teste.
   		\paragraph{}A rotina de manipulação, pré-processamento e criação dos conjuntos de dados está descrita no apêndice \ref{sec:rotina-de-pre-processamento-e-criacao-de-conjuntos-de-dados}. Foi feita utilizando a linguagem Python com o suporte de bibliotecas como pandas, numpy, csv, nltk e re.
   		
-  \chapter{Treinamento e Teste}
+  \chapter{Treinamento e Resultados}
 	  \paragraph{}Como já dito anteriormente, o treinamento e a geração dos modelos preditivos foram feitos utilizando o framework PyText. Para isso, seria necessário escrever e executar 50 arquivos de configuração. Para evitar este esforço, uma rotina em Python foi desenvolvida para a criação dos arquivos de configuração e da execução destes pelo PyText para todos os conjuntos de dados. A rotina pode ser vista no apêndice \ref{sec:rotina-de-criacao-de-arquivos-de-configuracao-e-execucao-de-treinamentos}.
 	  \section{Configuração}
 		  \paragraph{}Pela falta do arquivo de \textit{embeddings} pré-treinados, pela indisponibilidade de CUDA na máquina utilizada e pela quantia de \textit{epochs} empregada, cada treinamento de um conjunto de dados durava uma considerável quantia de tempo (entre 20 e 30 minutos, para uma rede CNN, e mais de 4 horas para uma rede BiLSTM), o que tornou a exploração de todos os parâmetros do PyText muito custosa. No entanto, foi possível realizar testes antes de definir uma configuração mais performática através da escolha do número de \textit{epochs}, tipo de rede neural utilizada e \textit{dropout}.
@@ -405,8 +405,13 @@
 				\end{figure}
 			  \paragraph{}Sendo assim, preferiu-se utilizar a rede CNN, o padrão utilizado pelo PyText.
 		  \subsection{\textit{Dropout}}
-			  \paragraph{}Foram testados os valores de \textit{dropout} de $0,2$, $0,4$ e $0,6$, mas estes não demonstraram tanta diferença de performance entre si, tendo um pouco mais de vantagem em relação a acurácia utilizando $0,6$, o padrão utilizado pelo PyText.
-			  \paragraph{}TODO: imagem comparativa
+			  \paragraph{}Foram testados os valores de \textit{dropout} de $0,2$, $0,4$ e $0,6$, mas estes não demonstraram tanta diferença de performance entre si, tendo um pouco mais de vantagem em relação a acurácia utilizando $0,4$, o padrão utilizado pelo PyText.
+			  \begin{figure}[H]
+			  	\centering
+			  	{\includegraphics[width=13.5cm]{dropout-graph}
+			  		\caption{Gráfico de \textit{accuracy} gerado pelo TensorBoard com a acurácia de três redes CNN para o conjunto ABEV3/1d: Com 0.2 de \textit{dropout} (curva vermelha), 0.4 de \textit{dropout} (curva azul escura) e 0.6 de \textit{dropout} (curva azul clara).}
+			  		\label{fig:dropout-graph-fig}}
+			  \end{figure}
  		\section{Métricas e Análise}
  			\paragraph{}Tendo as definições de configuração do PyText prontas no modelo de arquivo de configuração (apêndice \ref{sec:modelo-de-arquivo-de-configuracao}), restou executar a rotina para a execução dos testes. Com isto, pode-se obter todas as métricas mencionadas em \ref{sec:metricas} e os arquivos exportados caffe2 de cada modelo preditivo.
  			\paragraph{}Como mostrado na seção \ref{sec:cruzamento-e-conjuntos-finais}, os 48 conjuntos de dados foram treinados, resultando em modelos preditivos nesta mesma quantia. As métricas a seguir, associadas a estes modelos, está expressa em porcentagem (\%).
@@ -676,13 +681,21 @@
 		 						\hline
 		 				\end{tabular}}
 		 			\end{table}
+	 			\subsection{Análise}
+	 				\paragraph{}Pode-se verificar pelos dados acima que o melhor modelo encontrado, baseado em acurácia, foi o BBDC4/5d de duas classes. Entretanto, como erroneamente os registros da classe neutra não foram inseridos no conjunto de teste deste modelo, não podemos afirmar que este teria uma boa acurácia quando testado em dados reais. Sendo assim, foi considerado como melhor modelo o BBDC4/4d de 3 classes, com 60,21\% de acurácia sobre o conjunto de teste.
+	 				\paragraph{}Ainda assim de maneira geral, esta ainda é uma baixa taxa de acurácia, sendo ligeiramente melhor do que uma decisão aleatória entre duas classes (valorização ou desvalorização). Porém, se pensarmos que a classe neutra, mesmo com uma baixa possibilidade de concretização, é levada em conta então este valor de acurácia pode ser considerado um pouco melhor.
+	 				\paragraph{}Com relação aos períodos de tempo, é notável que períodos maiores se mostraram com um desempenho melhor em comparação aos inferiores. Se tratando de acurácia, em média, os modelos preditivos de de 4 e 5 dias foram os que se mostraram mais performáticos. Isto pode indicar um efeito reverso de notícias sobre valorização de ativos onde é vista uma reação imediata na movimentação do mercado e após um período ocorre um movimento contrário a esta movimentação. Por exemplo, notícias ruins da AMBEV ocasionam uma queda instantânea nos ativos da empresa, mas por conta da sua estabilidade, o valor destes ativos voltam a subir logo depois
+	 				\paragraph{}Considerando a volatilidade e incerteza do mercado, somado com a baixa disponibilidade de dados prontos de notícias sobre o mercado brasileiro, pode-se considerar razoável o desempenho do melhor modelo preditivo encontrado.
   
   \chapter{Considerações Finais}
-  	\paragraph{}TODO
   	\section{Conclusão}
-  		\paragraph{}TODO
+  		\paragraph{}Diante da facilidade e praticidade do PyText, este trabalho demonstrou a possibilidade de criação de modelos preditivos voltados para o mercado financeiro de uma forma simples. Infelizmente, o PyText ainda não possui uma estrutura voltada para o treinamento paralelo de diferentes conjuntos de dados, o que resultou na necessidade da criação de scripts de criação e execução de configurações, isto seria interessante para a análise de diferentes modelos, como feito neste trabalho. \paragraph{}Ainda assim, o PyText se mostrou como uma boa e simples ferramenta para a criação de um modelo preditivo, principalmente pela facilidade de configuração através de um arquivo JSON. Sua funcionalidade de entrega e atualização de modelos em aplicações também é interessante para a manutenção de robôs de investimento que utilizem modelos preditivos, por exemplo.
+  		\paragraph{}Por fim, os resultados encontrados contribuem para o tema da criação de modelos preditivos com o intuito de ajudar operações de \textit{Swing Trade}. Principalmente ao comparar e encontrar melhores períodos de tempo para segurar um determinado ativo com o intuito de lucrar com este baseado em um modelo preditivo.
  		\section{Trabalhos Futuros}
- 			\paragraph{}TODO
+ 			\paragraph{}Como este trabalho apenas se baseou na análise dos modelos preditivos sobre dados de teste, seria interessante realizar testes com dados reais de forma progressiva. Isto seria possível ao desenvolver uma aplicação web que consumisse os modelos desenvolvidos no formato caffe2 e adquirisse notícias da rede através de APIs ou \textit{web crawlers}, disponibilizando assim, o resultado dos modelos perante as notícias adquiridas em conjunto com a variação dos ativos em questão. Estes dados poderiam ser salvos em um banco de dados para que posteriormente uma análise pudesse ser feita.
+ 			\paragraph{}A utilização de ativos do iBovespa nos modelos preditivos gerados abre portas para a composição de um único modelo com o objetivo de prever variações do próprio iBovespa, isto seria interessante para a aplicação e saque de capital em fundos de investimento atrelados ao iBovespa, por exemplo.
+ 			\paragraph{}A ferramenta PyText ainda pode ser mais explorada ao utilizar arquivos de \textit{embeddings} pré-treinados em conjunto com a funcionalidade de utilizar uma GPU com CUDA para agilizar o processamento. Esta exploração poderia se basear na variação de parâmetros como quantidade e tamanho de \textit{kernels} para uma rede CNN, por exemplo, ou mesmo a experimentação de novas arquiteturas disponibilizadas pelo PyText com o avanço de versão. O uso de novas ferramentas mais abertas e flexíveis também pode ser testado com o objetivo de comparar os resultados obtidos neste trabalho.
+ 			\paragraph{}Por fim, a aplicação de \textit{online machine learning}, isto é, a aquisição de novos dados e treinamento automático com o intuito de melhorar um modelo em produção pode ser bem interessante para o caso de análise de notícias do mercado financeiro. Isto traria a possibilidade de fazer com que o modelo preditivo aprenda novos assuntos, palavras e frases da atualidade que impactam ativos como nunca antes.
 
   \backmatter
   \bibliographystyle{coppe-unsrt}
