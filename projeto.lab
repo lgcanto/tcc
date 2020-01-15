@@ -9,6 +9,9 @@
   \item [MLP] \textit{Multilayer Perceptron}, p.\hyperpage{11}
   \item [CNN] \textit{Convolutional Neural Network}, p.\hyperpage{11}
   \item [ReLU] \textit{Rectified Linear Unit}, p.\hyperpage{12}
+  \item [RNN] \textit{Recurrent Neural Network}, p.\hyperpage{12}
+  \item [LSTM] \textit{Long Short-Term Memory}, p.\hyperpage{13}
+  \item [BRNN] \textit{Bidirectional recurrent neural networks}, p.\hyperpage{14}
   \item [PNL] Processamento de Linguagem Natural, p.\hyperpage{TODO}
   \item [BOW] \textit{Bag-of-Words}, p.\hyperpage{TODO}
   \item [NILC] Núcleo Interinstitucional de Linguística Computacional, p.\hyperpage{TODO}

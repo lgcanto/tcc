@@ -226,9 +226,23 @@
   		\end{figure}
   		\paragraph{}Após estas camadas, o resultado pode ser utilizado na camada de entrada de uma rede comum, normalmente, uma rede MLP.
 	  \subsection{Redes Neurais Recorrentes}
-	  	\paragraph{}As Redes Neurais Recorrentes (\textit{Recurrent Neural Networks - RNN}) são redes que foram desenvolvidas principalmente para problemas associados à predição de sequência de dados, como a predição de palavras em um texto de entrada e reconhecimento de fala\cite{rnn-on-speech}. A grande diferença destas para redes neurais comuns é que, além das entradas tradicionais (saída de uma camada de entrada ou a saída de uma camada oculta anterior), a saída de cada neurônio pode ser utilizada como uma entrada, ocasionando uma realimentação de informação.
-	  	\paragraph{}Uma rede LSTM...TODO
-	  	\paragraph{}Já uma rede  rede BiLSTM... TODO
+	  	\paragraph{}As Redes Neurais Recorrentes (\textit{Recurrent Neural Networks - RNN}) são redes que foram desenvolvidas principalmente para problemas associados à predição de sequência de dados, como a predição de palavras em um texto de entrada e reconhecimento de fala\cite{rnn-on-speech}. A grande diferença destas para redes neurais comuns é que, além das entradas tradicionais (saída de uma camada de entrada ou a saída de uma camada oculta anterior), a saída de um estado anterior de cada neurônio pode ser utilizada como uma entrada, fazendo assim uma realimentação de informação. Desta forma, os dados de entrada são inseridos na rede de forma sequencial.
+	  	\paragraph{}Como mostrado em \cite{rnn-cheatsheet}, uma rede RNN possui vantagens como a consideração de informação histórica durante o processamento e possibilidade de processar entradas de qualquer tamanho, mas também possui algumas desvantagens como processamento lento e a alta ocorrência do problema de dissipação do gradiente (\textit{Gradient Vanishing}), que ocorre pelo fato de que, em RNNs, é difícil de capturar dependências de longo prazo devido ao gradiente multiplicativo, que pode crescer/decrescer de forma exponencial, de acordo com o número de camadas na rede.
+	  	\begin{figure}[h]
+	  		\centering
+	  		\includegraphics[width=13cm]{rnn-cell.jpg}
+	  		\caption{A célula de uma RNN (à esquerda) pode ser descrita como uma série de neurônios se comunicando entre si através de passos no tempo\cite{understanding-lstm}. É ao longo destes passos que o problema de dissipação de gradiente ocorre.}
+	  		\label{fig:rnn-cell-fig}
+	  	\end{figure}
+	  	\paragraph{}Com o intuito de lidar com o problema de dissipação do gradiente, foi criada a arquitetura LSTM (\textit{Long Short-Term Memory})\cite{lstm-paper}, que contém células com a capacidade de armazenamento de memória (como pode ser visto na figura \ref{fig:lstm_rnn_comparisson-fig}), ocasionando uma melhora no aprendizado em uma rede RNN.
+	  	\begin{figure}[H]
+	  		\centering
+	  		\includegraphics[width=12cm]{lstm_rnn_comparisson.jpg}
+	  		\caption{Diferença entre a célula de uma rede CNN comum e de uma rede LSTM \cite{lstm-visual}.}
+	  		\label{fig:lstm_rnn_comparisson-fig}
+	  	\end{figure}
+  		\paragraph{}Nas RNN comuns e na LSTM, o dado é inserido de forma sequencial em apenas um sentido, fazendo com que a rede obtenha informação sequencial a partir do passado. De forma a obter informação sequencial proveniente do futuro, criou-se o conceito de redes neurais recorrentes bidirecionais (\textit{Bidirectional Recurrent Neural Networks} - BRNN). Neste tipo de rede, o algoritmo é alimentado pelo conjunto de dados de duas formas paralelas: do início ao fim e do fim ao início, combinando estas duas em uma única saída.
+  		\paragraph{}Uma das BRNNs mais conhecidas é a versão bidirecional da LSTM (\textit{Bidirectional Long Short-Term Memory} - BiLSTM) que TODO
   	\subsection{\textit{Dropout}}
   		\paragraph{}TODO
 	  	
@@ -237,7 +251,7 @@
   	\begin{itemize}
   		\item Aplicativos de tradução de idioma, como o Google Translator
   		\item Processamento de palavras, que empregam PNL para a correção gramática
-  		\item Resposta de Voz iterativa em call centers, de forma a responder adequadamente conforme a requisição de usuários
+  		\item Resposta de Voz iterativa em \textit{call centers}, de forma a responder adequadamente conforme a requisição de usuários
   		\item Assistentes pessoais, como OK Google, Siri, Cortana e Alexa
   	\end{itemize}
 	  \paragraph{}Geralmente, o PNL abrange um pré-processamento de texto antes deste ser transformado em uma forma inteligível por computadores, de forma a remover ruídos ou facilitar o processamento, e isto pode ocorrer de diversas formas.
