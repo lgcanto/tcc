@@ -6,14 +6,15 @@
  	\item [HME] Hipótese do Mercado Eficiente, p.\hyperpage{4}
   \item [AT] Análise Técnica, p.\hyperpage{4}
   \item [AF] Análise Fundamentalista, p.\hyperpage{4}
+  \item [NN] \textit{Neural Networks}, p.\hyperpage{10}
   \item [MLP] \textit{Multilayer Perceptron}, p.\hyperpage{11}
   \item [CNN] \textit{Convolutional Neural Network}, p.\hyperpage{11}
   \item [ReLU] \textit{Rectified Linear Unit}, p.\hyperpage{12}
   \item [RNN] \textit{Recurrent Neural Network}, p.\hyperpage{12}
   \item [LSTM] \textit{Long Short-Term Memory}, p.\hyperpage{13}
   \item [BRNN] \textit{Bidirectional recurrent neural networks}, p.\hyperpage{14}
-  \item [PNL] Processamento de Linguagem Natural, p.\hyperpage{TODO}
-  \item [BOW] \textit{Bag-of-Words}, p.\hyperpage{TODO}
+  \item [PNL] Processamento de Linguagem Natural, p.\hyperpage{15}
+  \item [BOW] \textit{Bag-of-Words}, p.\hyperpage{16}
   \item [NILC] Núcleo Interinstitucional de Linguística Computacional, p.\hyperpage{TODO}
   \item [USP] Universidade de São Paulo, p.\hyperpage{TODO}
   \item [CSV] \textit{Comma-separated values}, p.\hyperpage{TODO}

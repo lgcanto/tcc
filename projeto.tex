@@ -179,13 +179,13 @@
 						C_X = \frac{\text{Número total de acertos da classe X }}{\text{Número total de amostras da classe X}}
 					\end{equation*}
 					\item  Medida F1: Média harmônica entre Precisão e Cobertura.
-						\begin{equation*}
-						F1_X = 2\frac{P_X C_X}{P_X + C_X}
-						\end{equation*}
+					\begin{equation*}
+					F1_X = 2\frac{P_X C_X}{P_X + C_X}
+					\end{equation*}
 				\end{itemize}
   
   \section{Redes Neurais}
-	  \paragraph{}Redes neurais são estruturas matemáticas baseadas no funcionamento do cérebro humano. O campo que estuda a aplicação de redes neurais com várias camadas de processamento em métodos de Aprendizado de Máquina é chamado de Aprendizagem Profunda (do inglês, \textit{Deep Learning}). Em sua forma mais simples, uma rede neural contém três camadas: entrada (\textit{input layer}), camada oculta (\textit{hidden layer}) e saída (\textit{output layer}), onde a camada oculta pode ser única ou múltipla. Cada camada é composta por neurônios, também chamados de nós.
+	  \paragraph{}Redes neurais (\textit{Neural Networks} - NN) são estruturas matemáticas baseadas no funcionamento do cérebro humano. O campo que estuda a aplicação de redes neurais com várias camadas de processamento em métodos de Aprendizado de Máquina é chamado de Aprendizagem Profunda (do inglês, \textit{Deep Learning}). Em sua forma mais simples, uma rede neural contém três camadas: entrada (\textit{input layer}), camada oculta (\textit{hidden layer}) e saída (\textit{output layer}), onde a camada oculta pode ser única ou múltipla. Cada camada é composta por neurônios, também chamados de nós.
 	  \begin{figure}[h]
 	  	\centering
 	  	\includegraphics[width=10cm]{nn1.jpg}
@@ -231,7 +231,7 @@
 	  	\begin{figure}[h]
 	  		\centering
 	  		\includegraphics[width=13cm]{rnn-cell.jpg}
-	  		\caption{A célula de uma RNN (à esquerda) pode ser descrita como uma série de neurônios se comunicando entre si através de passos no tempo\cite{understanding-lstm}. É ao longo destes passos que o problema de dissipação de gradiente ocorre.}
+	  		\caption{A célula de uma RNN (à esquerda) pode ser descrita como uma série de neurônios se comunicando entre si através de passos no tempo (forma ``desdobrada'')\cite{understanding-lstm}. É ao longo destes passos que o problema de dissipação de gradiente ocorre.}
 	  		\label{fig:rnn-cell-fig}
 	  	\end{figure}
 	  	\paragraph{}Com o intuito de lidar com o problema de dissipação do gradiente, foi criada a arquitetura LSTM (\textit{Long Short-Term Memory})\cite{lstm-paper}, que contém células com a capacidade de armazenamento de memória (como pode ser visto na figura \ref{fig:lstm_rnn_comparisson-fig}), ocasionando uma melhora no aprendizado em uma rede RNN.
@@ -242,10 +242,22 @@
 	  		\label{fig:lstm_rnn_comparisson-fig}
 	  	\end{figure}
   		\paragraph{}Nas RNN comuns e na LSTM, o dado é inserido de forma sequencial em apenas um sentido, fazendo com que a rede obtenha informação sequencial a partir do passado. De forma a obter informação sequencial proveniente do futuro, criou-se o conceito de redes neurais recorrentes bidirecionais (\textit{Bidirectional Recurrent Neural Networks} - BRNN). Neste tipo de rede, o algoritmo é alimentado pelo conjunto de dados de duas formas paralelas: do início ao fim e do fim ao início, combinando estas duas em uma única saída.
-  		\paragraph{}Uma das BRNNs mais conhecidas é a versão bidirecional da LSTM (\textit{Bidirectional Long Short-Term Memory} - BiLSTM) que TODO
+  		\paragraph{}Uma das BRNNs mais conhecidas é a versão bidirecional da LSTM (\textit{Bidirectional Long Short-Term Memory} - BiLSTM) que une a funcionalidade de memória da LSTM com o benefício bilateral das BRNNs.
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=12cm]{bilstm-schema.jpg}
+			\caption{Arquitetura de uma rede BiLSTM na forma ``desdobrada''.\cite{bilstm-schema}.}
+			\label{fig:bilstm-schema-fig}
+		\end{figure}
   	\subsection{\textit{Dropout}}
-  		\paragraph{}TODO
-	  	
+  		\paragraph{}\textit{Dropout} é uma técnica para prevenção de \textit{overfitting} patenteada pelo Google e apresentada em \cite{dropout-ex}. Esta técnica se baseia no desligamento temporário e aleatório de alguns neurônios da rede ao longo da etapa de treinamento.
+			\begin{figure}[h]
+  			\centering
+  			\includegraphics[width=12cm]{dropout-ex.jpg}
+  			\caption{Comparação entre uma NN comum e a mesma após a aplicação de \textit{dropout}.\cite{dropout-ex}.}
+  			\label{fig:dropout-ex-fig}
+  		\end{figure}
+  		\paragraph{}O efeito do \textit{dropout} pode ser definido por um parâmetro \textit{p} que indica a probabilidade de um neurônio  de permanecer na rede.
   \section{Processamento de Linguagem Natural}
   	\paragraph{}Processamento de Linguagem Natural (PNL) se resume ao campo de estudo das tecnologias utilizadas para ajudar computadores a entenderem a linguagem natural dos humanos, é também considerado uma subárea da Inteligência Artificial. Pode ser usado em diversas aplicações\cite{simple-nlp}, como por exemplo:
   	\begin{itemize}
@@ -270,7 +282,7 @@
   			\caption{Exemplo de aplicação do \textit{Bag-of-Words}\cite{bow-example}.}
   			\label{fig:bow-example-fig}
   		\end{figure}
-  		\paragraph{}Apesar da praticidade e simplicidade, o BOW apresenta alguns problemas, entre eles, a perda da informação de ordem das palavras e a alta dimensão da representação vetorial, fazendo com que muitos busquem outra alternativa... TODO
+  		\paragraph{}Apesar da praticidade e simplicidade, o BOW apresenta alguns problemas, entre eles, a perda da informação de ordem das palavras e a alta dimensão da representação vetorial.
   		\subsection{Word2Vec}
   			\paragraph{}TODO
 	
@@ -397,7 +409,7 @@
 		  \paragraph{}Pela falta do arquivo de \textit{embeddings} pré-treinados, pela indisponibilidade de GPU na máquina utilizada e pela quantia de \textit{epochs} empregada, cada treinamento de um conjunto de dados durava uma considerável quantia de tempo (entre 20 e 30 minutos, para uma rede CNN, e mais de 4 horas para uma rede BiLSTM), o que tornou a exploração de todos os parâmetros do PyText muito custosa. No entanto, foi possível realizar testes antes de definir uma configuração mais performática através da escolha do número de \textit{epochs}, tipo de rede neural utilizada e \textit{dropout}.
 		  \subsection{Número de \textit{Epochs}}
 		  	\paragraph{}O número de \textit{epochs} inicialmente decidido foi de 20, porém, testes mostraram que o modelo apresenta um alto aumento no valor de perda a partir da 12ª \textit{epoch}. Tornando razoável a decisão de usar 10 \textit{epochs}, como o padrão definido pelo PyText.
-		  	\paragraph{}Além disso, é notável a permanência da acurácia ou mesmo uma leve perda da mesma sobre o conjunto de teste a partir da 11ª \textit{epoch}, possivelmente por conta do crescente sobreajuste sobre o conjunto de treino com o avanço das \textit{epochs}.
+		  	\paragraph{}Além disso, é notável a permanência da acurácia ou mesmo uma leve perda da mesma sobre o conjunto de teste a partir da 11ª \textit{epoch}, possivelmente por conta do crescente sobre-ajuste sobre o conjunto de treino com o avanço das \textit{epochs}.
 		  	\begin{figure}[H]
 		  		\centering
 		  		{\includegraphics[width=13.5cm]{loss_graph}
@@ -419,7 +431,7 @@
 						\caption{Gráfico de \textit{accuracy} gerado pelo TensorBoard, indicando a acurácia sobre o conjunto de teste ao longo das \textit{epochs}. Pode-se perceber que a rede CNN (curva azul) alcança um resultado melhor que rede BiLSTM (curva laranja) logo a partir da 4ª \textit{epoch}. Teste realizado no conjunto ABEV3/1d.}
 						\label{fig:nn-type-graph-fig}}
 				\end{figure}
-			  \paragraph{}Sendo assim, preferiu-se utilizar a rede CNN, o padrão utilizado pelo PyText.
+			  \paragraph{}Sendo assim, preferiu-se utilizar a rede CNN, o padrão utilizado pelo PyText quando o parâmetro de tipo de rede não é definido on arquivo de configuração.
 		  \subsection{\textit{Dropout}}
 			  \paragraph{}Foram testados os valores de \textit{dropout} de $0,2$, $0,4$ e $0,6$, mas estes não demonstraram tanta diferença de performance entre si, tendo um pouco mais de vantagem em relação a acurácia utilizando $0,4$, o padrão utilizado pelo PyText.
 			  \begin{figure}[H]
