@@ -292,14 +292,67 @@
   					\label{fig:word2vec-cbowskipgram-fig}}
   			\end{figure}
 	  		\paragraph{}As arquiteturas CBOW e Skip-gram serviram de base para a criação de outros modelos do Word2Vec, fazendo com que surgissem repositórios onlines de \textit{embeddings} gerados a partir de diferentes modelos, como o repositório de \textit{embeddings} do NILC\cite{nilc-repo}.
-	
   \section{PyText}
-  	\paragraph{}TODO
-  	\subsection{Configuração}
-  		\paragraph{}TODO
-  	\subsection{Uso}
-  		\paragraph{}TODO
-  
+  	\paragraph{}Lançado no final de 2018 por uma equipe do Facebook, o PyText é um framework para modelagem de PLN baseado em \textit{Deep Learning} e PyTorch, uma biblioteca para aprendizado de máquina. Ele se destaca pelo baixo nível de abstração, pela possibilidade de alterar e servir um modelo preditivo no formato caffe2 em produção e pelo uso de técnicas recentes de \textit{Deep Learning} e PLN como as arquiteturas BiLSTM e CNN para classificação de texto e o uso de \textit{embeddings} para representação vetorial do conjunto de dados textual.
+		\paragraph{}O PyText também possui uma funcionalidade que possibilita o uso do  processamento de uma GPU (\textit{Graphics Processing Unit}), caso a máquina onde o PyText esteja sendo executado possua uma, para agilizar o treinamento de modelos através da API CUDA (\textit{Compute Unified Device Architecture}) que está presente em placas de vídeo recentes e habilita o processamento paralelo em GPUs.
+		\paragraph{}Além disso, a ferramenta possui integração com o TensorBoard, uma interface gráfica em forma de aplicação web providenciada pela biblioteca TensorFlow que disponibiliza métricas e gráficos de interesse associados aos modelos em desenvolvimento, abrangendo a etapa de treino e de teste. As métricas são apresentadas durante a fase de treino ao longo de \textit{epochs}, etapas onde os pesos da rede são atualizados após a leitura de todo o conjunto de dados.
+ 		\begin{figure}[h]
+			{\includegraphics[width=15cm]{tensorboard-panel.jpg}
+				\caption{Painel do TensorBoard associado a diversos modelos gerados pelo PyText. A interface também apresenta gráficos da arquitetura dos modelos gerados e as projeções dos \textit{embeddings} utilizados.}
+				\label{fig:tensorboard-panel-fig}}
+		\end{figure}
+  	\paragraph{}As especificações do PyText pode ser adquirida com maiores detalhes na documentação oficial da ferramenta, referenciada em \cite{pyText-documentation}. Uma clara explicação sobre sua arquitetura, além de uma comparação com diferentes frameworks para PLN pode ser lida em \cite{vinicius-pytext}.
+  	\subsection{Instalação em Máquina Virtual Ubuntu}
+  		\paragraph{}Nesta subseção, serão descritos os comandos utilizados para instalação do PyText, sem a utilização de CUDA, numa máquina virtual Linux, criada pelo software Oracle VM VirtualBox Manager a partir da imagem Ubuntu 18.04.3 LTS, sem a adição de qualquer outro software além das atualizações do sistema operacional.
+  		\paragraph{}Inicialmente, foram feitas algumas tentativas de instalação a partir dos comandos demonstrados em \cite{vinicius-pytext}, mas com isto a ferramenta não demonstrou o funcionamento correto, possivelmente por conta de divergências entre a instalação da ferramenta uma máquina virtual e máquina física ou entre as versões mais recentes das bibliotecas associadas ao PyText.
+  		\paragraph{}Sendo assim, o comandos a seguir foram executados:
+			\begin{minted}[frame=leftline,
+								  	 linenos=true,
+								  	 fontsize=\small,
+								  	 breaklines]{shell}
+sudo apt-get update #atualização de pacotes do Linux
+sudo apt-get install protobuf-compiler libprotoc-dev #comando recomendado pela documentação, para distros Ubuntu/Debian[36]
+sudo apt install python3-pip #instalação do Python 3
+  		\end{minted}
+  		\paragraph{}Após estes comandos, o comando para a instalação da biblioteca PyTorch foi gerado a partir da página oficial do PyTorch\cite{pytorch-page} no campo \textit{Run This Command} da seção \textit{Quick Start Locally} ao selecionar as opções: PyTorch Build: Stable, OS: Linux, Package: Pip, Language: Python 3.6 e CUDA: None.
+			\begin{minted}[frame=leftline,
+										 linenos=true,
+										 fontsize=\small,
+										 breaklines]{shell}
+pip3 install torch==1.3.1+cpu torchvision==0.4.2+cpu -f https://download.pytorch.org/whl/torch_stable.html #comando de instalação do PyTorch gerado no momento do trabalho
+pip3 install pytext-nlp #instalação do PyText
+pip3 install tensorflow tensorboard #instalação do TensorBoard
+			\end{minted}
+			\paragraph{}Após estes comandos, a máquina virtual foi reiniciada e o framework estava pronto para uso.
+  	\subsection{Configuração e Execução}
+  		\paragraph{}O PyText é considerado uma ferramenta de interface simples e possui uma alta capacidade de rápida prototipação\cite{pytext-paper}. Isto se dá principalmente pelo fato de que a configuração de treino, teste e avaliação de um modelo é feita através de um único arquivo JSON (\textit{Javascript Object Notation}). Neste, é informado o caminho para o tipo de tarefa (classificação de texto ou identificação de entidades) conjunto de dados de teste, treino e avaliação, arquitetura de rede neural que será utilizada para treinamento, caminho para arquivo de \textit{embedding} pré-treinado (se disponível) e outras diversos parâmetros que podem ser ajustados para o treinamento de um modelo específico.
+ 			\begin{figure}[h]
+			{\includegraphics[width=15cm]{pytext-config-ex.jpg}
+				\caption{Exemplo de configuração do PyText, retirado do repositório do GitHub do projeto, \textit{docnn.json}\cite{pytext-github}.}
+				\label{fig:pytext-config-ex-fig}}
+			\end{figure}
+			\paragraph{}Após a configuração, basta rodar um comando do PyText referenciando o arquivo JSON criado para que o treino se inicie:
+			\begin{minted}[frame=leftline,
+											linenos=true,
+											fontsize=\small,
+											breaklines]{shell}
+pytext train < demo/configs/docnn.json
+			\end{minted}
+			\paragraph{}Após o fim do treino, o arquivo caffe2 gerado é incluido na pasta \textit{caffe2\_exports}, caso a opção de \textit{metric reports} seja ativada na configuração, os arquivos de métricas são incluídos na pasta \textit{metric\_reports} e os arquivos de informações de treino/teste associados ao TensorBoard são incluídos na pasta \textit{runs}.
+		\subsection{Visualizando Painel TensorBoard}
+			\paragraph{}Para visualizar os dados armazenados na pasta \textit{runs}, a aplicação web do TensorBoard deve ser iniciada já associada à pasta através do seguinte comando:
+			\begin{minted}[frame=leftline,
+											linenos=true,
+											fontsize=\small,
+											breaklines]{shell}
+tensorboard --logdir=runs
+			\end{minted}
+			\paragraph{}Com isso, a aplicação web fica é servida na porta 6060 do servidor local, bastando utilizar um navegador para acessar o endereço \textit{http://localhost:6006/}.
+ 			\begin{figure}[h]
+				{\includegraphics[width=15cm]{tensorboard-workinglocal.jpg}
+					\caption{Aplicação web do TensorBoard sendo acessada em \textit{http://localhost:6006/} pelo Mozilla Firefox, mostrando a projeção do \textit{embedding} de um modelo.}
+					\label{fig:tensorboard-workinglocal-fig}}
+			\end{figure}
   \chapter{Obtenção e Tratamento de Dados}
   	\paragraph{}Baseando-se na HME fraca e acreditando na possibilidade de realizar a análise fundamental de notícias sobre o mercado de forma autônoma, foi decidido o estudo acerca da criação de modelos preditivos de modo a prever a valorização, desvalorização ou preservação do preço de ativos da B3. Para isso, seria necessário a aquisição de um conjunto de dados de notícias e variações de preço de ativos grande o suficiente que relacionasse as datas/horários das notícias com as datas/horários das variações. Como um conjunto de dados que relacionasse diretamente notícias e variações de ativos não foi encontrado, ficou claro que seria necessário o cruzamento de dados a partir de dois conjuntos de dados diferentes.
   	\section{Conjunto de Dados de Notícias}
