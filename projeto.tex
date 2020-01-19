@@ -101,7 +101,7 @@
   		\paragraph{}O preço de um ativo na Bolsa de Valores pode ser determinado por diversas razões que podem se relacionar entre si, entre essas, pode-se destacar a lei da oferta e demanda, perspectivas de crescimento da empresa associada ao papel e especulação. A previsibilidade acerca de movimentações no mercado de ações normalmente pode ser baseada em Análise Técnica (AT - estudo dos movimentos do mercado baseado em métricas como preço, volume e taxa de juros\cite{analise-tecnica}), Análise Fundamentalista (AF - estudo feito a partir de resultados financeiros e operacionais, indicando a saúde da empresa\cite{analise-fundamentalista}) ou numa junção destes dois conceitos.
   		\paragraph{}A validade da previsibilidade destas movimentações são questionadas por críticas com base na Hipótese do Mercado Eficiente (HME) e seus três níveis definidos em \cite{emh}:
 			\begin{itemize}
-				\item HME fraca: Afirma que os preços refletem totalmente a informação contida na sequência histórica dos preços. Ou seja, a AT não consegue prever os movimentos futuros pois os preços passadas só podem descrever o presente.
+				\item HME fraca: Afirma que os preços atuais refletem totalmente a informação contida na sequência histórica dos preços. Ou seja, a AT não consegue prever os movimentos futuros pois os preços passados só podem descrever o presente.
 				\item HME semi-forte: Afirma que os preços presentes não só refletem toda a sequência histórica de preços mas também toda informação pública sobre as organizações associadas ao ativo em questão. Neste nível de eficiência, a AF também não seria capaz de prever movimentos futuros, pois toda informação como demonstrativos de resultados ou análises orçamentárias refletiria apenas o preço presente.
 				\item HME forte: Neste nível, é afirmado que \textit{toda} informação conhecida sobre as organizações é totalmente refletida pelo preço presente, logo, nem mesmo aqueles com informações privilegiadas podem utilizar isto como ferramenta para prever preços futuros.
 			\end{itemize}
@@ -278,13 +278,20 @@
   	\subsection{Representação Vetorial}
   		\paragraph{}Após o pré-processamento textual, diversas técnicas podem ser utilizadas para a transformação do texto em números. Uma das formas mais simples de se fazer isso é o \textit{Bag-of-Words} (BOW), que consiste em simbolizar textos de um conjunto de dados através de uma matriz na qual cada coluna é associada a uma palavra existente no conjunto de dados. Cada linha da matriz representa um texto e as variáveis indicam o número de ocorrências de uma palavra específica.
   		\begin{figure}[h]
-  			\includegraphics[width=15cm]{bow-example.jpg}
-  			\caption{Exemplo de aplicação do \textit{Bag-of-Words}\cite{bow-example}.}
-  			\label{fig:bow-example-fig}
+  			{\includegraphics[width=15cm]{bow-example.jpg}
+ 				\caption{Exemplo de aplicação do \textit{Bag-of-Words}\cite{bow-example}.}
+ 				\label{fig:bow-example-fig}}
   		\end{figure}
   		\paragraph{}Apesar da praticidade e simplicidade, o BOW apresenta alguns problemas, entre eles, a perda da informação de ordem das palavras e a alta dimensão da representação vetorial.
   		\subsection{Word2Vec}
-  			\paragraph{}TODO
+  			\paragraph{}o Word2Vec é um conjunto de técnicas utilizadas para a transformação de texto, normalmente utilizando redes neurais, em representações vetoriais chamadas de \textit{embeddings} onde é possível identificar a proximidade entre palavras de forma semântica.
+  			\paragraph{}Apresentado inicialmente em \cite{word2vec-paper}, o Word2Vec foi introduzido a partir de duas diferentes arquiteturas: CBOW (\textit{Continuous Bag-of-Words}) e Skip-gram. O CBOW consiste na predição de uma palavra que possa estar localizada no meio de um conjunto de palavras (entre palavras do passado e do futuro), enquanto que o Skip-gram tenta prever um conjunto de palavras que podem estar localizadas ao redor de uma palavra específica (palavra do presente).
+	  		\begin{figure}[h]
+  				{\includegraphics[width=15cm]{word2vec-cbowskipgram.jpg}
+  					\caption{Comparação entre a arquitetura CBOW e a arquitetura Skip-gram\cite{word2vec-paper}. O \textit{embedding} é gerado a partir do resultado de treino de uma rede.}
+  					\label{fig:word2vec-cbowskipgram-fig}}
+  			\end{figure}
+	  		\paragraph{}As arquiteturas CBOW e Skip-gram serviram de base para a criação de outros modelos do Word2Vec, fazendo com que surgissem repositórios onlines de \textit{embeddings} gerados a partir de diferentes modelos, como o repositório de \textit{embeddings} do NILC\cite{nilc-repo}.
 	
   \section{PyText}
   	\paragraph{}TODO
