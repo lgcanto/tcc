@@ -98,11 +98,11 @@
   	\paragraph{}A Bolsa de Valores é um lugar centralizado onde, além de abranger outros tipos de investimento, se negociam ações (também chamados de ativos ou papéis), isto é, parcelas do capital social de empresas de capital aberto. Atualmente a B3 (Brasil, Bolsa, Balcão) é a Bolsa de Valores oficial do Brasil que em 2017 atingiu a 5ª posição das maiores bolsas de mercados de capitais do mundo em valor de mercado, com um patrimônio de US\$ 13 bilhões\cite{b3-patrimonio}.
   	\paragraph{}As ações são negociadas diariamente a partir das ordens de compra e venda emitidas pelas corretoras durante o pregão eletrônico, que na B3, funciona em dias úteis das 10:00 às 17:00.
   	\subsection{Preços de Ações}
-  		\paragraph{}O preço de um ativo na Bolsa de Valores pode ser determinado por diversas razões que podem se relacionar entre si, entre essas, pode-se destacar a lei da oferta e demanda, perspectivas de crescimento da empresa associada ao papel e especulação. A previsibilidade acerca de movimentações no mercado de ações normalmente pode ser baseada em Análise Técnica (AT - estudo dos movimentos do mercado baseado em métricas como preço, volume e taxa de juros\cite{analise-tecnica}), Análise Fundamentalista (AF - estudo feito a partir de resultados financeiros e operacionais, indicando a saúde da empresa\cite{analise-fundamentalista}) ou numa junção destes dois conceitos.
+  		\paragraph{}O preço de um ativo na Bolsa de Valores pode ser determinado por diversas razões que podem se relacionar entre si, entre essas, pode-se destacar a lei da oferta e demanda, perspectivas de crescimento da empresa associada ao papel e especulação. A previsibilidade acerca de movimentações no mercado de ações normalmente pode ser baseada em Análise Técnica (AT - estudo dos movimentos do mercado baseado em métricas como preço, volume e taxa de juros\cite{analise-tecnica}), Análise Fundamentalista (AF - estudo feito a partir de resultados financeiros e operacionais, indicando a saúde da empresa\cite{analise-fundamentalista}) ou em uma junção destes dois conceitos.
   		\paragraph{}A validade da previsibilidade destas movimentações são questionadas por críticas com base na Hipótese do Mercado Eficiente (HME) e seus três níveis definidos em \cite{emh}:
 			\begin{itemize}
 				\item HME fraca: Afirma que os preços atuais refletem totalmente a informação contida na sequência histórica dos preços. Ou seja, a AT não consegue prever os movimentos futuros pois os preços passados só podem descrever o presente.
-				\item HME semi-forte: Afirma que os preços presentes não só refletem toda a sequência histórica de preços mas também toda informação pública sobre as organizações associadas ao ativo em questão. Neste nível de eficiência, a AF também não seria capaz de prever movimentos futuros, pois toda informação como demonstrativos de resultados ou análises orçamentárias refletiria apenas o preço presente.
+				\item HME semi-forte: Afirma que os preços presentes não só refletem toda a sequência histórica de preços mas também toda a informação pública sobre as organizações associadas ao ativo em questão. Neste nível de eficiência, a AF também não seria capaz de prever movimentos futuros, pois toda informação pública, como demonstrativos de resultados ou análises orçamentárias de uma empresa, refletiria apenas o preço presente.
 				\item HME forte: Neste nível, é afirmado que \textit{toda} informação conhecida sobre as organizações é totalmente refletida pelo preço presente, logo, nem mesmo aqueles com informações privilegiadas podem utilizar isto como ferramenta para prever preços futuros.
 			\end{itemize}
  			\begin{figure}[h]
@@ -133,7 +133,7 @@
 			\end{table}
 			 
   \section{Aprendizado de Máquina}
-  	\paragraph{}Pode-se definir Aprendizado de Máquina como o campo de estudo de algoritmos com o objetivo de fazer com que computadores possam agir sem serem explicitamente programados para fazer determinada tarefa. São algoritmos que analisam dados e aprendem com eles, gerando um modelo preditivo que pode fornecer uma predição de algo on mundo.
+  	\paragraph{}Pode-se definir Aprendizado de Máquina como o campo de estudo de algoritmos com o objetivo de fazer com que computadores possam agir sem serem explicitamente programados para fazer determinada tarefa. São algoritmos que analisam dados e aprendem com eles, gerando um modelo preditivo que pode fornecer uma predição de algo no mundo.
   	\paragraph{}Outra definição dada por Tom M. Mitchell\cite{ml-mitchell} fala que o campo de Aprendizado de Máquina busca responder a pergunta: ``Como podemos construir sistemas de computadores que possam automaticamente melhorar através de experiência e quais são as leis fundamentais que governam todo este processo de aprendizado?''. Outra definição do mesmo autor\cite{ml-mitchell-book} diz que ``Um programa de computador é dito aprender com a experiência E em respeito a uma tarefa T e medida pelo desempenho P se o seu desempenho em T, medido por P, melhora com a experiência E''. Neste conceito, se fosse desejado um programa de computador que aprendesse a classificar e-mails como spam ou não, por exemplo, poderíamos fazer a seguinte associação:
   	\begin{itemize}
   		\item E = A experiência de ver o usuário classificar emails como spam ou não.
@@ -142,13 +142,13 @@
   	\end{itemize}
   	\paragraph{}Geralmente, os algoritmos de Aprendizado de Máquina podem ser divididos em dois tipos: Aprendizado Supervisionado e Aprendizado Não Supervisionado.
   	\subsection{Aprendizado Supervisionado}
-  		\paragraph{}Neste tipo, o algoritmo é inicialmente servido por uma série de dados rotulados cujo resultado já é conhecido. A ideia e que o algoritmo aprenda a criar uma estratégia para chegar ao resultado baseando-se nesses dados de modelo inicial. O aprendizado supervisionado pode ser dividido em problemas de regressão ou classificação.
+  		\paragraph{}Neste tipo, o algoritmo é inicialmente servido por uma série de dados rotulados cujo resultado já é conhecido. A ideia é que o algoritmo aprenda a criar uma estratégia para chegar ao resultado baseando-se nesses dados de modelo inicial. O aprendizado supervisionado pode ser dividido em problemas de regressão ou classificação.
   		\subsubsection{Problema de Regressão}
 	  		\paragraph{}Neste tipo de problema, os dados de entrada (parâmetros) são mapeados em uma função contínua. Por exemplo, um algoritmo cujo objetivo fosse prever o preço dos imóveis na cidade do Rio de Janeiro baseando-se em dados como área útil, bairro, número de vagas na garagem, etc é considerado como um problema de regressão, pois o resultado final será um número contínuo, neste caso, o preço dos imóveis.
   		\subsubsection{Problema de Classificação}
   			\paragraph{}Neste caso, os parâmetros são mapeados de forma a classificar os dados em categorias distintas. Por exemplo, um algoritmo utilizado para prever se um tumor é benigno ou maligno a partir de dados como o tamanho, rugosidade do tumor e idade do paciente é considerado um problema de classificação, pois o resultado final será a categoria na qual o tumor pertence.
   			\paragraph{}Os problemas de classificação muitas vezes apresentam desbalanceamento de classes no conjunto de dados utilizado para o treinamento do modelo, ou seja, o conjunto de dados pode apresentar poucas amostras de uma determinada classe em relação às outras envolvidas, o que pode ocasionar falhas na predição da classe minoritária.
-  			\paragraph{}De forma a corrigir tal problema, existem algumas técnicas que podem ser baseadas em dois conceitos: \textit{Undersampling} e \textit{Oversampling}. A primeira se resume na remoção de amostras das classes majoritárias, e a segunda, no acréscimo de amostras da classe minoritária a partir das amostras já existentes no conjunto, de forma a se obter um conjunto de dados balanceados.
+  			\paragraph{}De forma a corrigir tal problema, existem algumas técnicas que podem ser baseadas em dois conceitos: \textit{Undersampling} e \textit{Oversampling}. A primeira se resume na remoção de amostras das classes majoritárias, e a segunda, no acréscimo de amostras da classe minoritária a partir das amostras já existentes no conjunto, de forma a se obter um conjunto de dados balanceado.
 				\newpage
   			\begin{figure}[h]
   				\centering
@@ -158,10 +158,10 @@
   			\end{figure}
   			\paragraph{}Entretanto, estas técnicas podem gerar alguns efeitos negativos, como por exemplo, a demasiada diminuição do conjunto de dados como um todo no \textit{Undersampling}, o que prejudica o aprendizado. No caso do \textit{Oversampling}, pode-se gerar um maior efeito de sobre-ajuste no modelo preditivo, isto é, pela falta de generalização, o modelo consegue prever muito bem amostras do conjunto de dados de treino, mas se mostra ineficaz ao prever dados de teste.
 		\subsection{Aprendizado Não Supervisionado}
-			\paragraph{}Neste tipo de aprendizado, não existe um conjunto inicial de dados e resultados, ou seja, nos permite abordar problemas onde temos pouca ou nenhuma ideia do que nossos resultados devem aparentar. Um exemplo, seria um algoritmo onde, utilizando uma coleção de 1000 artigos publicados por uma universidade, fizesse um agrupamento desses artigos, baseando-se em diferente variáveis como frequência de palavras semelhantes, número de paginas, etc.
+			\paragraph{}Neste tipo de aprendizado, não existe um conjunto inicial de dados e resultados, ou seja, nos permite abordar problemas onde temos pouca ou nenhuma ideia do que nossos resultados devem aparentar. Um exemplo, seria um algoritmo onde, utilizando uma coleção de 1000 artigos publicados por uma universidade, fizesse um agrupamento de temas desses artigos, baseando-se em diferente variáveis como frequência de palavras semelhantes, número de paginas, etc.
 		\subsection{Avaliação de Desempenho}
 			\paragraph{}A avaliação de desempenho de um modelo preditivo pode ser realizada através de diversas métricas que são medidas diante de uma previsão do modelo sobre um conjunto de dados de teste, logo, existe uma necessidade em dividir o conjunto de dados inicial em dados de treino e dados de teste.
-			\paragraph{}Não existe um modo ideal de dividir o conjunto de dados, o tamanho do conjunto de treino normalmente é maior que o de teste, de modo que este consiga abranger mais generalizações acerca dos parâmetros do modelo. Assim, algumas proporções são mais comumente usadas, como 60/40, 75/25 e 80/20, proporção baseada no Principio de Pareto que afirma que, 80\% das saídas/consequências vem de 20\% das entradas/causas\cite{pareto_principle}. Levando em consideração o escopo de Aprendizado de Máquina, podemos dizer que 20\% pode mapear 80\% do conjunto de dados.
+			\paragraph{}Não existe um modo ideal de dividir o conjunto de dados, o tamanho do conjunto de treino normalmente é maior que o de teste, de modo que este consiga abranger mais generalizações acerca dos parâmetros do modelo. Assim, algumas proporções são mais comumente usadas, como 60/40, 75/25 e 80/20, proporção baseada no Principio de Pareto que afirma que, 80\% das saídas/consequências vem de 20\% das entradas/causas\cite{pareto_principle}. Neste caso, levando em consideração o escopo de Aprendizado de Máquina, podemos dizer que 20\% pode mapear 80\% do conjunto de dados.
 			\paragraph{}Além disso, em modelos mais simples, também existe a possibilidade de utilizar a Validação Cruzada, uma técnica que separa o conjunto de dados em subconjuntos exclusivos e diferentes e alguns destes subconjuntos são utilizados para treino e outros para teste, de forma iterativa. Um dos métodos de validação cruzada mais famosos é o \textit{k-fold}, onde o conjunto de dados é separado em $k$ subconjuntos e o treino é realizado $k$ vezes, cada vez utilizando um subconjunto diferente para teste e o resto para treino\cite{k-fold}. No final, as métricas de avaliação são definidas como a média diante dos $k$ subconjuntos.
 			\subsubsection{Métricas}\label{sec:metricas}
 				\paragraph{}As métricas utilizadas para avaliação dependem do tipo de problema. Por exemplo, em problemas de regressão é comum utilizar o erro quadrático médio\cite{regression-loss}. Nos problemas de classificação, é comum utilizar as seguintes medidas: Acurácia, Precisão, Cobertura e a Medida F1:
@@ -217,7 +217,7 @@
 	  		\caption{Exemplo de convolução da imagem anterior\cite{kernel-example}.}
 	  		\label{fig:kernel2-fig}
 	  	\end{figure}
-  		\paragraph{}Após esta etapa, o resultado da camada convolução passa por funções de ativação. Nestas, normalmente são atribuídas funções ReLU (\textit{Rectified Linear Unit}), análoga à função rampa, ou seja, valores menores que zero são zerados e o resto [e mantido. Por final, o resultado da camada de função de ativação passa pelo \textit{pooling} onde a redução de dimensibilidade pode ser feita através de diversas técnicas, sendo a \textit{max-pooling} a mais utilizada. Esta consiste em selecionar os maiores valores dentro de submatrizes de tamanho e espaçamento (passos) específicos, como indicado na figura \ref{fig:pooling-fig}.
+  		\paragraph{}Após esta etapa, o resultado da camada convolução passa por funções de ativação. Nestas, normalmente são atribuídas funções ReLU (\textit{Rectified Linear Unit}), análoga à função rampa, ou seja, valores menores que zero são zerados e o resto é mantido. Por final, o resultado da camada de função de ativação passa pelo \textit{pooling} onde a redução de dimensibilidade pode ser feita através de diversas técnicas, sendo a \textit{max-pooling} a mais utilizada. Esta consiste em selecionar os maiores valores dentro de submatrizes de tamanho e espaçamento (passos) específicos, como indicado na figura \ref{fig:pooling-fig}.
   		\begin{figure}[h]
   			\centering
   			\includegraphics[width=11cm]{pooling.jpg}
@@ -227,7 +227,7 @@
   		\paragraph{}Após estas camadas, o resultado pode ser utilizado na camada de entrada de uma rede comum, normalmente, uma rede MLP.
 	  \subsection{Redes Neurais Recorrentes}
 	  	\paragraph{}As Redes Neurais Recorrentes (\textit{Recurrent Neural Networks - RNN}) são redes que foram desenvolvidas principalmente para problemas associados à predição de sequência de dados, como a predição de palavras em um texto de entrada e reconhecimento de fala\cite{rnn-on-speech}. A grande diferença destas para redes neurais comuns é que, além das entradas tradicionais (saída de uma camada de entrada ou a saída de uma camada oculta anterior), a saída de um estado anterior de cada neurônio pode ser utilizada como uma entrada, fazendo assim uma realimentação de informação. Desta forma, os dados de entrada são inseridos na rede de forma sequencial.
-	  	\paragraph{}Como mostrado em \cite{rnn-cheatsheet}, uma rede RNN possui vantagens como a consideração de informação histórica durante o processamento e possibilidade de processar entradas de qualquer tamanho, mas também possui algumas desvantagens como processamento lento e a alta ocorrência do problema de dissipação do gradiente (\textit{Gradient Vanishing}), que ocorre pelo fato de que, em RNNs, é difícil de capturar dependências de longo prazo devido ao gradiente multiplicativo, que pode crescer/decrescer de forma exponencial, de acordo com o número de camadas na rede.
+	  	\paragraph{}Como mostrado em \cite{rnn-cheatsheet}, uma rede RNN possui vantagens como a consideração da informação histórica durante o processamento e a possibilidade de processar entradas de qualquer tamanho, mas também possui algumas desvantagens como processamento lento e a alta ocorrência do problema de dissipação do gradiente (\textit{Gradient Vanishing}), que ocorre pelo fato de que, em RNNs, é difícil de capturar dependências de longo prazo devido ao gradiente multiplicativo, que pode crescer/decrescer de forma exponencial, de acordo com o número de camadas na rede.
 	  	\begin{figure}[h]
 	  		\centering
 	  		\includegraphics[width=13cm]{rnn-cell.jpg}
@@ -250,7 +250,7 @@
 			\label{fig:bilstm-schema-fig}
 		\end{figure}
   	\subsection{\textit{Dropout}}
-  		\paragraph{}\textit{Dropout} é uma técnica para prevenção de \textit{overfitting} patenteada pelo Google e apresentada em \cite{dropout-ex}. Esta técnica se baseia no desligamento temporário e aleatório de alguns neurônios da rede ao longo da etapa de treinamento.
+  		\paragraph{}\textit{Dropout} é uma técnica para prevenção de sobre-ajuste patenteada pelo Google e apresentada em \cite{dropout-ex}. Esta técnica se baseia no desligamento temporário e aleatório de alguns neurônios da rede ao longo da etapa de treinamento.
 			\begin{figure}[h]
   			\centering
   			\includegraphics[width=12cm]{dropout-ex.jpg}
@@ -259,20 +259,20 @@
   		\end{figure}
   		\paragraph{}O efeito do \textit{dropout} pode ser definido por um parâmetro \textit{p} que indica a probabilidade de um neurônio  de permanecer na rede.
   \section{Processamento de Linguagem Natural}
-  	\paragraph{}Processamento de Linguagem Natural (PNL) se resume ao campo de estudo das tecnologias utilizadas para ajudar computadores a entenderem a linguagem natural dos humanos, é também considerado uma subárea da Inteligência Artificial. Pode ser usado em diversas aplicações\cite{simple-nlp}, como por exemplo:
+  	\paragraph{}Processamento de Linguagem Natural (PLN) se resume ao campo de estudo das tecnologias utilizadas para ajudar computadores a entenderem a linguagem natural dos humanos, é também considerado uma subárea da Inteligência Artificial. Pode ser usado em diversas aplicações\cite{simple-nlp}, como por exemplo:
   	\begin{itemize}
   		\item Aplicativos de tradução de idioma, como o Google Translator
-  		\item Processamento de palavras, que empregam PNL para a correção gramática
-  		\item Resposta de Voz iterativa em \textit{call centers}, de forma a responder adequadamente conforme a requisição de usuários
+  		\item Processamento de palavras, que empregam PLN para a correção gramática
+  		\item Resposta de voz iterativa em \textit{call centers}, de forma a responder adequadamente conforme a requisição de usuários
   		\item Assistentes pessoais, como OK Google, Siri, Cortana e Alexa
   	\end{itemize}
-	  \paragraph{}Geralmente, o PNL abrange um pré-processamento de texto antes deste ser transformado em uma forma inteligível por computadores, de forma a remover ruídos ou facilitar o processamento, e isto pode ocorrer de diversas formas.
+	  \paragraph{}Geralmente, o PLN abrange um pré-processamento de texto antes deste ser transformado em uma forma inteligível por computadores, de forma a remover ruídos ou facilitar o processamento, e isto pode ocorrer de diversas formas.
 	  \subsection{Pré-processamento de Sintaxe}
 	  	\paragraph{}A sintaxe se refere à forma de como as palavras se organizam em uma sentença para que se obtenha sentido gramatical. Estas são algumas técnicas de sintaxe que podem ser utilizadas no pré-processamento de texto:
 	  	\begin{itemize}
-	  		\item Stemização: É a transformação de palavras flexionadas para sua forma radical. Por exemplo, as palavras ``estudos'', ``estudar'' e ``estudando'' se transformariam apenas em ``estud'', mas a palavra ``tiver" se transformaria em ``tiv'' e ``tenho" se transformaria em ``tenh''.
-	  		\item Lematização: Semelhante à Stemização, porém, a palavra é resumida para seu lema, fazendo com que se alcance um nível maior de abstração. Neste caso, tanto a palavra ``tiver'' como ``tenho'' se transformaria no lema  ``ter''.
-	  		\item Remoção de \textit{stopwords}: A remoção de ``palavras de parada'', ou seja, palavras como ``a'', ``de'', ``o'', ``da'', ``que'', ``e'', ``do'' é útil pois, na maioria das vezes, não são informações importantes para construção do modelo.
+	  		\item Stemização (\textit{Stemming}): É a transformação de palavras flexionadas para sua forma radical. Por exemplo, as palavras ``estudos'', ``estudar'' e ``estudando'' se transformariam apenas em ``estud'', mas a palavra ``tiver" se transformaria em ``tiv'' e ``tenho'' se transformaria em ``tenh''.
+	  		\item Lematização (\textit{Lemmatization}): Semelhante à Stemização, porém, a palavra é resumida para seu lema, fazendo com que se alcance um nível maior de abstração. Neste caso, tanto a palavra ``tiver'' como ``tenho'' se transformaria no lema  ``ter''.
+	  		\item Remoção de \textit{stopwords}: A remoção de ``palavras de parada'', ou seja, palavras como ``a'', ``de'', ``o'', ``da'', ``que'', ``e'', ``do''. É útil pois, na maioria das vezes, não são informações importantes para construção do modelo.
 	  	\end{itemize}
   	\paragraph{}Além destas, outra técnicas mais simples são utilizadas, como a transformação de caracteres maiúsculos para minúsculos.
   	\subsection{Representação Vetorial}
@@ -291,7 +291,7 @@
   					\caption{Comparação entre a arquitetura CBOW e a arquitetura Skip-gram\cite{word2vec-paper}. O \textit{embedding} é gerado a partir do resultado de treino de uma rede.}
   					\label{fig:word2vec-cbowskipgram-fig}}
   			\end{figure}
-	  		\paragraph{}As arquiteturas CBOW e Skip-gram serviram de base para a criação de outros modelos do Word2Vec, fazendo com que surgissem repositórios onlines de \textit{embeddings} gerados a partir de diferentes modelos, como o repositório de \textit{embeddings} do NILC\cite{nilc-repo}.
+	  		\paragraph{}As arquiteturas CBOW e Skip-gram serviram de base para a criação de outros modelos do Word2Vec, fazendo com que surgissem repositórios onlines de \textit{embeddings} gerados a partir de diferentes modelos, como o repositório de \textit{embeddings} do NILC (Núcleo Interinstitucional de Linguística Computacional)\cite{nilc-repo}.
   \section{PyText}
   	\paragraph{}Lançado no final de 2018 por uma equipe do Facebook, o PyText é um framework para modelagem de PLN baseado em \textit{Deep Learning} e PyTorch, uma biblioteca para aprendizado de máquina. Ele se destaca pelo baixo nível de abstração, pela possibilidade de alterar e servir um modelo preditivo no formato caffe2 em produção e pelo uso de técnicas recentes de \textit{Deep Learning} e PLN como as arquiteturas BiLSTM e CNN para classificação de texto e o uso de \textit{embeddings} para representação vetorial do conjunto de dados textual.
 		\paragraph{}O PyText também possui uma funcionalidade que possibilita o uso do  processamento de uma GPU (\textit{Graphics Processing Unit}), caso a máquina onde o PyText esteja sendo executado possua uma, para agilizar o treinamento de modelos através da API CUDA (\textit{Compute Unified Device Architecture}) que está presente em placas de vídeo recentes e habilita o processamento paralelo em GPUs.
@@ -301,10 +301,10 @@
 				\caption{Painel do TensorBoard associado a diversos modelos gerados pelo PyText. A interface também apresenta gráficos da arquitetura dos modelos gerados e as projeções dos \textit{embeddings} utilizados.}
 				\label{fig:tensorboard-panel-fig}}
 		\end{figure}
-  	\paragraph{}As especificações do PyText pode ser adquirida com maiores detalhes na documentação oficial da ferramenta, referenciada em \cite{pyText-documentation}. Uma clara explicação sobre sua arquitetura, além de uma comparação com diferentes frameworks para PLN pode ser lida em \cite{vinicius-pytext}.
+  	\paragraph{}As especificações do PyText podem ser adquiridas com maiores detalhes na documentação oficial da ferramenta, referenciada em \cite{pyText-documentation}. Uma clara explicação sobre sua arquitetura, além de uma comparação com diferentes frameworks para PLN pode ser lida em \cite{vinicius-pytext}.
   	\subsection{Instalação em Máquina Virtual Ubuntu}
   		\paragraph{}Nesta subseção, serão descritos os comandos utilizados para instalação do PyText, sem a utilização de CUDA, numa máquina virtual Linux, criada pelo software Oracle VM VirtualBox Manager a partir da imagem Ubuntu 18.04.3 LTS, sem a adição de qualquer outro software além das atualizações do sistema operacional.
-  		\paragraph{}Inicialmente, foram feitas algumas tentativas de instalação a partir dos comandos demonstrados em \cite{vinicius-pytext}, mas com isto a ferramenta não demonstrou o funcionamento correto, possivelmente por conta de divergências entre a instalação da ferramenta uma máquina virtual e máquina física ou entre as versões mais recentes das bibliotecas associadas ao PyText.
+  		\paragraph{}Inicialmente, foram feitas algumas tentativas de instalação a partir dos comandos demonstrados em \cite{vinicius-pytext}, mas com isto a ferramenta não demonstrou o funcionamento correto, possivelmente por conta de divergências entre a instalação da ferramenta em uma máquina virtual e em uma máquina física ou entre as versões mais recentes das bibliotecas associadas ao PyText.
   		\paragraph{}Sendo assim, o comandos a seguir foram executados:
 			\begin{minted}[frame=leftline,
 								  	 linenos=true,
@@ -325,10 +325,10 @@ pip3 install tensorflow tensorboard #instalação do TensorBoard
 			\end{minted}
 			\paragraph{}Após estes comandos, a máquina virtual foi reiniciada e o framework estava pronto para uso.
   	\subsection{Configuração e Execução}
-  		\paragraph{}O PyText é considerado uma ferramenta de interface simples e possui uma alta capacidade de rápida prototipação\cite{pytext-paper}. Isto se dá principalmente pelo fato de que a configuração de treino, teste e avaliação de um modelo é feita através de um único arquivo JSON (\textit{Javascript Object Notation}). Neste, é informado o caminho para o tipo de tarefa (classificação de texto ou identificação de entidades) conjunto de dados de teste, treino e avaliação, arquitetura de rede neural que será utilizada para treinamento, caminho para arquivo de \textit{embedding} pré-treinado (se disponível) e outras diversos parâmetros que podem ser ajustados para o treinamento de um modelo específico.
+  		\paragraph{}O PyText é considerado uma ferramenta de interface simples e possui uma alta capacidade de rápida prototipação\cite{pytext-paper}. Isto se dá principalmente pelo fato de que a configuração de treino, teste e avaliação de um modelo é feita através de um único arquivo JSON (\textit{Javascript Object Notation}). Neste, é informado o caminho para o tipo de tarefa (classificação de texto ou identificação de entidades) conjunto de dados de teste, treino e avaliação, arquitetura de rede neural que será utilizada para treinamento, caminho para arquivo de \textit{embedding} pré-treinado (se disponível) e outros diversos parâmetros que podem ser ajustados para o treinamento de um modelo específico.
  			\begin{figure}[h]
 			{\includegraphics[width=15cm]{pytext-config-ex.jpg}
-				\caption{Exemplo de arquivo configuração do PyText (\textit{docnn.json}), retirado do repositório do GitHub do projeto\cite{pytext-github}.}
+				\caption{Exemplo de arquivo de configuração do PyText (\textit{docnn.json}), retirado do repositório do GitHub do projeto\cite{pytext-github}.}
 				\label{fig:pytext-config-ex-fig}}
 			\end{figure}
 			\paragraph{}Após a configuração, basta rodar um comando do PyText referenciando o arquivo JSON criado para que o treino se inicie:
@@ -347,7 +347,7 @@ pytext train < demo/configs/docnn.json
 											breaklines]{shell}
 tensorboard --logdir=runs
 			\end{minted}
-			\paragraph{}Com isso, a aplicação web fica é servida na porta 6060 do servidor local, bastando utilizar um navegador para acessar o endereço \textit{http://localhost:6006/}.
+			\paragraph{}Com isso, a aplicação web é servida na porta 6006 do servidor local, bastando utilizar um navegador para acessar o endereço \textit{http://localhost:6006/}.
  			\begin{figure}[h]
 				{\includegraphics[width=15cm]{tensorboard-workinglocal.jpg}
 					\caption{Aplicação web do TensorBoard sendo acessada em \textit{http://localhost:6006/} pelo Mozilla Firefox, mostrando a projeção do \textit{embedding} de um modelo.}
@@ -358,7 +358,7 @@ tensorboard --logdir=runs
   	\section{Conjunto de Dados de Notícias}
 	  	\paragraph{}Inicialmente, foi preferido a escolha de realizar análises de forma a auxiliar decisões de \textit{Day Trade}, isto é, compra e venda de ações no mesmo dia, o que tornaria a informação de horário imprescindível. Isto logo se tornou inviável devido a falta de conjuntos de dados de notícias em português brasileiro com a informação de horário. Dentre os encontrados, todos continham apenas a data de lançamento da notícia.
 	  	\paragraph{}Conjuntos de notícias em outros idiomas com a informação de horário foram encontrados, mas não foram utilizados devido ao foco do projeto que buscava analisar notícias do mercado brasileiro para auxiliar operações na B3. Também foram avaliadas as possibilidades de construir um \textit{web crawler} para obter notícias de sites como Folha de S. Paulo\cite{folha} ou InfoMoney\cite{infomoney} ou mesmo utilizar a API do Twitter\cite{twitter-api} para obter \textit{tweets} de contas associadas a veículos de notícias. A primeira possibilidade se mostrou complexa e demorada para o prazo estipulado para o projeto e a segunda foi impedida pelos limites que a versão gratuita da API propõe sobre os usuários. Sendo assim, foi decidido que a análise seria feita de forma a auxiliar decisões de \textit{Swing Trade}.
-	  	\paragraph{}Dentre os conjuntos encontrados, foi escolhido o \textit{News of the brazilian newspaper}\cite{folha-news-dataset}, disponibilizado por um usuário do Kaggle, uma comunidade on-line de cientistas de dados. O conjunto contém 167,053 notícias categorizadas da página do jornal Folha no período entre janeiro de 2015 e setembro de 2017. O conjunto oferece as informações de, título, corpo, data, categoria, subcategoria e link da notícia.
+	  	\paragraph{}Dentre os conjuntos encontrados, foi escolhido o \textit{News of the brazilian newspaper}\cite{folha-news-dataset}, disponibilizado por um usuário do Kaggle, uma comunidade on-line de cientistas de dados. O conjunto contém 167,053 notícias categorizadas da página web do jornal Folha no período entre janeiro de 2015 e setembro de 2017. O conjunto oferece as informações de, título, corpo, data, categoria, subcategoria e link da notícia.
 	  	\paragraph{}É importante notar que, além de notícias, o conjunto de dados também continha artigos escritos por colunistas do jornal.
 	  	\begin{figure}[h]
 	  		\includegraphics[width=15cm]{folha-dataset}
@@ -368,7 +368,7 @@ tensorboard --logdir=runs
   		\subsection{Pré-processamento de Texto}
   			\paragraph{}Como o conjunto de dados oferecia a informação de categoria da notícia, estes foram filtrados de forma a adquirir apenas as notícias associadas ao mercado, ou seja, onde os valores da coluna ``\textit{category}'' fossem iguais a ``mercado'', o que diminuiu o número total de notícias para 20.970. A coluna ``\textit{subcategory}'' estava vazia em quase todos os registros, tendo apenas o nome do colunista na maioria dos casos diferentes deste. Os artigos não foram removidos, sendo considerados como notícias no conjunto de dados de forma a contribuir para o volume total.
   			\paragraph{}Alguns testes de treino envolvendo apenas o título da notícia foram feitos, estes demonstraram uma baixa taxa de aprendizagem, fazendo com que se preferisse utilizar o processamento do corpo das notícias.
-  			\paragraph{}O Núcleo Interinstitucional de Linguística Computacional (NILC) da USP oferece um repositório\cite{nilc-repo} contendo uma série de \textit{embeddings} pré-treinados em português brasileiro. Infelizmente, o repositório encontrava-se em manutenção devido a problemas no servido, o que levou a optar pelo treinamento de \textit{embeddings} nativo do PyText a partir dos dados de treino. Para facilitar e agilizar o treinamentos do \textit{embedding} o corpo das notícias foi pré-processado pelas seguintes etapas:
+  			\paragraph{}O Núcleo Interinstitucional de Linguística Computacional (NILC) da USP oferece um repositório\cite{nilc-repo} contendo uma série de \textit{embeddings} pré-treinados em português brasileiro. Infelizmente, o repositório encontrava-se em manutenção devido a problemas no servidor, o que levou a optar pelo treinamento de \textit{embeddings} nativo do PyText a partir dos dados de treino. Para facilitar e agilizar o treinamento do \textit{embedding} o corpo das notícias foi pré-processado pelas seguintes etapas:
   			\begin{itemize}
   				\item Normalização para letras minúsculas, para evitar redundâncias.
   				\item Remoção de \textit{stopwords}, palavras como ``a'', ``o'', ``que'' e ``de''.
@@ -399,14 +399,14 @@ tensorboard --logdir=runs
   				\label{fig:b3-pp-dataset-fig}}
   		\end{figure}
   	\section{Cruzamento e Conjuntos Finais}\label{sec:cruzamento-e-conjuntos-finais}
-  		\paragraph{}Os conjuntos de dados foram cruzados de forma a obter um conjunto de dados específico para cada combinação de ativo/período de dias. Foi considerado janela de tempo mínima de 1 dia e uma máxima de 5 dias, logo, teríamos $5\times5=25$ conjuntos de dados finais (quantidade de ativos $\times$ número de períodos diferentes).
+  		\paragraph{}Os conjuntos de dados foram cruzados de forma a obter um conjunto de dados específico para cada combinação de ativo/período de dias. Foi considerado a janela de tempo mínima de 1 dia e uma máxima de 5 dias, logo, teríamos $5\times5=25$ conjuntos de dados finais (quantidade de ativos $\times$ número de períodos diferentes).
   		\paragraph{}Sendo assim, um conjunto de dados final relacionaria uma notícia à uma classe que indicaria a valorização de um determinado ativo em uma janela de tempo específica. A classificação foi definida da seguinte forma:
  			\begin{itemize}
   			\item ``1'': Ocorreu valorização, preço de fechamento futuro é maior que o preço de fechamento passado.
 	 			\item ``0'': O valor se manteve, preço de fechamento futuro é igual ao preço de fechamento passado.
 	 			\item ``-1'': Ocorreu desvalorização, preço de fechamento futuro é menor que o preço de fechamento passado.
   		\end{itemize}
-  		\paragraph{}O preço de fechamento passado foi definido como o preço de fechamento do ativo no dia útil anterior ao dia do lançamento da notícia, ao passo que o preço de fechamento futuro foi definido como o preço de fechamento do ativo $X$ dias úteis depois do lançamento da notícia, sendo $X$ um número inteiro de 1 a 5.
+  		\paragraph{}O preço de fechamento passado foi definido como o preço de fechamento do ativo no dia útil anterior ao dia do lançamento da notícia, ao passo que o preço de fechamento futuro foi definido como o preço de fechamento do ativo $X$ dias úteis depois do lançamento da notícia, sendo $X$ um número inteiro entre 1 a 5.
   		\begin{figure}[h]
   			\centering
   			{\includegraphics[width=16cm]{calendar-example.pdf}
@@ -464,11 +464,11 @@ tensorboard --logdir=runs
   		\paragraph{}A rotina de manipulação, pré-processamento e criação dos conjuntos de dados está descrita no apêndice \ref{sec:rotina-de-pre-processamento-e-criacao-de-conjuntos-de-dados}. Foi feita utilizando a linguagem Python com o suporte de bibliotecas como pandas, numpy, csv, nltk e re.
   		
   \chapter{Treinamento e Resultados}
-	  \paragraph{}Como já dito anteriormente, o treinamento e a geração dos modelos preditivos foram feitos utilizando o framework PyText. Para isso, seria necessário escrever e executar 50 arquivos de configuração. Para evitar este esforço, uma rotina em Python foi desenvolvida para a criação dos arquivos de configuração e da execução destes pelo PyText para todos os conjuntos de dados. A rotina pode ser vista no apêndice \ref{sec:rotina-de-criacao-de-arquivos-de-configuracao-e-execucao-de-treinamentos}.
+	  \paragraph{}Como já dito anteriormente, o treinamento e a geração dos modelos preditivos foram feitos utilizando o framework PyText. Para isso, seria necessário escrever e executar 48 arquivos de configuração. Para evitar este esforço, uma rotina em Python foi desenvolvida para a criação dos arquivos de configuração e da execução destes pelo PyText para todos os conjuntos de dados. A rotina pode ser vista no apêndice \ref{sec:rotina-de-criacao-de-arquivos-de-configuracao-e-execucao-de-treinamentos}.
 	  \section{Configuração}
-		  \paragraph{}Pela falta do arquivo de \textit{embeddings} pré-treinados, pela indisponibilidade de GPU na máquina utilizada e pela quantia de \textit{epochs} empregada, cada treinamento de um conjunto de dados durava uma considerável quantia de tempo (entre 20 e 30 minutos, para uma rede CNN, e mais de 4 horas para uma rede BiLSTM), o que tornou a exploração de todos os parâmetros do PyText muito custosa. No entanto, foi possível realizar testes antes de definir uma configuração mais performática através da escolha do número de \textit{epochs}, tipo de rede neural utilizada e \textit{dropout}.
+		  \paragraph{}Pela falta do arquivo de \textit{embedding} pré-treinado, pela indisponibilidade de GPU na máquina utilizada e pela quantia de \textit{epochs} empregada, cada treinamento de um conjunto de dados durava uma considerável quantia de tempo (entre 20 e 30 minutos, para uma rede CNN, e mais de 4 horas para uma rede BiLSTM), o que tornou a exploração de todos os parâmetros do PyText muito custosa. No entanto, foi possível realizar testes antes de definir uma configuração mais performática através da escolha do número de \textit{epochs}, tipo de rede neural utilizada e \textit{dropout}.
 		  \subsection{Número de \textit{Epochs}}
-		  	\paragraph{}O número de \textit{epochs} inicialmente decidido foi de 20, porém, testes mostraram que o modelo apresenta um alto aumento no valor de perda a partir da 12ª \textit{epoch}. Tornando razoável a decisão de usar 10 \textit{epochs}, como o padrão definido pelo PyText.
+		  	\paragraph{}O número de \textit{epochs} inicialmente decidido foi de 20, porém, testes mostraram que os modelos apresentavam um alto aumento no valor de custo a partir da 12ª \textit{epoch}. Tornando razoável a decisão de usar 10 \textit{epochs}, como o padrão definido pelo PyText.
 		  	\paragraph{}Além disso, é notável a permanência da acurácia ou mesmo uma leve perda da mesma sobre o conjunto de teste a partir da 11ª \textit{epoch}, possivelmente por conta do crescente sobre-ajuste sobre o conjunto de treino com o avanço das \textit{epochs}.
 		  	\begin{figure}[H]
 		  		\centering
@@ -491,7 +491,7 @@ tensorboard --logdir=runs
 						\caption{Gráfico de \textit{accuracy} gerado pelo TensorBoard, indicando a acurácia sobre o conjunto de teste ao longo das \textit{epochs}. Pode-se perceber que a rede CNN (curva azul) alcança um resultado melhor que rede BiLSTM (curva laranja) logo a partir da 4ª \textit{epoch}. Teste realizado no conjunto ABEV3/1d.}
 						\label{fig:nn-type-graph-fig}}
 				\end{figure}
-			  \paragraph{}Sendo assim, preferiu-se utilizar a rede CNN, o padrão utilizado pelo PyText quando o parâmetro de tipo de rede não é definido on arquivo de configuração.
+			  \paragraph{}Sendo assim, preferiu-se utilizar a rede CNN, o padrão utilizado pelo PyText quando o parâmetro de tipo de rede não é definido no arquivo de configuração.
 		  \subsection{\textit{Dropout}}
 			  \paragraph{}Foram testados os valores de \textit{dropout} de $0,2$, $0,4$ e $0,6$, mas estes não demonstraram tanta diferença de performance entre si, tendo um pouco mais de vantagem em relação a acurácia utilizando $0,4$, o padrão utilizado pelo PyText.
 			  \begin{figure}[H]
@@ -503,257 +503,27 @@ tensorboard --logdir=runs
  		\section{Métricas e Análise}
  			\paragraph{}Tendo as definições de configuração do PyText prontas no modelo de arquivo de configuração (apêndice \ref{sec:modelo-de-arquivo-de-configuracao}), restou executar a rotina para a execução dos testes. Com isto, pode-se obter todas as métricas mencionadas em \ref{sec:metricas} e os arquivos exportados caffe2 de cada modelo preditivo.
  			\paragraph{}Como mostrado na seção \ref{sec:cruzamento-e-conjuntos-finais}, os 48 conjuntos de dados foram treinados, resultando em modelos preditivos nesta mesma quantia. As métricas a seguir, associadas a estes modelos, está expressa em porcentagem (\%).
+ 			\newpage
  			\subsection{Caso de 3 classes}
-	 			\begin{itemize}
-	 				\item Maior acurácia: $60,21$ (BBDC4/4d)
-	 				\item Menor acurácia: $55,43$ (VALE3/2d)
-	 				\item Média de acurácia para ABEV3: $57,85$
-	 				\item Média de acurácia para BBDC4: $58,60$
-	 				\item Média de acurácia para ITUB4: $58,13$
-	 				\item Média de acurácia para PETR4: $58,00$
-	 				\item Média de acurácia para VALE3: $58,10$
-	 				\item Média de acurácia para 1 dia: $57,79$
-	 				\item Média de acurácia para 2 dias: $56,89$
-	 				\item Média de acurácia para 3 dias: $57,86$
-	 				\item Média de acurácia para 4 dias: $58,94$
-	 				\item Média de acurácia para 5 dias: $58,91$
-	 				\item Média de acurácia geral: $58,14$
-	 			\end{itemize}
-	 			\begin{table}[h]
-	 				\caption{Acurácia para o caso de 3 classes.}
-	 				\label{tab:3c_ac_analysis}
-	 				\centering
-	 				{\footnotesize
-	 					\begin{tabular}{|c|c|c|c|c|c|}
-	 						\hline
-	 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
-	 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
-	 						\hline
-	 						1 & 57,34 & 57,78 & 58,15 & 57,32 & 58,34 \\
-	 						2 & 57,63 & 57,82 & X     & 56,67 & 55,43 \\
-	 						3 & 57,96 & 57,25 & X     & 58,27 & 57,97 \\
-	 						4 & 58,77 & 60,21 & 57,84 & 58,32 & 59,55 \\
-	 						5 & 57,57 & 59,93 & 58,41 & 59,42 & 59,20 \\
-	 						\hline
-	 				\end{tabular}}
-	 			\end{table}
-	 			\begin{itemize}
-	 				\item Maior precisão média: $72,04$ (PETR4/4d)
-	 				\item Menor precisão média: $38,28$ (BBDC4/3d)
-	 				\item Média de precisão média para ABEV3: $50,43$
-	 				\item Média de precisão média para BBDC4: $39,07$
-	 				\item Média de precisão média para ITUB4: $38,82$
-	 				\item Média de precisão média para PETR4: $53,10$
-	 				\item Média de precisão média para VALE3: $42,10$
-	 				\item Média de precisão média para 1 dia: $41,91$
-	 				\item Média de precisão média para 2 dias: $51,88$
-	 				\item Média de precisão média para 3 dias: $41,37$
-	 				\item Média de precisão média para 4 dias: $49,19$
-	 				\item Média de precisão média para 5 dias: $42,30$
-	 				\item Média de precisão média geral: $45,22$
-	 			\end{itemize}
-	 			\begin{table}[h]
-	 				\caption{Precisão média para o caso de 3 classes.}
-	 				\label{tab:3c_pr_analysis}
-	 				\centering
-	 				{\footnotesize
-	 					\begin{tabular}{|c|c|c|c|c|c|}
-	 						\hline
-	 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
-	 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
-	 						\hline
-	 						1 & 38,39 & 38,54 & 38,85 & 54,86 & 38,91 \\
-	 						2 & 55,02 & 38,61 & X     & 60,12 & 53,78 \\
-	 						3 & 49,65 & 38,28 & X     & 38,82 & 38,72 \\
-	 						4 & 55,64 & 40,01 & 38,56 & 72,04 & 39,70 \\
-	 						5 & 53,45 & 39,92 & 39,04 & 39,66 & 39,41 \\
-	 						\hline
-	 				\end{tabular}}
-	 			\end{table}
-				\begin{itemize}
-	 				\item Maior cobertura média: $41,29$ (ABEV3/5d)
-	 				\item Menor cobertura média: $38,26$ (BBDC4/3d)
-	 				\item Média de cobertura média para ABEV3: $40,28$
-	 				\item Média de cobertura média para BBDC4: $39,06$
-	 				\item Média de cobertura média para ITUB4: $38,86$
-	 				\item Média de cobertura média para PETR4: $40,06$
-	 				\item Média de cobertura média para VALE3: $39,23$
-	 				\item Média de cobertura média para 1 dia: $39,06$
-	 				\item Média de cobertura média para 2 dias: $39,63$
-	 				\item Média de cobertura média para 3 dias: $39,10$
-	 				\item Média de cobertura média para 4 dias: $40,00$
-	 				\item Média de cobertura média para 5 dias: $39,90$
-	 				\item Média de cobertura média geral: $39,55$
-	 			\end{itemize}
-	 			\begin{table}[h]
-	 				\caption{Cobertura média para o caso de 3 classes.}
-	 				\label{tab:3c_co_analysis}
-	 				\centering
-	 				{\footnotesize
-	 					\begin{tabular}{|c|c|c|c|c|c|}
-	 						\hline
-	 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
-	 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
-	 						\hline
-	 						1 & 39,04 & 38,69 & 38,81 & 40,04 & 38,72 \\
-	 						2 & 39,66 & 38,73 & X     & 40,86 & 39,25 \\
-	 						3 & 40,27 & 38,26 & X     & 39,08 & 38,78 \\
-	 						4 & 41,15 & 39,80 & 38,66 & 40,62 & 39,78 \\
-	 						5 & 41,29 & 39,82 & 39,11 & 39,70 & 39,60 \\
-	 						\hline
-	 				\end{tabular}}
-	 			\end{table}
-				\begin{itemize}
-	 				\item Maior medida F1: $42,73$ (PETR4/2d)
-	 				\item Menor medida F1: $38,13$ (BBDC4/3d)
-	 				\item Média de medida F1 para ABEV3: $41,10$
-	 				\item Média de medida F1 para BBDC4: $38,91$
-	 				\item Média de medida F1 para ITUB4: $38,74$
-	 				\item Média de medida F1 para PETR4: $40,91$
-	 				\item Média de medida F1 para VALE3: $39,39$
-	 				\item Média de medida F1 para 1 dia: $39,05$
-	 				\item Média de medida F1 para 2 dias: $40,57$
-	 				\item Média de medida F1 para 3 dias: $39,28$
-	 				\item Média de medida F1 para 4 dias: $40,56$
-	 				\item Média de medida F1 para 5 dias: $40,07$
-	 				\item Média de medida F1 geral: $39,90$
-	 			\end{itemize}
-	 			\begin{table}[h]
-	 				\caption{Medida F1 média para o caso de 3 classes.}
-	 				\label{tab:3c_f1_analysis}
-	 				\centering
-	 				{\footnotesize
-	 					\begin{tabular}{|c|c|c|c|c|c|}
-	 						\hline
-	 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
-	 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
-	 						\hline
-	 						1 & 38,55 & 38,59 & 38,63 & 41,07 & 38,43 \\
-	 						2 & 40,28 & 38,64 & X     & 42,73 & 40,62 \\
-	 						3 & 41,39 & 38,13 & X     & 38,94 & 38,64 \\
-	 						4 & 42,58 & 39,67 & 38,61 & 42,18 & 39,74 \\
-	 						5 & 42,71 & 39,53 & 38,97 & 39,63 & 39,50 \\
-	 						\hline
-	 				\end{tabular}}
-	 			\end{table}
-			\subsection{Caso de 2 classes}
-				\begin{itemize}
-	 				\item Maior acurácia: $60,52$ (BBDC4/5d)
-	 				\item Menor acurácia: $56,12$ (PETR4/1d)
-	 				\item Média de acurácia para ABEV3: $58,21$
-	 				\item Média de acurácia para BBDC4: $58,48$
-	 				\item Média de acurácia para ITUB4: $58,70$
-	 				\item Média de acurácia para PETR4: $57,58$
-	 				\item Média de acurácia para VALE3: $57,86$
-	 				\item Média de acurácia para 1 dia: $57,29$
-	 				\item Média de acurácia para 2 dias: $57,17$
-	 				\item Média de acurácia para 3 dias: $58,30$
-	 				\item Média de acurácia para 4 dias: $58,51$
-	 				\item Média de acurácia para 5 dias: $59,56$
-	 				\item Média de acurácia geral: $58,17$
-	 			\end{itemize}
-	 			\begin{table}[h]
-	 				\caption{Acurácia para o caso de 2 classes.}
-	 				\label{tab:2c_ac_analysis}
-	 				\centering
-	 				{\footnotesize
-	 					\begin{tabular}{|c|c|c|c|c|c|}
-	 						\hline
-	 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
-	 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
-	 						\hline
-	 						1 & 58,74 & 56,71 & 57,72 & 56,12 & 57,16 \\
-	 						2 & 56,16 & 57,61 & 57,83 & 56,71 & 57,54 \\
-	 						3 & 59,46 & 59,25 & 58,25 & 57,48 & 57,07 \\
-	 						4 & 57,71 & 58,32 & 60,08 & 58,26 & 58,17 \\
-	 						5 & 58,97 & 60,52 & 59,61 & 59,33 & 59,37 \\
-	 						\hline
-	 				\end{tabular}}
-	 			\end{table}
-				\begin{itemize}
-	 				\item Maior precisão média: $60,62$ (BBDC4/5d)
-	 				\item Menor precisão média: $56,10$ (PETR4/1d)
-	 				\item Média de precisão média para ABEV3: $58,13$
-	 				\item Média de precisão média para BBDC4: $58,49$
-	 				\item Média de precisão média para ITUB4: $58,78$
-	 				\item Média de precisão média para PETR4: $57,58$
-	 				\item Média de precisão média para VALE3: $57,83$
-	 				\item Média de precisão média para 1 dia: $57,35$
-	 				\item Média de precisão média para 2 dias: $57,21$
-	 				\item Média de precisão média para 3 dias: $58,30$
-	 				\item Média de precisão média para 4 dias: $58,51$
-	 				\item Média de precisão média para 5 dias: $59,44$
-	 				\item Média de precisão média geral: $58,16$
-	 			\end{itemize}
-	 			\begin{table}[h]
-	 				\caption{Precisão média para o caso de 2 classes.}
-	 				\label{tab:2c_pr_analysis}
-	 				\centering
-	 				{\footnotesize
-	 					\begin{tabular}{|c|c|c|c|c|c|}
-	 						\hline
-	 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
-	 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
-	 						\hline
-	 						1 & 58,97 & 56,93 & 57,73 & 56,10 & 57,04 \\
-	 						2 & 56,16 & 57,62 & 57,91 & 56,79 & 57,58 \\
-	 						3 & 59,38 & 59,24 & 58,30 & 57,49 & 57,08 \\
-	 						4 & 57,73 & 58,04 & 60,35 & 58,28 & 58,16 \\
-	 						5 & 58,43 & 60,62 & 59,61 & 59,25 & 59,31 \\
-	 						\hline
-	 				\end{tabular}}
-	 			\end{table}
-				\begin{itemize}
-	 				\item Maior cobertura média: $60,64$ (BBDC4/5d)
-	 				\item Menor cobertura média: $55,99$ (PETR4/1d)
-	 				\item Média de cobertura média para ABEV3: $58,04$
-	 				\item Média de cobertura média para BBDC4: $58,71$
-	 				\item Média de cobertura média para ITUB4: $58,62$
-	 				\item Média de cobertura média para PETR4: $57,56$
-	 				\item Média de cobertura média para VALE3: $57,75$
-	 				\item Média de cobertura média para 1 dia: $57,25$
-	 				\item Média de cobertura média para 2 dias: $57,20$
-	 				\item Média de cobertura média para 3 dias: $58,20$
-	 				\item Média de cobertura média para 4 dias: $58,66$
-	 				\item Média de cobertura média para 5 dias: $59,37$
-	 				\item Média de cobertura média geral: $58,14$
-	 			\end{itemize}
-	 			\begin{table}[h]
-		 				\caption{Cobertura média para o caso de 2 classes.}
-		 				\label{tab:2c_co_analysis}
-		 				\centering
-		 				{\footnotesize
-		 					\begin{tabular}{|c|c|c|c|c|c|}
-		 						\hline
-		 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
-		 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
-		 						\hline
-		 						1 & 58,97 & 56,80 & 57,67 & 55,99 & 56,82 \\
-		 						2 & 56,18 & 57,62 & 57,89 & 56,76 & 57,57 \\
-		 						3 & 58,97 & 59,21 & 58,25 & 57,50 & 57,07 \\
-		 						4 & 57,76 & 59,28 & 59,78 & 58,30 & 58,16 \\
-		 						5 & 58,32 & 60,64 & 59,51 & 59,24 & 59,12 \\
-		 						\hline
-		 				\end{tabular}}
-		 			\end{table}
-					\begin{itemize}
-						\item Maior medida F1: $60,52$ (BBDC4/5d)
-						\item Menor medida F1: $55,84$ (PETR4/1d)
-						\item Média de medida F1 para ABEV3: $57,92$
-						\item Média de medida F1 para BBDC4: $58,34$
-						\item Média de medida F1 para ITUB4: $58,49$
-						\item Média de medida F1 para PETR4: $57,49$
-						\item Média de medida F1 para VALE3: $57,68$
-						\item Média de medida F1 para 1 dia: $57,07$
-						\item Média de medida F1 para 2 dias: $57,15$
-						\item Média de medida F1 para 3 dias: $58,13$
-						\item Média de medida F1 para 4 dias: $58,25$
-						\item Média de medida F1 para 5 dias: $59,32$
-						\item Média de medida F1 geral: $57,98$
-					\end{itemize}
+ 				\subsubsection{Acurácia}
+		 			\begin{itemize}
+		 				\item Maior acurácia: $60,21$ (BBDC4/4d)
+		 				\item Menor acurácia: $55,43$ (VALE3/2d)
+		 				\item Média de acurácia para ABEV3: $57,85$
+		 				\item Média de acurácia para BBDC4: $58,60$
+		 				\item Média de acurácia para ITUB4: $58,13$
+		 				\item Média de acurácia para PETR4: $58,00$
+		 				\item Média de acurácia para VALE3: $58,10$
+		 				\item Média de acurácia para 1 dia: $57,79$
+		 				\item Média de acurácia para 2 dias: $56,89$
+		 				\item Média de acurácia para 3 dias: $57,86$
+		 				\item Média de acurácia para 4 dias: $58,94$
+		 				\item Média de acurácia para 5 dias: $58,91$
+		 				\item Média de acurácia geral: $58,14$
+		 			\end{itemize}
 		 			\begin{table}[h]
-		 				\caption{Medida F1 média para o caso de 2 classes.}
-		 				\label{tab:2c_f1_analysis}
+		 				\caption{Acurácia para o caso de 3 classes.}
+		 				\label{tab:3c_ac_analysis}
 		 				\centering
 		 				{\footnotesize
 		 					\begin{tabular}{|c|c|c|c|c|c|}
@@ -761,17 +531,264 @@ tensorboard --logdir=runs
 		 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
 		 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
 		 						\hline
-		 						1 & 58,74 & 56,54 & 57,61 & 55,84 & 56,63 \\
-		 						2 & 56,12 & 57,61 & 57,82 & 56,68 & 57,53 \\
-		 						3 & 58,76 & 59,19 & 58,18 & 57,47 & 57,05 \\
-		 						4 & 57,67 & 57,83 & 59,39 & 58,23 & 58,15 \\
-		 						5 & 58,33 & 60,52 & 59,45 & 59,25 & 59,03 \\
+		 						1 & 57,34 & 57,78 & 58,15 & 57,32 & 58,34 \\
+		 						2 & 57,63 & 57,82 & X     & 56,67 & 55,43 \\
+		 						3 & 57,96 & 57,25 & X     & 58,27 & 57,97 \\
+		 						4 & 58,77 & 60,21 & 57,84 & 58,32 & 59,55 \\
+		 						5 & 57,57 & 59,93 & 58,41 & 59,42 & 59,20 \\
 		 						\hline
 		 				\end{tabular}}
 		 			\end{table}
+	 			\newpage
+	 			\subsubsection{Precisão Média}
+		 			\begin{itemize}
+		 				\item Maior precisão média: $72,04$ (PETR4/4d)
+		 				\item Menor precisão média: $38,28$ (BBDC4/3d)
+		 				\item Média de precisão média para ABEV3: $50,43$
+		 				\item Média de precisão média para BBDC4: $39,07$
+		 				\item Média de precisão média para ITUB4: $38,82$
+		 				\item Média de precisão média para PETR4: $53,10$
+		 				\item Média de precisão média para VALE3: $42,10$
+		 				\item Média de precisão média para 1 dia: $41,91$
+		 				\item Média de precisão média para 2 dias: $51,88$
+		 				\item Média de precisão média para 3 dias: $41,37$
+		 				\item Média de precisão média para 4 dias: $49,19$
+		 				\item Média de precisão média para 5 dias: $42,30$
+		 				\item Média de precisão média geral: $45,22$
+		 			\end{itemize}
+		 			\begin{table}[h]
+		 				\caption{Precisão média para o caso de 3 classes.}
+		 				\label{tab:3c_pr_analysis}
+		 				\centering
+		 				{\footnotesize
+		 					\begin{tabular}{|c|c|c|c|c|c|}
+		 						\hline
+		 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
+		 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
+		 						\hline
+		 						1 & 38,39 & 38,54 & 38,85 & 54,86 & 38,91 \\
+		 						2 & 55,02 & 38,61 & X     & 60,12 & 53,78 \\
+		 						3 & 49,65 & 38,28 & X     & 38,82 & 38,72 \\
+		 						4 & 55,64 & 40,01 & 38,56 & 72,04 & 39,70 \\
+		 						5 & 53,45 & 39,92 & 39,04 & 39,66 & 39,41 \\
+		 						\hline
+		 				\end{tabular}}
+		 			\end{table}
+	 			\newpage
+	 			\subsubsection{Cobertura Média}
+					\begin{itemize}
+		 				\item Maior cobertura média: $41,29$ (ABEV3/5d)
+		 				\item Menor cobertura média: $38,26$ (BBDC4/3d)
+		 				\item Média de cobertura média para ABEV3: $40,28$
+		 				\item Média de cobertura média para BBDC4: $39,06$
+		 				\item Média de cobertura média para ITUB4: $38,86$
+		 				\item Média de cobertura média para PETR4: $40,06$
+		 				\item Média de cobertura média para VALE3: $39,23$
+		 				\item Média de cobertura média para 1 dia: $39,06$
+		 				\item Média de cobertura média para 2 dias: $39,63$
+		 				\item Média de cobertura média para 3 dias: $39,10$
+		 				\item Média de cobertura média para 4 dias: $40,00$
+		 				\item Média de cobertura média para 5 dias: $39,90$
+		 				\item Média de cobertura média geral: $39,55$
+		 			\end{itemize}
+		 			\begin{table}[h]
+		 				\caption{Cobertura média para o caso de 3 classes.}
+		 				\label{tab:3c_co_analysis}
+		 				\centering
+		 				{\footnotesize
+		 					\begin{tabular}{|c|c|c|c|c|c|}
+		 						\hline
+		 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
+		 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
+		 						\hline
+		 						1 & 39,04 & 38,69 & 38,81 & 40,04 & 38,72 \\
+		 						2 & 39,66 & 38,73 & X     & 40,86 & 39,25 \\
+		 						3 & 40,27 & 38,26 & X     & 39,08 & 38,78 \\
+		 						4 & 41,15 & 39,80 & 38,66 & 40,62 & 39,78 \\
+		 						5 & 41,29 & 39,82 & 39,11 & 39,70 & 39,60 \\
+		 						\hline
+		 				\end{tabular}}
+		 			\end{table}
+	 			\newpage
+	 			\subsubsection{Medida F1}
+					\begin{itemize}
+		 				\item Maior medida F1: $42,73$ (PETR4/2d)
+		 				\item Menor medida F1: $38,13$ (BBDC4/3d)
+		 				\item Média de medida F1 para ABEV3: $41,10$
+		 				\item Média de medida F1 para BBDC4: $38,91$
+		 				\item Média de medida F1 para ITUB4: $38,74$
+		 				\item Média de medida F1 para PETR4: $40,91$
+		 				\item Média de medida F1 para VALE3: $39,39$
+		 				\item Média de medida F1 para 1 dia: $39,05$
+		 				\item Média de medida F1 para 2 dias: $40,57$
+		 				\item Média de medida F1 para 3 dias: $39,28$
+		 				\item Média de medida F1 para 4 dias: $40,56$
+		 				\item Média de medida F1 para 5 dias: $40,07$
+		 				\item Média de medida F1 geral: $39,90$
+		 			\end{itemize}
+		 			\begin{table}[h]
+		 				\caption{Medida F1 média para o caso de 3 classes.}
+		 				\label{tab:3c_f1_analysis}
+		 				\centering
+		 				{\footnotesize
+		 					\begin{tabular}{|c|c|c|c|c|c|}
+		 						\hline
+		 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
+		 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
+		 						\hline
+		 						1 & 38,55 & 38,59 & 38,63 & 41,07 & 38,43 \\
+		 						2 & 40,28 & 38,64 & X     & 42,73 & 40,62 \\
+		 						3 & 41,39 & 38,13 & X     & 38,94 & 38,64 \\
+		 						4 & 42,58 & 39,67 & 38,61 & 42,18 & 39,74 \\
+		 						5 & 42,71 & 39,53 & 38,97 & 39,63 & 39,50 \\
+		 						\hline
+		 				\end{tabular}}
+		 			\end{table}
+	 			\newpage
+			\subsection{Caso de 2 classes}
+				\subsubsection{Acurácia}
+					\begin{itemize}
+		 				\item Maior acurácia: $60,52$ (BBDC4/5d)
+		 				\item Menor acurácia: $56,12$ (PETR4/1d)
+		 				\item Média de acurácia para ABEV3: $58,21$
+		 				\item Média de acurácia para BBDC4: $58,48$
+		 				\item Média de acurácia para ITUB4: $58,70$
+		 				\item Média de acurácia para PETR4: $57,58$
+		 				\item Média de acurácia para VALE3: $57,86$
+		 				\item Média de acurácia para 1 dia: $57,29$
+		 				\item Média de acurácia para 2 dias: $57,17$
+		 				\item Média de acurácia para 3 dias: $58,30$
+		 				\item Média de acurácia para 4 dias: $58,51$
+		 				\item Média de acurácia para 5 dias: $59,56$
+		 				\item Média de acurácia geral: $58,17$
+		 			\end{itemize}
+		 			\begin{table}[h]
+		 				\caption{Acurácia para o caso de 2 classes.}
+		 				\label{tab:2c_ac_analysis}
+		 				\centering
+		 				{\footnotesize
+		 					\begin{tabular}{|c|c|c|c|c|c|}
+		 						\hline
+		 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
+		 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
+		 						\hline
+		 						1 & 58,74 & 56,71 & 57,72 & 56,12 & 57,16 \\
+		 						2 & 56,16 & 57,61 & 57,83 & 56,71 & 57,54 \\
+		 						3 & 59,46 & 59,25 & 58,25 & 57,48 & 57,07 \\
+		 						4 & 57,71 & 58,32 & 60,08 & 58,26 & 58,17 \\
+		 						5 & 58,97 & 60,52 & 59,61 & 59,33 & 59,37 \\
+		 						\hline
+		 				\end{tabular}}
+		 			\end{table}
+	 			\newpage
+	 			\subsubsection{Precisão Média}
+					\begin{itemize}
+		 				\item Maior precisão média: $60,62$ (BBDC4/5d)
+		 				\item Menor precisão média: $56,10$ (PETR4/1d)
+		 				\item Média de precisão média para ABEV3: $58,13$
+		 				\item Média de precisão média para BBDC4: $58,49$
+		 				\item Média de precisão média para ITUB4: $58,78$
+		 				\item Média de precisão média para PETR4: $57,58$
+		 				\item Média de precisão média para VALE3: $57,83$
+		 				\item Média de precisão média para 1 dia: $57,35$
+		 				\item Média de precisão média para 2 dias: $57,21$
+		 				\item Média de precisão média para 3 dias: $58,30$
+		 				\item Média de precisão média para 4 dias: $58,51$
+		 				\item Média de precisão média para 5 dias: $59,44$
+		 				\item Média de precisão média geral: $58,16$
+		 			\end{itemize}
+		 			\begin{table}[h]
+		 				\caption{Precisão média para o caso de 2 classes.}
+		 				\label{tab:2c_pr_analysis}
+		 				\centering
+		 				{\footnotesize
+		 					\begin{tabular}{|c|c|c|c|c|c|}
+		 						\hline
+		 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
+		 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
+		 						\hline
+		 						1 & 58,97 & 56,93 & 57,73 & 56,10 & 57,04 \\
+		 						2 & 56,16 & 57,62 & 57,91 & 56,79 & 57,58 \\
+		 						3 & 59,38 & 59,24 & 58,30 & 57,49 & 57,08 \\
+		 						4 & 57,73 & 58,04 & 60,35 & 58,28 & 58,16 \\
+		 						5 & 58,43 & 60,62 & 59,61 & 59,25 & 59,31 \\
+		 						\hline
+		 				\end{tabular}}
+		 			\end{table}
+	 			\newpage
+	 			\subsubsection{Cobertura Média}
+					\begin{itemize}
+		 				\item Maior cobertura média: $60,64$ (BBDC4/5d)
+		 				\item Menor cobertura média: $55,99$ (PETR4/1d)
+		 				\item Média de cobertura média para ABEV3: $58,04$
+		 				\item Média de cobertura média para BBDC4: $58,71$
+		 				\item Média de cobertura média para ITUB4: $58,62$
+		 				\item Média de cobertura média para PETR4: $57,56$
+		 				\item Média de cobertura média para VALE3: $57,75$
+		 				\item Média de cobertura média para 1 dia: $57,25$
+		 				\item Média de cobertura média para 2 dias: $57,20$
+		 				\item Média de cobertura média para 3 dias: $58,20$
+		 				\item Média de cobertura média para 4 dias: $58,66$
+		 				\item Média de cobertura média para 5 dias: $59,37$
+		 				\item Média de cobertura média geral: $58,14$
+		 			\end{itemize}
+		 			\begin{table}[h]
+			 				\caption{Cobertura média para o caso de 2 classes.}
+			 				\label{tab:2c_co_analysis}
+			 				\centering
+			 				{\footnotesize
+			 					\begin{tabular}{|c|c|c|c|c|c|}
+			 						\hline
+			 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
+			 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
+			 						\hline
+			 						1 & 58,97 & 56,80 & 57,67 & 55,99 & 56,82 \\
+			 						2 & 56,18 & 57,62 & 57,89 & 56,76 & 57,57 \\
+			 						3 & 58,97 & 59,21 & 58,25 & 57,50 & 57,07 \\
+			 						4 & 57,76 & 59,28 & 59,78 & 58,30 & 58,16 \\
+			 						5 & 58,32 & 60,64 & 59,51 & 59,24 & 59,12 \\
+			 						\hline
+			 				\end{tabular}}
+			 			\end{table}
+		 			\newpage
+		 			\subsubsection{Medida F1}
+						\begin{itemize}
+							\item Maior medida F1: $60,52$ (BBDC4/5d)
+							\item Menor medida F1: $55,84$ (PETR4/1d)
+							\item Média de medida F1 para ABEV3: $57,92$
+							\item Média de medida F1 para BBDC4: $58,34$
+							\item Média de medida F1 para ITUB4: $58,49$
+							\item Média de medida F1 para PETR4: $57,49$
+							\item Média de medida F1 para VALE3: $57,68$
+							\item Média de medida F1 para 1 dia: $57,07$
+							\item Média de medida F1 para 2 dias: $57,15$
+							\item Média de medida F1 para 3 dias: $58,13$
+							\item Média de medida F1 para 4 dias: $58,25$
+							\item Média de medida F1 para 5 dias: $59,32$
+							\item Média de medida F1 geral: $57,98$
+						\end{itemize}
+			 			\begin{table}[h]
+			 				\caption{Medida F1 média para o caso de 2 classes.}
+			 				\label{tab:2c_f1_analysis}
+			 				\centering
+			 				{\footnotesize
+			 					\begin{tabular}{|c|c|c|c|c|c|}
+			 						\hline
+			 						\diagbox[linewidth=0.2pt, width=\dimexpr \textwidth/10+2\tabcolsep\relax, height=0.8cm]{Dias}{Ativo}
+			 						& ABEV3 & BBDC4 & ITUB4 & PETR4 & VALE3\\
+			 						\hline
+			 						1 & 58,74 & 56,54 & 57,61 & 55,84 & 56,63 \\
+			 						2 & 56,12 & 57,61 & 57,82 & 56,68 & 57,53 \\
+			 						3 & 58,76 & 59,19 & 58,18 & 57,47 & 57,05 \\
+			 						4 & 57,67 & 57,83 & 59,39 & 58,23 & 58,15 \\
+			 						5 & 58,33 & 60,52 & 59,45 & 59,25 & 59,03 \\
+			 						\hline
+			 				\end{tabular}}
+			 			\end{table}
+		 			\newpage
 	 			\subsection{Análise}
-	 				\paragraph{}Pode-se verificar pelos dados acima que o melhor modelo encontrado, baseado em acurácia, foi o BBDC4/5d de duas classes. Entretanto, como erroneamente os registros da classe neutra não foram inseridos no conjunto de teste deste modelo, não podemos afirmar que este teria uma boa acurácia quando testado em dados reais. Sendo assim, foi considerado como melhor modelo o BBDC4/4d de 3 classes, com 60,21\% de acurácia sobre o conjunto de teste.
-	 				\paragraph{}Ainda assim de maneira geral, esta ainda é uma baixa taxa de acurácia, sendo ligeiramente melhor do que uma decisão aleatória entre duas classes (valorização ou desvalorização). Porém, se pensarmos que a classe neutra, mesmo com uma baixa possibilidade de concretização, é levada em conta então este valor de acurácia pode ser considerado um pouco melhor.
+	 				\paragraph{}Pode-se verificar pelos dados acima que o melhor modelo encontrado, baseado em acurácia, foi o BBDC4/5d de duas classes. Entretanto, como erroneamente os registros da classe neutra não foram inseridos no conjunto de teste destes modelos, não podemos afirmar que este teria uma boa acurácia quando testado em dados reais. Sendo assim, foi considerado como melhor modelo o BBDC4/4d de 3 classes, com 60,21\% de acurácia sobre o conjunto de teste.
+	 				\paragraph{}Ainda assim de maneira geral, esta ainda é uma baixa taxa de acurácia, sendo ligeiramente melhor do que uma decisão aleatória entre duas classes (valorização ou desvalorização). Porém, se pensarmos que a classe neutra, mesmo com uma baixa possibilidade de aparição, é levada em conta então este valor de acurácia pode ser considerado um pouco melhor.
 	 				\paragraph{}Com relação aos períodos de tempo, é notável que períodos maiores se mostraram com um desempenho melhor em comparação aos inferiores. Se tratando de acurácia, em média, os modelos preditivos de de 4 e 5 dias foram os que se mostraram mais performáticos. Isto pode indicar um efeito reverso de notícias sobre valorização de ativos onde é vista uma reação imediata na movimentação do mercado e após um período ocorre um movimento contrário a esta movimentação. Por exemplo, notícias ruins da AMBEV ocasionam uma queda instantânea nos ativos da empresa, mas por conta da sua estabilidade, o valor destes ativos voltam a subir logo depois
 	 				\paragraph{}Considerando a volatilidade e incerteza do mercado, somado com a baixa disponibilidade de dados prontos de notícias sobre o mercado brasileiro, pode-se considerar razoável o desempenho do melhor modelo preditivo encontrado.
   
@@ -783,7 +800,7 @@ tensorboard --logdir=runs
  			\paragraph{}Como este trabalho apenas se baseou na análise dos modelos preditivos sobre dados de teste, seria interessante realizar testes com dados reais de forma progressiva. Isto seria possível ao desenvolver uma aplicação web que consumisse os modelos desenvolvidos no formato caffe2 e adquirisse notícias da rede através de APIs ou \textit{web crawlers}, disponibilizando assim, o resultado dos modelos perante as notícias adquiridas em conjunto com a variação dos ativos em questão. Estes dados poderiam ser salvos em um banco de dados para que posteriormente uma análise pudesse ser feita.
  			\paragraph{}A utilização de ativos do iBovespa nos modelos preditivos gerados abre portas para a composição de um único modelo com o objetivo de prever variações do próprio iBovespa, isto seria interessante para a aplicação e saque de capital em fundos de investimento atrelados ao iBovespa, por exemplo.
  			\paragraph{}A ferramenta PyText ainda pode ser mais explorada ao utilizar arquivos de \textit{embeddings} pré-treinados em conjunto com a funcionalidade de utilizar uma GPU com CUDA para agilizar o processamento. Esta exploração poderia se basear na variação de parâmetros como quantidade e tamanho de \textit{kernels} para uma rede CNN, por exemplo, ou mesmo a experimentação de novas arquiteturas disponibilizadas pelo PyText com o avanço de versão. O uso de novas ferramentas mais abertas e flexíveis também pode ser testado com o objetivo de comparar os resultados obtidos neste trabalho.
- 			\paragraph{}Por fim, a aplicação de \textit{online machine learning}, isto é, a aquisição de novos dados e treinamento automático com o intuito de melhorar um modelo em produção pode ser bem interessante para o caso de análise de notícias do mercado financeiro. Isto traria a possibilidade de fazer com que o modelo preditivo aprenda novos assuntos, palavras e frases da atualidade que impactam ativos como nunca antes.
+ 			\paragraph{}Por fim, a aplicação de \textit{online machine learning}, isto é, a aquisição de novos dados e treinamento automático com o intuito de melhorar um modelo em produção pode ser bem interessante para o caso de análise de notícias do mercado financeiro. Isto traria a possibilidade de fazer com que o modelo preditivo aprenda novos assuntos, palavras e frases da atualidade que podem estar impactando ativos financeiros como nunca antes.
 
   \backmatter
   \bibliographystyle{coppe-unsrt}
