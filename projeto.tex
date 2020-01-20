@@ -78,19 +78,19 @@
 			\paragraph{}Através destes dois fatores, o presente trabalho busca contribuir para a difusão do estudo e uso de algumas destas tecnologias sobre um assunto que gradualmente se encontra dentro do interesse da população brasileira e que colabora para uma possível instauração de uma cultura de economia e independência financeira no Brasil.
 		
 		\section{Objetivos}
-			\paragraph{}O objetivo geral do presente trabalho é de analisar modelos preditivos associados ao mercado financeiro que possam ser construídos a partir do framework PyText, tendo como objetivos específicos, apresentar: (1) A busca por dados de notícias e do histórico da bolsa de valores; (2) A lógica utilizada para a união destes dados de forma a construir os conjuntos de dados utilizados no treinamento dos modelos; (3) O pré-processamento dos conjuntos de dados; (4) As possíveis configurações do framework utilizado de forma a obter a melhor performance; (5) O detalhamento e a análise dos modelos finais encontrados.
+			\paragraph{}O objetivo geral do presente trabalho é de analisar modelos preditivos associados ao mercado financeiro que possam ser construídos a partir do framework PyText, tendo como objetivos específicos, apresentar: (1) A busca por dados de notícias e do histórico da bolsa de valores; (2) A lógica utilizada para a união destes dados de forma a construir os conjuntos de dados utilizados no treinamento dos modelos; (3) O pré-processamento dos conjuntos de dados; (4) As possíveis configurações do framework utilizado de forma a obter uma performance razoável; (5) O detalhamento e a análise dos modelos finais encontrados.
 		
 		\section{Metodologia}
-			\paragraph{}O trabalho teve início a partir da procura por bases de dados de notícias associadas ao mercado brasileiro e escritas em português do Brasil, seguida pela obtenção do histórico das variações de preço dos ativos que compõem o iBovespa. Após isto, o histórico foi filtrado de forma a manter as informações dos 5 ativos mais significativos e das varições destes ativos que ocorreram dentro da mesma janela de tempo das notícias obtidas. Em seguida, estes dados foram unidos de forma a obter 5 conjuntos de dados para cada ativo, cada um levando em consideração uma diferente janela de tempo para indicar a valorização: de 1 a 5 dias.
-			\paragraph{}Logo após, houve a etapa de pré-processamento do corpo das notícias de forma a remover possíveis ruídos e facilitar a etapa de treinamento, sem perda de contexto do conteúdo. Com os conjuntos de dados prontos, foram feitos testes no PyText com o objetivo de definir a melhor configuração possível para a natureza dos dados, e assim obter a melhor performance.
+			\paragraph{}O trabalho teve início a partir da procura por bases de dados de notícias associadas ao mercado brasileiro e escritas em português do Brasil, seguida pela obtenção do histórico das variações de preço dos ativos que compõem o iBovespa. Após isto, o histórico foi filtrado de forma a manter as informações dos 5 ativos mais significativos e das varições destes ativos que ocorreram dentro da mesma janela de tempo das notícias obtidas. Em seguida, estes dados foram unidos de forma a obter 5 conjuntos de dados para cada ativo, cada um levando em consideração uma diferente janela de tempo para indicar a valorização: de um a cinco dias.
+			\paragraph{}Logo após, houve a etapa de pré-processamento do corpo das notícias de forma a remover possíveis ruídos e facilitar a etapa de treinamento, sem perda de contexto do conteúdo. Com os conjuntos de dados prontos, foram feitos testes no PyText com o objetivo de definir a melhor configuração para a natureza dos dados, e assim obter uma performance razoável.
 			\paragraph{}Por fim, os testes finais de cada modelo gerado foi detalhado e analisado para permitir uma conclusão e avaliação do processo como um todo.
 
 		\section{Descrição}
 			\paragraph{}O capítulo 2 apresenta toda a fundamentação teórica utilizada como base para o projeto a partir de uma breve descrição de como a bolsa de valores funciona seguida de explicações sobre Aprendizado de Máquina, Processamento de Linguagem Natural, Redes Neurais e o framework Pytext.
 			\paragraph{}No capítulo 3 é detalhado todo o processo executado para obtenção do conjunto de notícias e do histórico da B3, seguido do pré-processamento realizado nestes dois conjuntos e a criação dos conjuntos de dados finais utilizados para o treino, cada um associado a um ativo e uma janela de tempo específica.
-			\paragraph{}Os detalhes das configurações utilizadas no PyText e o treinamento em si é especificado no capítulo 4, onde há uma discussão acerca dos parâmetros encontrados para a geração de modelos mais performáticos, além das métricas finais encontradas para cada modelo gerado.
-			\paragraph{}Por fim, o capítulo 5 apresenta uma conclusão acerca dos modelos encontrados seguido por sugestões que futuramente podem ser aplicadas para a evolução do tema e uma possível melhora de desempenho dos modelos preditivos.
-			\paragraph{}O código desenvolvido para o pré-processamento e geração dos conjuntos de dados e arquivos de configurações do PyText utilizados para a geração dos modelos podem ser encontrados no repositório do github referenciado em \cite{github}.
+			\paragraph{}Os detalhes das configurações utilizadas no PyText e o treinamento em si é especificado no capítulo 4, onde há uma discussão acerca dos parâmetros encontrados para a geração de modelos mais performáticos, além das métricas finais encontradas para cada modelo gerado seguido de uma breve análise.
+			\paragraph{}Por fim, o capítulo 5 apresenta uma conclusão acerca dos modelos encontrados e do trabalho como um todo, apresentando também sugestões que futuramente podem ser aplicadas para a evolução do tema e uma possível melhora de desempenho dos modelos preditivos.
+			\paragraph{}O código desenvolvido para a geração e pré-processamento dos conjuntos de dados e para geração e execução dos arquivos de configuração do PyText utilizados para a geração dos modelos podem ser encontrados no repositório do github referenciado em \cite{github}.
    
   \chapter{Fundamentação Teórica}
   
@@ -238,7 +238,7 @@
 	  	\begin{figure}[H]
 	  		\centering
 	  		\includegraphics[width=12cm]{lstm_rnn_comparisson.jpg}
-	  		\caption{Diferença entre a célula de uma rede CNN comum e de uma rede LSTM \cite{lstm-visual}.}
+	  		\caption{Diferença entre a célula de uma rede RNN comum e de uma rede LSTM \cite{lstm-visual}.}
 	  		\label{fig:lstm_rnn_comparisson-fig}
 	  	\end{figure}
   		\paragraph{}Nas RNN comuns e na LSTM, o dado é inserido de forma sequencial em apenas um sentido, fazendo com que a rede obtenha informação sequencial a partir do passado. De forma a obter informação sequencial proveniente do futuro, criou-se o conceito de redes neurais recorrentes bidirecionais (\textit{Bidirectional Recurrent Neural Networks} - BRNN). Neste tipo de rede, o algoritmo é alimentado pelo conjunto de dados de duas formas paralelas: do início ao fim e do fim ao início, combinando estas duas em uma única saída.
@@ -328,7 +328,7 @@ pip3 install tensorflow tensorboard #instalação do TensorBoard
   		\paragraph{}O PyText é considerado uma ferramenta de interface simples e possui uma alta capacidade de rápida prototipação\cite{pytext-paper}. Isto se dá principalmente pelo fato de que a configuração de treino, teste e avaliação de um modelo é feita através de um único arquivo JSON (\textit{Javascript Object Notation}). Neste, é informado o caminho para o tipo de tarefa (classificação de texto ou identificação de entidades) conjunto de dados de teste, treino e avaliação, arquitetura de rede neural que será utilizada para treinamento, caminho para arquivo de \textit{embedding} pré-treinado (se disponível) e outras diversos parâmetros que podem ser ajustados para o treinamento de um modelo específico.
  			\begin{figure}[h]
 			{\includegraphics[width=15cm]{pytext-config-ex.jpg}
-				\caption{Exemplo de configuração do PyText, retirado do repositório do GitHub do projeto, \textit{docnn.json}\cite{pytext-github}.}
+				\caption{Exemplo de arquivo configuração do PyText (\textit{docnn.json}), retirado do repositório do GitHub do projeto\cite{pytext-github}.}
 				\label{fig:pytext-config-ex-fig}}
 			\end{figure}
 			\paragraph{}Após a configuração, basta rodar um comando do PyText referenciando o arquivo JSON criado para que o treino se inicie:
@@ -410,7 +410,7 @@ tensorboard --logdir=runs
   		\begin{figure}[h]
   			\centering
   			{\includegraphics[width=16cm]{calendar-example.pdf}
-	 				\caption{Esquema de comparação entre preços de fechamento para a definição da classe de valorização para os intervalos de $1d$(um dia), $2d$(dois dias), $3d$(três dias), $4d$(quatro dias) e $5d$(cinco dias).}
+	 				\caption{Esquema de comparação entre preços de fechamento para a definição da classe de valorização para os intervalos de $1d$ (um dia), $2d$ (dois dias), $3d$ (três dias), $4d$ (quatro dias) e $5d$ (cinco dias).}
 	 				\label{fig:calendar-example-fig}}
   		\end{figure}
   		\begin{figure}[h]
