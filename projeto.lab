@@ -1,26 +1,26 @@
 
 \begin{theglossary}
   \makeatletter
-  \item [B3] Brasil, Bolsa, Balcão, p.\hyperpage{vi}
-  \item [iBovespa] Índice Bovespa, p.\hyperpage{2}
- 	\item [HME] Hipótese do Mercado Eficiente, p.\hyperpage{4}
-  \item [AT] Análise Técnica, p.\hyperpage{4}
-  \item [AF] Análise Fundamentalista, p.\hyperpage{4}
-  \item [NN] \textit{Neural Networks}, p.\hyperpage{10}
-  \item [MLP] \textit{Multilayer Perceptron}, p.\hyperpage{11}
-  \item [CNN] \textit{Convolutional Neural Network}, p.\hyperpage{11}
-  \item [ReLU] \textit{Rectified Linear Unit}, p.\hyperpage{12}
-  \item [RNN] \textit{Recurrent Neural Network}, p.\hyperpage{12}
-  \item [LSTM] \textit{Long Short-Term Memory}, p.\hyperpage{13}
-  \item [BRNN] \textit{Bidirectional Recurrent Neural Networks}, p.\hyperpage{14}
-  \item [PLN] Processamento de Linguagem Natural, p.\hyperpage{15}
-  \item [BOW] \textit{Bag-of-Words}, p.\hyperpage{16}
-  \item [NILC] Núcleo Interinstitucional de Linguística Computacional, p.\hyperpage{TODO}
-  \item [USP] Universidade de São Paulo, p.\hyperpage{TODO}
-  \item [CSV] \textit{Comma-separated values}, p.\hyperpage{TODO}
-  \item [TSV] \textit{Tab-separated values}, p.\hyperpage{TODO}
-  \item [GPU] \textit{Graphics Processing Unit}, p.\hyperpage{TODO}
-  \item [API] \textit{Application Programming Interface}, p.\hyperpage{TODO}
-  \item [CUDA] \textit{Compute Unified Device Architecture}, p.\hyperpage{TODO}
-  \item [JSON] \textit{JavaScript Object Notation}, p.\hyperpage{TODO}
-  \end{theglossary}
+  \item [AF] Análise Fundamentalista
+  \item [API] \textit{Application Programming Interface}
+  \item [AT] Análise Técnica
+  \item [B3] Brasil, Bolsa, Balcão
+  \item [BOW] \textit{Bag-of-Words}
+  \item [BRNN] \textit{Bidirectional Recurrent Neural Networks}
+  \item [CNN] \textit{Convolutional Neural Network}
+  \item [CSV] \textit{Comma-separated values}
+  \item [CUDA] \textit{Compute Unified Device Architecture}
+  \item [GPU] \textit{Graphics Processing Unit}
+  \item [HME] Hipótese do Mercado Eficiente
+  \item [iBovespa] Índice Bovespa
+  \item [JSON] \textit{JavaScript Object Notation}
+  \item [LSTM] \textit{Long Short-Term Memory}
+  \item [MLP] \textit{Multilayer Perceptron}
+  \item [NILC] Núcleo Interinstitucional de Linguística Computacional
+  \item [NN] \textit{Neural Networks}
+  \item [PLN] Processamento de Linguagem Natural
+  \item [ReLU] \textit{Rectified Linear Unit}
+  \item [RNN] \textit{Recurrent Neural Network}
+  \item [TSV] \textit{Tab-separated values}
+  \item [USP] Universidade de São Paulo
+\end{theglossary}
